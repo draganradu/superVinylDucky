@@ -41,4 +41,7 @@ Accepted Structure
 /tools/{structure:tag}/{id}/
 
 #### Store Structure
-Namespaced Store
+Namespaced Store in vuex
+
+### Stack
+VueJS 3
