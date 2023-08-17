@@ -6,7 +6,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <div class="container-fluid bg-secondary mb-5">
     <div class="row">
-      <div class="col-12">AAA</div>
+      <div class="col-12">{{ $t('ana') }}</div>
     </div>
   </div>
 
@@ -17,6 +17,8 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
+        <RouterLink to="/en/">En</RouterLink>
+        <RouterLink to="/nl/">NL</RouterLink>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
