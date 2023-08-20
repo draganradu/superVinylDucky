@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <div class="container-fluid bg-secondary mb-5">
     <div class="row">
-      <div class="col-12">{{ $t('ana') }}</div>
+      <div class="col-6">{{ $t('ana') }}</div>
+      <div class="col-6"><RouterLink to="/site-map/">SiteMap</RouterLink></div>
     </div>
   </div>
 
-  <header>
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -23,7 +23,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
   <RouterView />
 </template>

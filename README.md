@@ -9,7 +9,7 @@ landing website
 ## Project structure
 
 #### Base Routs
-**Root**
+**LandingPage**
 /{lang}/ and /
 Root of the website
 
@@ -34,11 +34,15 @@ Accepted Structure
 **category of Tools**
 /tools/{structure:category}/{id}/
 
-**category of Tools**
+**id of Tools**
 /tools/{structure:id}/{id}/
 
-**category of Tools**
+**tag of Tools**
 /tools/{structure:tag}/{id}/
+
+
+**debug**
+/siteMap/
 
 #### Store Structure
 Namespaced Store in vuex

@@ -38,7 +38,7 @@ const Trans = {
   //   localStorage.setItem("user-locale", newLocale)
   // },
 
-  async routeMiddleware(to, _from, next) {
+  async routeMiddleware(to: any, _from: any, next: any): any {
     const paramLocale = to.params.locale
     console.log(paramLocale)
     if (!Trans.isLocaleSupported(paramLocale)) {
@@ -48,4 +48,5 @@ const Trans = {
     return next()
   },
 }
+
 export default Trans
