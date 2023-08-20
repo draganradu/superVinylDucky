@@ -86,8 +86,9 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: "/?",
+      path: "/:notFound",
       alias: ['/:notFound/:a', '/:notFound/:a/:b', '/:notFound/:a/:b/:c'],
+      name: "error404",
       component: NotFound,
     },
   ]

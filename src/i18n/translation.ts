@@ -39,10 +39,11 @@ const Trans = {
   // },
 
   async routeMiddleware(to: any, _from: any, next: any): any {
+    console.log(to)
     const paramLocale = to.params.locale
     console.log(paramLocale)
     if (!Trans.isLocaleSupported(paramLocale)) {
-      return next(Trans.guessDefaultLocale())
+      return next('/error/404/')
     }
     await Trans.switchLanguage(paramLocale)
     return next()
