@@ -4,7 +4,7 @@ const language = 'en'
 
 <template>
   <main>
-    <div class="container">
+    <div class="container pb-5">
       <ul class="list-group">
         <li class="list-group-item">
           <RouterLink to="/">Landing Page</RouterLink>
@@ -36,6 +36,11 @@ const language = 'en'
         <li class="list-group-item">Error</li>
         <li class="list-group-item">
           <RouterLink to="/sadasda">404</RouterLink>
+        </li>
+
+        <li class="list-group-item">OutsideLinks</li>
+        <li class="list-group-item">
+          <a href="https://vinylducky.atlassian.net/jira/software/projects/ECBGI/boards/3" target="_blank">Jira</a>
         </li>
       </ul>
     </div>
