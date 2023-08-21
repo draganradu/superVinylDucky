@@ -42,6 +42,10 @@ const language = 'en'
         <li class="list-group-item">
           <a href="https://vinylducky.atlassian.net/jira/software/projects/ECBGI/boards/3" target="_blank">Jira</a>
         </li>
+        <li class="list-group-item">
+          <a href="https://github.com/draganradu/superVinylDucky" target="_blank">git</a>
+        </li>
+        
       </ul>
     </div>
   </main>
