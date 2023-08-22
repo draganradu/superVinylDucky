@@ -10,7 +10,7 @@ import Sidebar from "@/components/shop/sidebar.vue"
     <Header />
     <Container>
       <Sidebar />
-      <div class="col-8">
+      <div class="col">
         <slot />
       </div>
     </Container>

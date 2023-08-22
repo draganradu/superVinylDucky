@@ -2,10 +2,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import shopLayout from '@/layouts/ShopLayout.vue'
-
+import AboutUs from '@/components/shop/about.vue'
+import Hero from '@/components/shop/hero.vue'
+import ProductGrid from '@/components/shop/productGrid.vue'
+import ShopLayout from '@/layouts/ShopLayout.vue'
+import SocialMedia from '@/components/shop/socialMedia.vue'
+import Contact from '@/components/shop/contact.vue'
 const store = useStore()
-const one = 1
 
 const count = computed(() => store.getters.doneTodos)
 const increse = () => store.commit('increment')
@@ -14,12 +17,16 @@ const increse = () => store.commit('increment')
 
 <template>
   <main>
-    <shopLayout>
-    Landing Page {{ one }}
-    <hr />
-    <span @click="$store.commit('increment')"> >> {{ count }}</span>
-    <br />
-    <span @click="increse"> >2> {{ count }}</span>
-    </shopLayout>
+    <ShopLayout>
+      <Hero />
+      <AboutUs />
+      <ProductGrid />
+      <SocialMedia />
+      <Contact />
+      
+      <span @click="$store.commit('increment')"> >> {{ count }}</span>
+      <br />
+      <span @click="increse"> >2> {{ count }}</span>
+    </ShopLayout>
   </main>
 </template>

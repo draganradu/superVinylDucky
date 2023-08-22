@@ -5,7 +5,7 @@ import Container from '@/scaffolding/Container.vue'
 
 <template>
   <footer class="footer">
-    <Container class="mt-5 py-3" color="bg-light">
+    <Container class="mt-5 py-3 bg-opacity-25" color="bg-secondary">
       <span class="text-muted">Place sticky footer content here.</span>
     </Container>
   </footer>

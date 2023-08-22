@@ -3,12 +3,12 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <div class="container-fluid bg-secondary mb-5">
+  <!-- <div class="container-fluid bg-secondary mb-5">
     <div class="row">
       <div class="col-6">{{ $t('ana') }}</div>
       <div class="col-6"><RouterLink to="/site-map/">SiteMap</RouterLink></div>
     </div>
-  </div>
+  </div> -->
 
   <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
@@ -25,11 +25,15 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
   </header> -->
 
-  <RouterView />
+  <RouterView class="bg-white text-black" />
 </template>
 
-<style scoped>
-header {
+<style>
+/* .a-clean {
+  color: inherit
+} */
+
+/* header {
   line-height: 1.5;
   max-height: 100vh;
 }
@@ -89,5 +93,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+} */
 </style>

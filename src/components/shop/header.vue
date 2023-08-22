@@ -9,7 +9,7 @@ import Search from './helper/search.vue'
 </script>
 
 <template>
-  <header class="p-3 bg-white link-dark mb-5">
+  <header class="p-3 bg-secondary bg-opacity-10 link-dark mb-5">
     <Container>
       <div
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
