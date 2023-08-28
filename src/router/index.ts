@@ -37,6 +37,11 @@ const router = createRouter({
           name: 'tagID',
           component: () => import('../views/tools/tag.vue')
         },
+        {
+          path: 'login/',
+          name: 'login',
+          component: () => import('../views/tools/CRUD/login.vue')
+        },
         // {
         //   path: 'stickers-category/:name/', 
         //   name: 'Products',

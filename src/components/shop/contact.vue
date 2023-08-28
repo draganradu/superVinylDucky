@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import Card from '@/scaffolding/Card.vue'
+</script>
+
 <template>
-    <div>contact</div>
+  <Card class="mt-3">
+    contact
+  </Card>
 </template>

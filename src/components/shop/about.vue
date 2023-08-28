@@ -1,4 +1,7 @@
+<script setup lang="ts">
+import Card from '@/scaffolding/Card.vue'
+</script>
+
 <template>
-    <div>about us</div>
-    <hr/>
-  </template>
+  <Card class="mt-3">about us</Card>
+</template>

@@ -1,4 +1,9 @@
+<script setup lang="ts">
+import Card from '@/scaffolding/Card.vue'
+</script>
+
 <template>
-    <div>social media</div>
-    <hr/>
-  </template>
+  <Card class="mt-3">
+    social media
+  </Card>
+</template>

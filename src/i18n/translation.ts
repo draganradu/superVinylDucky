@@ -17,7 +17,6 @@ const Trans = {
 
 
   async loadLocaleMessages(locale: any) {
-    console.log(locale)
     if (!i18n.global.availableLocales.includes(locale)) {  // <--- 3
 
       i18n.global.setLocaleMessage(locale, messages.default)  // <--- 5
@@ -39,9 +38,7 @@ const Trans = {
   // },
 
   async routeMiddleware(to: any, _from: any, next: any): any {
-    console.log(to)
     const paramLocale = to.params.locale
-    console.log(paramLocale)
     if (!Trans.isLocaleSupported(paramLocale)) {
       return next('/error/404/')
     }

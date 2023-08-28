@@ -1,4 +1,7 @@
+<script setup lang="ts">
+import Card from '@/scaffolding/Card.vue'
+</script>
+
 <template>
-  <div>product grid</div>
-  <hr/>
+  <Card class="mt-3">product grid</Card>
 </template>

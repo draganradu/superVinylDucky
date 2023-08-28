@@ -1,7 +1,10 @@
+<script setup lang="ts">
+import Card from '@/scaffolding/Card.vue'
+</script>
+
 <template>
-  <div>
+  <Card>
     Landing page hero
     We moved
-  </div>
-  <hr/>
+  </Card>
 </template>

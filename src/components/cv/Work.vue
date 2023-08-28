@@ -1,5 +1,10 @@
+<script setup lang="ts">
+import Card from '@/scaffolding/Card.vue'
+</script>
+
+
 <template>
-    <div class="row">
-        Work Grid
-    </div>
+  <Card class="mt-3">
+    Work Grid
+  </Card>
 </template>

@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import Card from '@/scaffolding/Card.vue'
+</script>
+
 <template>
-  <div class="row">
+  <Card class="mt-3">
     Social
-  </div>
+  </Card>
 </template>
