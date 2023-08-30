@@ -16,7 +16,7 @@ const logout = () => {
 <template>
   <div :class="['col-auto', 'sidebar', collapsed ? 'sidebar-collapse' : '', 'a-clean']">
     <div @click="() => { collapsed = !collapsed }">
-      <Item :icon="[!collapsed ? 'bi-arrow-bar-left' : 'bi-arrow-bar-right']" />
+      <Item :icon="!collapsed ? 'bi-arrow-bar-left' : 'bi-arrow-bar-right'" />
     </div>
     <hr />
     <Item to="/en/radu-dragan/" text="CV" icon="bi-file-earmark-person" />

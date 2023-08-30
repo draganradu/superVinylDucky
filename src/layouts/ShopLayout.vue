@@ -9,11 +9,25 @@ import Sidebar from "@/components/sidebar/index.vue"
   <div class="bg-body-secondary pt-5">
     <!-- <Header /> -->
     <Container>
+      
       <Sidebar />
       <div class="col">
+        <div class="main-logo">Vinyl Ducky</div>
         <slot />
       </div>
     </Container>
     <Footer />
   </div>
 </template>
+
+<style>
+.main-logo {
+  position: absolute;
+  z-index: 1;
+  transform: translateY(-100%);
+  padding-bottom: 10px;
+  font-weight: 800;
+  opacity: 0.2;
+  pointer-events: n;
+}
+</style>

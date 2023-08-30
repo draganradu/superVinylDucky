@@ -3,11 +3,12 @@ defineProps<{
   img?: string
   title?: string
   text?: string
+  transparent?: boolean
 }>()
 </script>
 
 <template>
-  <div class="card shadow overflow-hidden rounded-4">
+  <div :class="['overflow-hidden rounded-4', transparent ? '' : 'card shadow']">
     <div v-if="img" class="bg-secondary bg-opacity-25">
       <img class="card-img-top" src="@/assets/placeholder.png" alt="Card image cap">
     </div>
