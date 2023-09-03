@@ -2,7 +2,6 @@
 import Card from '@/scaffolding/Card.vue'
 import { useStore } from 'vuex'
 const store = useStore()
-console.log(store.state.shop.store.marktplaats)
 </script>
 
 <template>

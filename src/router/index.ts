@@ -66,6 +66,11 @@ const router = createRouter({
           component: () => import('../views/CVPage.vue')
         },
         {
+          path: 'Informatie',
+          name: 'InfoPage',
+          component: () => import('../views/Informatie.vue')
+        },
+        {
           path: 'stickers/001',
           name: 'Products',
           component: () => import('../views/vinylDucky/Products.vue')
@@ -76,14 +81,6 @@ const router = createRouter({
           component: () => import('../views/vinylDucky/Category.vue')
         },
       ]
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
     },
     {
       path: "/:notFound",

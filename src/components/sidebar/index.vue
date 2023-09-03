@@ -21,7 +21,7 @@ const logout = () => {
     <hr />
     <Item to="/en/radu-dragan/" text="CV" icon="bi-file-earmark-person" />
     <Item to="/site-map/" text="Sitemap" />
-
+    <Item to="/en/Informatie" text="Informatie" icon="bi-info-circle" />
     <hr />
     <div v-if="!isLogin" class="sidebar-item">
       <Item to="/tools/login/" text="Login" icon="bi-person-badge-fill" />

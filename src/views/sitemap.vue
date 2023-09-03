@@ -16,6 +16,9 @@ const language = 'en'
           <li class="list-group-item">
             <RouterLink :to="'/' + language + '/radu-dragan'">CV</RouterLink>
           </li>
+          <li class="list-group-item">
+            <RouterLink :to="'/' + language + '/Informatie'">Informatie</RouterLink>
+          </li>
 
           <li class="list-group-item bg-secondary text-white bg-opacity-50">Shop</li>
           <li class="list-group-item">
