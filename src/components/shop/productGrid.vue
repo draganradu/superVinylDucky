@@ -11,14 +11,14 @@ const getProducts = store.getters['shop/getProductsGrid'];
     <RouterLink v-for="(i, k) in getProducts" :key="k" class="grid-item rounded-4 card shadow overflow-hidden"
       :to="`/${lang}/stickers/${k}/`">
       <div class="debug">{{ i }}</div>
-      <h3 class="name"> {{ i[lang]?.name }} </h3>
-      <p class="description"> {{ i[lang]?.description }}</p>
-      <div class="colors">
+      <h3 class="name hide"> {{ i[lang]?.name }} </h3>
+      <p class="description hide"> {{ i[lang]?.description }}</p>
+      <div class="colors hide">
         <div v-for="color in i.colors" :class="[color, 'product-color']">
           <span class="title">{{ color }}</span>
         </div>
       </div>
-      <div class="bg-img" style="background-image: url(https://vinylducky.nl/grid/death_trap_vinyl_duckey_nl.jpg)">
+      <div class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
       </div>
     </RouterLink>
   </div>
@@ -34,6 +34,14 @@ const getProducts = store.getters['shop/getProductsGrid'];
 /* .grid-item {
   min-height: 200px;
 } */
+
+.grid-item .hide {
+  opacity: 0;
+}
+
+.grid-item:hover .hide {
+  opacity: 1;
+}
 
 .grid-item:hover .bg-img {
   opacity: 0.2;

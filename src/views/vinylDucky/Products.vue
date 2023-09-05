@@ -31,7 +31,7 @@ const setImg = (newHero: string) => {
       <div class="row">
         <div :class="[isFullScreen ? 'col-12' : 'col-4', 'product-grid']">
           <div class="bg-secondary bg-opacity-25" v-for="(i, k) in collapsed" :key="k" @click="setImg(i)">
-            <img src="@/assets/placeholder.png" />{{ i }}
+            <img :src="`https://vinylducky.nl/product-img/${i}`" />
           </div>
         </div>
         <div class="col-6">
