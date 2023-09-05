@@ -27,10 +27,11 @@ const setImg = (newHero: string) => {
 
 <template>
   <main>
-    <ShopLayout :sidebar="true" >
+    <ShopLayout :sidebar="true">
       <div class="row">
         <div :class="[isFullScreen ? 'col-12' : 'col-4', 'product-grid']">
-          <div class="bg-secondary bg-opacity-25" v-for="(i, k) in collapsed" :key="k" @click="setImg(i)">
+          <div class="product-img bg-secondary bg-opacity-25 border shadow" v-for="(i, k) in collapsed" :key="k"
+            @click="setImg(i)" :style="`background-image: url(https://vinylducky.nl/product-img/${i})`">
             <img :src="`https://vinylducky.nl/product-img/${i}`" />
           </div>
         </div>
@@ -66,16 +67,28 @@ const setImg = (newHero: string) => {
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+// grid ------------------------
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 10px;
   row-gap: 10px;
+
+  &>div:first-child {
+    grid-column: span 3;
+  }
 }
 
-.product-grid>div:first-child {
-  grid-column: span 3;
+// img ------------------------
+
+.product-img {
+  border: 1px solid gray;
+  background-size: cover;
+  background-position: center center;
+  img {
+    opacity: 0;
+  }
 }
 
 .price span {
@@ -104,16 +117,17 @@ const setImg = (newHero: string) => {
 }
 
 .badge.red {
-  background-color: red!important;
-}
-.badge.gold {
-  background-color: gold!important;
-  color: black!important;
-}
-.badge.transparent {
-  background-color: transparent!important;
-  border: 1px solid black;
-  color: black!important;
+  background-color: red !important;
 }
 
+.badge.gold {
+  background-color: gold !important;
+  color: black !important;
+}
+
+.badge.transparent {
+  background-color: transparent !important;
+  border: 1px solid black;
+  color: black !important;
+}
 </style>
