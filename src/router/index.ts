@@ -42,11 +42,6 @@ const router = createRouter({
           name: 'login',
           component: () => import('../views/tools/CRUD/login.vue')
         },
-        // {
-        //   path: 'stickers-category/:name/', 
-        //   name: 'Products',
-        //   component: HomeView
-        // },
       ]
     },
     {
@@ -68,10 +63,10 @@ const router = createRouter({
         {
           path: 'Informatie',
           name: 'InfoPage',
-          component: () => import('../views/Informatie.vue')
+          component: () => import('../views/Informatie.vue'),
         },
         {
-          path: 'stickers/001',
+          path: 'stickers/:id',
           name: 'Products',
           component: () => import('../views/vinylDucky/Products.vue')
         },

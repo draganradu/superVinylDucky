@@ -7,6 +7,10 @@ const store = useStore()
 
 let collapsed = ref(true);
 
+defineProps<{
+  sidebar?: boolean
+}>()
+
 const isLogin = computed(() => store.getters['user/isLoggedIn'])
 const logout = () => {
   store.commit('user/SET_login', false);
@@ -19,17 +23,21 @@ const logout = () => {
       <Item :icon="!collapsed ? 'bi-arrow-bar-left' : 'bi-arrow-bar-right'" />
     </div>
     <hr />
-    <Item to="/en/radu-dragan/" text="CV" icon="bi-file-earmark-person" />
-    <Item to="/site-map/" text="Sitemap" />
-    <Item to="/en/Informatie" text="Informatie" icon="bi-info-circle" />
-    <hr />
-    <div v-if="!isLogin" class="sidebar-item">
-      <Item to="/tools/login/" text="Login" icon="bi-person-badge-fill" />
+    <div v-if="!sidebar">
+      <Item to="/en/radu-dragan/" text="CV" icon="bi-file-earmark-person" />
+      <Item to="/site-map/" text="Sitemap" />
+      <Item to="/en/Informatie" text="Informatie" icon="bi-info-circle" />
+      <hr />
+      <div v-if="!isLogin" class="sidebar-item">
+        <Item to="/tools/login/" text="Login" icon="bi-person-badge-fill" />
+      </div>
+      <div v-else class="sidebar-item">
+        <Item @click="logout" text="Logout" icon="bi-emoji-dizzy-fill" />
+      </div>
     </div>
-    <div v-else class="sidebar-item">
-      <Item @click="logout" text="Logout" icon="bi-emoji-dizzy-fill" />
+    <div v-else>
+      <Item to="/" text="back" icon="bi-arrow-left-circle" />
     </div>
-
   </div>
 </template>
 

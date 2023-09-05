@@ -4,6 +4,9 @@ import Container from '@/scaffolding/Container.vue'
 import Experience from "@/components/cv/Experience.vue"
 import Social from "@/components/cv/Social.vue"
 import Work from "@/components/cv/Work.vue"
+import WorkOrganize from "@/components/cv/WorkOrganize.vue"
+import WorkDesign from "@/components/cv/WorkDesign.vue"
+import WorkDevelop from "@/components/cv/WorkDevelop.vue"
 import Sidebar from "@/components/sidebar/sidebarTools.vue"
 </script>
 
@@ -14,8 +17,12 @@ import Sidebar from "@/components/sidebar/sidebarTools.vue"
         <Sidebar />
         <div class="col">
           <AboutMe />
-          <Social />
           <Work />
+          <WorkOrganize />
+          <WorkDesign />
+          <WorkDevelop />
+          <Social />
+
           <Experience />
         </div>
       </Container>

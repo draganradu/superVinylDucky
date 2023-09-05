@@ -1,0 +1,60 @@
+{
+  "products": {
+    "open-and-closed": {
+      "id": "00001",
+      "en": {
+        "name": "Open and closed",
+        "subtitle": "The perfect open and closed sign",
+        "description": "Sign for open and closed is made out of Oracal 651, you just need to tell us open hours"
+      },
+      "img": [
+        "1placeholder.jpg", "2placeholder.jpg", "3placeholder.jpg"
+      ],
+      "colors": [
+        "red"
+      ],
+      "printReverse": "true",
+      "category": [
+        "window stickers",
+        "commercial"
+      ],
+      "price": "10",
+      "size": "10x30 cm"
+    },
+    "brompton-sticker": {
+      "id": "00002",
+      "en": {
+        "name": "Brompton stiker",
+        "description": "Bike Sticker Brompton"
+      },
+      "img": [
+        "1placeholder.jpg", "2placeholder.jpg", "3placeholder.jpg"
+      ],
+      "colors": [
+        "gold",
+        "transparent"
+      ],
+      "category": [
+        "window stickers",
+        "commercial"
+      ],
+      "price": "10"
+    },
+    "hello-beutifull": {
+      "id": "00003",
+      "en": {
+        "name": "Hello Beutifull",
+        "description": "sign for open and closed"
+      },
+      "img": [
+        "1placeholder.jpg", "2placeholder.jpg", "3placeholder.jpg"
+      ],
+      "colors": [
+        "black",
+        "white"
+      ],
+      "printReverse": "true",
+      "price": "10"
+    }
+  }
+}

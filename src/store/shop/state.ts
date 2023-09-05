@@ -1,5 +1,7 @@
+import { products } from "./productsMock.json";
+
 export default {
-  products: [],
+  products,
   socialMedia: [
     {
       name: "instagram",

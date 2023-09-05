@@ -1,7 +1,119 @@
 <script setup lang="ts">
-const one = 1
+import ShopLayout from '@/layouts/ShopLayout.vue'
+import { ref } from 'vue';
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router';
+
+const store = useStore()
+const route = useRoute();
+const product = store.getters['shop/getProduct'](route.params.id)
+const { id, img, price, size, colors, printReverse, category } = product;
+const { name, description, subtitle } = product[route.params.locale];
+
+// let hero = ref(img.shift());
+let collapsed = ref(img);
+let isFullScreen = ref(false);
+
+const setImg = (newHero: string) => {
+  if (collapsed.value[0] === newHero) {
+    isFullScreen.value = !isFullScreen.value
+  } else {
+    collapsed.value = collapsed.value.filter((x: string) => { return x !== newHero })
+    collapsed.value = [newHero, ...collapsed.value];
+  }
+}
+
 </script>
 
 <template>
-  <main>Products {{ one }}</main>
+  <main>
+    <ShopLayout :sidebar="true" >
+      <div class="row">
+        <div :class="[isFullScreen ? 'col-12' : 'col-4', 'product-grid']">
+          <div class="bg-secondary bg-opacity-25" v-for="(i, k) in collapsed" :key="k" @click="setImg(i)">
+            <img src="@/assets/placeholder.png" />{{ i }}
+          </div>
+        </div>
+        <div class="col-6">
+          <p class="sku">SKU: {{ id }}</p>
+          <h1>{{ name }}</h1>
+          <p>{{ subtitle }}</p>
+          <hr />
+          <div class="row">
+            <div class="col">
+              <p class="price mb-5"><span>€ {{ price }}<sup>00</sup> </span></p>
+
+              <ul class="list-group list-group-flush bg-transparent">
+                <li class="list-group-item">Size: <b>{{ size }}</b></li>
+                <li class="list-group-item">Color:
+                  <span v-for="i in colors" :class="[i, 'badge text-bg-primary me-1']" :key="i">{{ i }}</span>
+                </li>
+                <li class="list-group-item" v-if="printReverse">Print Revers: <b> optional</b></li>
+                <li class="list-group-item">{{ description }}</li>
+              </ul>
+
+            </div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-outline-success">Buy Now</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5">Category:
+          <span class="badge text-bg-primary me-1" v-for="i in category" :key="i">{{ i }}</span>
+        </div>
+      </div>
+    </ShopLayout>
+  </main>
 </template>
+
+<style scoped>
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.product-grid>div:first-child {
+  grid-column: span 3;
+}
+
+.price span {
+  background-color: gray;
+  padding: 10px;
+  color: white;
+  font-size: 1.6em;
+}
+
+.list-group,
+.list-group li {
+  background-color: transparent !important;
+}
+
+.list-group li {
+  border-color: gray;
+}
+
+.list-group li b {
+  font-weight: 600;
+}
+
+.sku {
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+
+.badge.red {
+  background-color: red!important;
+}
+.badge.gold {
+  background-color: gold!important;
+  color: black!important;
+}
+.badge.transparent {
+  background-color: transparent!important;
+  border: 1px solid black;
+  color: black!important;
+}
+
+</style>

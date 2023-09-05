@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import Container from '@/scaffolding/Container.vue'
-import Header from '@/components/shop/header.vue'
 import Footer from "@/components/shop/footer.vue"
 import Sidebar from "@/components/sidebar/index.vue"
+
+defineProps<{
+  sidebar?: boolean
+}>()
+
 </script>
 
 <template>
@@ -10,7 +14,7 @@ import Sidebar from "@/components/sidebar/index.vue"
     <!-- <Header /> -->
     <Container>
       
-      <Sidebar />
+      <Sidebar :sidebar="sidebar"/>
       <div class="col">
         <div class="main-logo">Vinyl Ducky</div>
         <slot />

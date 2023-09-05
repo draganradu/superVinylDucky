@@ -7,7 +7,7 @@ import Card from '@/scaffolding/Card.vue'
     <div class="row">
       <div class="col-6 text">
         <h1>We moved</h1>
-        <p class="lead">Our shop has moved to a new location. We are now in Bennekelstraat 112</p>
+        <p>Our shop has moved to a new location. We are now in Bennekelstraat 112 corner with Reinkenstraat. Look for the giant duck.</p>
         <p><a
             href="https://www.google.com/maps/place/Bennekelstraat+112,+5654+DJ+Eindhoven/@51.4198787,5.4570447,17z/data=!3m1!4b1!4m6!3m5!1s0x47c6d9a34dc881e1:0x32c30724015711bc!8m2!3d51.4198754!4d5.4596196!16s%2Fg%2F11v0kf2j89?entry=ttu"
             type="button" class="btn btn-outline-success" target="_blank">

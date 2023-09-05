@@ -12,3 +12,11 @@ const iconMapping = (name: string) => {
 export const getSocialLinks = (state: any) => {
   return state.socialMedia.map((x: any) => { return { ...x, icon: iconMapping(x.name) } });
 }
+
+export const getProductsGrid = (state: any) => {
+  return state.products;
+}
+
+export const getProduct = (state: any) => (product: string) => {
+  return state.products[product];
+}

@@ -21,11 +21,28 @@ import Feature from '@/components/shop/helper/features.vue'
 </Card>
 </template>
 
-<style scoped>
+<style>
 .features {
-  border-top: 1px solid ;
+  /* border-top: 1px solid ; */
   padding-top: 3em;
   margin-top: 3em;
+  position: relative;
+}
+.row.features::after {
+  display: block;
+  content: "";
+  position: absolute;
+  background-color: rgba(0,0,0,0.1);
+  top: 0;
+  bottom: -25px;
+  left: -12px;
+  right: -12px;
+  z-index: 0;
+  border-top: 2px dashed rgba(0,0,0,0.1);
+}
+
+.row.features div {
+  z-index: 1;
 }
 
 </style>

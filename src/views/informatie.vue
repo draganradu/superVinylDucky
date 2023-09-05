@@ -6,7 +6,7 @@ import { useStore } from 'vuex';
 const store = useStore();
 const { infoSections } = store.state.shop.extraInfo;
 
-const language = 'en'
+
 </script>
 
 <template>
