@@ -1,5 +1,11 @@
 @import './base.css';
 
+.a-clean,
+.a-clean a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* #app {
   max-width: 1280px;
   margin: 0 auto;

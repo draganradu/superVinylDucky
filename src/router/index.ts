@@ -37,11 +37,11 @@ const router = createRouter({
           name: 'tagID',
           component: () => import('../views/tools/tag.vue')
         },
-        // {
-        //   path: 'stickers-category/:name/', 
-        //   name: 'Products',
-        //   component: HomeView
-        // },
+        {
+          path: 'login/',
+          name: 'login',
+          component: () => import('../views/tools/CRUD/login.vue')
+        },
       ]
     },
     {
@@ -61,7 +61,12 @@ const router = createRouter({
           component: () => import('../views/CVPage.vue')
         },
         {
-          path: 'stickers/001',
+          path: 'Informatie',
+          name: 'InfoPage',
+          component: () => import('../views/Informatie.vue'),
+        },
+        {
+          path: 'stickers/:id',
           name: 'Products',
           component: () => import('../views/vinylDucky/Products.vue')
         },
@@ -73,16 +78,8 @@ const router = createRouter({
       ]
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    },
-    {
       path: "/:notFound",
-      alias: ['/:notFound/:a', '/:notFound/:a/:b', '/:notFound/:a/:b/:c'],
+      // alias: ['/:notFound/:one/', '/:notFound/:one/:two/', '/:notFound/:one/:two/:three/'],
       name: "error404",
       component: NotFound,
     },

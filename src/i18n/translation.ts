@@ -1,6 +1,8 @@
 import i18n from "@/i18n"
 import { nextTick } from "vue" // <--- 1
-import messages from "./locales";
+import en from "./locales/en.json"
+import nl from "./locales/nl.json"
+const messages = { en, nl }
 
 const Trans = {
   get supportedLocales() {
@@ -17,10 +19,8 @@ const Trans = {
 
 
   async loadLocaleMessages(locale: any) {
-    console.log(locale)
     if (!i18n.global.availableLocales.includes(locale)) {  // <--- 3
-
-      i18n.global.setLocaleMessage(locale, messages.default)  // <--- 5
+      i18n.global.setLocaleMessage(locale, messages.en)  // <--- 5
     }
 
     return nextTick()  // <--- 6
@@ -39,9 +39,7 @@ const Trans = {
   // },
 
   async routeMiddleware(to: any, _from: any, next: any): any {
-    console.log(to)
     const paramLocale = to.params.locale
-    console.log(paramLocale)
     if (!Trans.isLocaleSupported(paramLocale)) {
       return next('/error/404/')
     }

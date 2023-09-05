@@ -14,9 +14,6 @@ const changeLocal = (e: any) => {
   Tr.switchLanguage(e)
 }
 
-function log() {
-  console.log('x')
-}
 </script>
 
 <template>
@@ -25,7 +22,7 @@ function log() {
     <LanguageSwitcher />
     <span v-for="i in supportedLocales" :key="i" @click="changeLocal(i)">{{ i }} | </span>
 
-    <h3 @click="log">
+    <h3>
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>. What's next?
