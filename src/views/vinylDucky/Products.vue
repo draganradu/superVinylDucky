@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ShopLayout from '@/layouts/ShopLayout.vue'
+import Color from '@/components/shop/helper/color.vue'
 import { ref } from 'vue';
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router';
@@ -47,7 +48,7 @@ const setImg = (newHero: string) => {
               <ul class="list-group list-group-flush bg-transparent">
                 <li class="list-group-item">Size: <b>{{ size }}</b></li>
                 <li class="list-group-item">Color:
-                  <span v-for="i in colors" :class="[i, 'badge text-bg-primary me-1']" :key="i">{{ i }}</span>
+                  <Color v-for="i in colors" :key="i" :color="i" />
                 </li>
                 <li class="list-group-item" v-if="printReverse">Print Revers: <b> optional</b></li>
                 <li class="list-group-item">{{ description }}</li>
@@ -86,6 +87,7 @@ const setImg = (newHero: string) => {
   border: 1px solid gray;
   background-size: cover;
   background-position: center center;
+
   img {
     opacity: 0;
   }

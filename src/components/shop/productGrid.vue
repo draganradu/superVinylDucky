@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Color from '@/components/shop/helper/color.vue'
 import { useStore } from 'vuex';
 
 const lang = "en"; // to do get name
@@ -14,9 +15,7 @@ const getProducts = store.getters['shop/getProductsGrid'];
       <h3 class="name hide"> {{ i[lang]?.name }} </h3>
       <p class="description hide"> {{ i[lang]?.description }}</p>
       <div class="colors hide">
-        <div v-for="color in i.colors" :class="[color, 'product-color']">
-          <span class="title">{{ color }}</span>
-        </div>
+        <Color v-for="color in i.colors"  :key="color" :color="color" />
       </div>
       <div class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
       </div>
