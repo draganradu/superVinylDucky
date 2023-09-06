@@ -1,6 +1,14 @@
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
 import shopLayout from '@/layouts/ShopLayout.vue'
+
 const language = 'en'
+
+// seo ---------------------------------------
+useHead({
+  title: 'Information regarding Vinyl Ducky'
+})
+
 </script>
 
 <template>

@@ -78,7 +78,7 @@ const router = createRouter({
       ]
     },
     {
-      path: "/:notFound",
+      path: "/:notFound/",
       // alias: ['/:notFound/:one/', '/:notFound/:one/:two/', '/:notFound/:one/:two/:three/'],
       name: "error404",
       component: NotFound,
