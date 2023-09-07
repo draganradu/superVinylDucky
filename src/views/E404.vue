@@ -5,7 +5,8 @@ import Card from '@/scaffolding/Card.vue'
 
 // seo ---------------------------------------
 useHead({
-  title: 'The page has not been found'
+  title: 'The page has not been found',
+  meta: [{ name: 'description', content: 'Error 404 Page' },],
 })
 </script>
 <template>

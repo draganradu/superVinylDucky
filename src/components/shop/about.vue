@@ -4,7 +4,7 @@ import Feature from '@/components/shop/helper/features.vue'
 </script>
 
 <template>
-  <Card class="mt-3">
+  <Card class="mt-5">
     <h2>We are vinyl ducky</h2>
     <p>
       We are specialized in industrial vinyl stickers but also love side projects that keep us creative. You will see in
@@ -34,9 +34,9 @@ import Feature from '@/components/shop/helper/features.vue'
   position: absolute;
   background-color: rgba(0,0,0,0.1);
   top: 0;
-  bottom: -25px;
-  left: -12px;
-  right: -12px;
+  bottom: -3.0rem;
+  left: -2.3rem;
+  right: -2.3rem;
   z-index: 0;
   border-top: 2px dashed rgba(0,0,0,0.1);
 }

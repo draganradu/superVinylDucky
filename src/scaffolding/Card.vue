@@ -12,7 +12,7 @@ defineProps<{
     <div v-if="img" class="bg-secondary bg-opacity-25">
       <img class="card-img-top" src="@/assets/placeholder.png" alt="Card image cap">
     </div>
-    <div class="card-body p-4">
+    <div class="card-body p-5">
       <h5 v-if="title" class="card-title">{{ title }}</h5>
       <slot />
 

@@ -8,7 +8,7 @@ const getProducts = store.getters['shop/getProductsGrid'];
 </script>
 
 <template>
-  <div id="productGrid" class="mt-3 d-grid a-clean">
+  <div id="productGrid" class="mt-5 d-grid a-clean">
     <RouterLink v-for="(i, k) in getProducts" :key="k" class="grid-item rounded-4 card shadow overflow-hidden"
       :to="`/${lang}/stickers/${k}/`">
       <div class="debug">{{ i }}</div>

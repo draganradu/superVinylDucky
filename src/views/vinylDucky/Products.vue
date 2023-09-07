@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import ShopLayout from '@/layouts/ShopLayout.vue'
-import Color from '@/components/shop/helper/color.vue'
 import { ref } from 'vue';
-import { useStore } from 'vuex'
+import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router';
+import { useStore } from 'vuex'
+import Color from '@/components/shop/helper/color.vue'
+import ShopLayout from '@/layouts/ShopLayout.vue'
 
 const store = useStore()
 const route = useRoute();
@@ -23,6 +24,17 @@ const setImg = (newHero: string) => {
     collapsed.value = [newHero, ...collapsed.value];
   }
 }
+
+// seo ---------------------------------------
+useHead({
+  title: `€ ${price} , ${name} , ${subtitle}`,
+  meta: [
+    { 
+      name: 'description', 
+      content: description, 
+    },
+  ],
+})
 
 </script>
 

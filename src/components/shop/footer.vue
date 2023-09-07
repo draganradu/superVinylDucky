@@ -56,6 +56,11 @@ const scrollintroview = (i: string) => {
 </template>
 
 <style scoped>
+
+footer {
+  padding-top: 6rem!important;
+}
+
 p {
   font-size: 0.8em;
 }

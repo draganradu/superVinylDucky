@@ -31,8 +31,8 @@ import Card from '@/scaffolding/Card.vue'
 .gradient-map,
 #inner-map {
   position: absolute;
-  top: -25px;
-  bottom: -25px;
+  top: -3rem;
+  bottom: -3rem;
   left: -70px;
 }
 
@@ -43,8 +43,7 @@ import Card from '@/scaffolding/Card.vue'
 }
 
 #inner-map {
-  top: -25px;
-  right: -20px;
+  right: -3rem;
   background-image: url('../../assets/bennekelstraat.png');
   background-size: cover;
   background-position:
