@@ -8,9 +8,10 @@ import ShopLayout from '@/layouts/ShopLayout.vue'
 
 const store = useStore()
 const route = useRoute();
+
 const product = store.getters['shop/getProduct'](route.params.id)
 const { id, img, price, size, colors, printReverse, category } = product;
-const { name, description, subtitle } = product[route.params.locale];
+const { name, description, subtitle } = product[route.params.locale as string] || {};
 
 // let hero = ref(img.shift());
 let collapsed = ref(img);
@@ -29,9 +30,9 @@ const setImg = (newHero: string) => {
 useHead({
   title: `€ ${price} , ${name} , ${subtitle}`,
   meta: [
-    { 
-      name: 'description', 
-      content: description, 
+    {
+      name: 'description',
+      content: description,
     },
   ],
 })

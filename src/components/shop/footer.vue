@@ -2,7 +2,12 @@
 <script setup lang="ts">
 import { useStore } from 'vuex';
 import Container from '@/scaffolding/Container.vue';
+import { useI18n } from "vue-i18n";
 
+// translations data -------------------------
+const { t } = useI18n()
+
+// store data -------------------------
 const store = useStore();
 const { postalCode, street, city, province } = store.state.shop.contact.address;
 const { email, phone, vat, kvk, iban } = store.state.shop.contact;
@@ -11,7 +16,9 @@ const { infoSections } = store.state.shop.extraInfo;
 const scrollintroview = (i: string) => {
   setTimeout(() => {
     const element = document.getElementById(i);
-    element.scrollIntoView({ behavior: "smooth" });
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   }, 0);
 }
 </script>
@@ -38,7 +45,7 @@ const scrollintroview = (i: string) => {
           <p class="a-clean">
             <RouterLink v-for="i in Object.keys(infoSections)" class="d-block" :key="i" :to="`/en/Informatie#${i}`"
               @click="scrollintroview(i)">{{
-                $t(i) }}</RouterLink>
+                t(i) }}</RouterLink>
           </p>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-color">
@@ -56,9 +63,8 @@ const scrollintroview = (i: string) => {
 </template>
 
 <style scoped>
-
 footer {
-  padding-top: 6rem!important;
+  padding-top: 6rem !important;
 }
 
 p {

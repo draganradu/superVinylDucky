@@ -1,6 +1,6 @@
 {
-  "name": "vue-test",
-  "version": "0.0.0",
+  "name": "vinyl-ducky-nl",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -14,12 +14,12 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@intlify/unplugin-vue-i18n": "^0.12.2",
+    "@intlify/unplugin-vue-i18n": "^0.12.3",
     "@unhead/vue": "^1.5.3",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.2.4",
-    "vuex": "^4.0.2"
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@nightwatch/vue": "0.4.5",

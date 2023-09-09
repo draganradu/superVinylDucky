@@ -28,6 +28,7 @@ const Trans = {
 
   async switchLanguage(newLocale: any) { // <--- 3
     Trans.currentLocale = newLocale
+    //@ts-ignore
     document.querySelector("html").setAttribute("lang", newLocale)
   },
 
@@ -38,7 +39,7 @@ const Trans = {
   //   localStorage.setItem("user-locale", newLocale)
   // },
 
-  async routeMiddleware(to: any, _from: any, next: any): any {
+  async routeMiddleware(to: any, _from: any, next: any): Promise<any> {
     const paramLocale = to.params.locale
     if (!Trans.isLocaleSupported(paramLocale)) {
       return next('/error404/')

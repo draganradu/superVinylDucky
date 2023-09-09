@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory, RouterView } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import Tr from "@/i18n/translation"
 import LandingPageView from "@/views/LandingPage.vue"
+// import InformationPageView from "@/views/InformatiePage.vue"
+import InformationPageView from "@/views/LandingPage.vue"
 import NotFound from "@/views/E404.vue"
 
 const router = createRouter({
@@ -63,7 +64,7 @@ const router = createRouter({
         {
           path: 'Informatie',
           name: 'InfoPage',
-          component: () => import('../views/Informatie.vue'),
+          component: InformationPageView,
         },
         {
           path: 'stickers/:id',
