@@ -38,17 +38,18 @@ const dataXML = () => {
                 console.log(x, param, x.indexOf(param))
             }
         })
-        // do {
-        //     lookUp.forEach(items => {
-        //         if (items.indexOf(param)) {
-        //             params[param].forEach {
-        //                 lookUp.push(x)
-        //             }
+        do {
+            lookUp.forEach(items => {
+                if (items.indexOf(param)) {
+                    params[param].forEach {
+                        lookUp.push(x)
+                    }
                     
-        //         }
-        //         i ++
-        //     })
-        // } while (lookUp.length > 0 && i< 100);
+                }
+                i ++
+            })
+        } while (lookUp.length > 0 && i< 100);
+        
         if(build) {
             console.log("built",x)
             output = output + buildOneLine(x)
