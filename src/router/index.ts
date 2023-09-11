@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, RouterView } from 'vue-router'
 import Tr from "@/i18n/translation"
 import LandingPageView from "@/views/LandingPage.vue"
-// import InformationPageView from "@/views/InformatiePage.vue"
 import InformationPageView from "@/views/LandingPage.vue"
 import NotFound from "@/views/E404.vue"
 
