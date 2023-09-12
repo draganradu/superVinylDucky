@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouterView } from 'vue-router'
 import Tr from "@/i18n/translation"
 import LandingPageView from "@/views/LandingPage.vue"
-import InformationPageView from "@/views/LandingPage.vue"
+import InformationPageView from "@/views/informatiePage.vue"
 import NotFound from "@/views/E404.vue"
 
 const router = createRouter({
@@ -56,12 +56,12 @@ const router = createRouter({
           component: LandingPageView
         },
         {
-          path: 'radu-dragan',
+          path: 'radu-dragan/:skill?',
           name: 'CvPage',
           component: () => import('../views/CVPage.vue')
         },
         {
-          path: 'Informatie',
+          path: 'info',
           name: 'InfoPage',
           component: InformationPageView,
         },
@@ -75,11 +75,11 @@ const router = createRouter({
           name: 'ProductsCategory',
           component: () => import('../views/vinylDucky/Category.vue')
         },
+        
       ]
     },
     {
-      path: "/:notFound/",
-      // alias: ['/:notFound/:one/', '/:notFound/:one/:two/', '/:notFound/:one/:two/:three/'],
+      path: "/:notFound/:notFound1?/:notFound2?/",
       name: "error404",
       component: NotFound,
     },

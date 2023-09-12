@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { useI18n } from 'vue-i18n'
 import { useStore } from 'vuex';
 import Card from "@/scaffolding/Card.vue"
 import shopLayout from '@/layouts/ShopLayout.vue'
 
-const { t } = useI18n();
 // storeData ---------------------------------------
 const store = useStore();
 const { infoSections } = store.state.shop.extraInfo;
@@ -22,7 +20,7 @@ useHead({
       <div class="row pb-5 a-clean">
         <div class="col-8">
           <Card v-for="(k, i) in infoSections" :key="i" class="mb-3">
-            <h6 :id="i.toString()">{{ t(i) }}</h6>
+            <h6 :id="i.toString()">{{ $t(i.toString()) }}</h6>
             <p>{{ k }}</p>
           </Card>
         </div>

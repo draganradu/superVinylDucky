@@ -31,7 +31,7 @@ useHead({
 
   h1 {
     font-weight: 100;
-    font-size: 8em;
+    font-size: 8vw;
 
     b {
       font-weight: 800;

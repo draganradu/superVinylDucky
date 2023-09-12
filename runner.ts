@@ -6,7 +6,7 @@ const routes = [
     '/site-map/',
     '/:locale/',
     '/:locale/radu-dragan',
-    '/:locale/Informatie',
+    '/:locale/info',
     '/:locale/stickers/:id',
     '/:locale/stickers-category/:name/',
     '/:notFound/',

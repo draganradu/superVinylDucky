@@ -3,9 +3,7 @@
 import { useStore } from 'vuex';
 import Container from '@/scaffolding/Container.vue';
 import { useI18n } from "vue-i18n";
-
-// translations data -------------------------
-const { t } = useI18n()
+const { locale } = useI18n();
 
 // store data -------------------------
 const store = useStore();
@@ -43,9 +41,9 @@ const scrollintroview = (i: string) => {
         <div class="col-md-3 col-sm-6 col-xs-12 text-color">
           <h3>INFORMATIE</h3>
           <p class="a-clean">
-            <RouterLink v-for="i in Object.keys(infoSections)" class="d-block" :key="i" :to="`/en/Informatie#${i}`"
+            <RouterLink v-for="i in Object.keys(infoSections)" class="d-block" :key="i" :to="`/${locale}/Informatie#${i}`"
               @click="scrollintroview(i)">{{
-                t(i) }}</RouterLink>
+                $t(i) }}</RouterLink>
           </p>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-color">

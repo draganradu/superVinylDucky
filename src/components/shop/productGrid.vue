@@ -1,8 +1,9 @@
-<script setup lang="ts">
+<script setup locale="ts">
 import Color from '@/components/shop/helper/color.vue'
 import { useStore } from 'vuex';
+import { useI18n } from "vue-i18n";
+const { locale } = useI18n();
 
-const lang = "en"; // to do get name
 const store = useStore();
 const getProducts = store.getters['shop/getProductsGrid'];
 </script>
@@ -10,12 +11,12 @@ const getProducts = store.getters['shop/getProductsGrid'];
 <template>
   <div id="productGrid" class="mt-5 d-grid a-clean">
     <RouterLink v-for="(i, k) in getProducts" :key="k" class="grid-item rounded-4 card shadow overflow-hidden"
-      :to="`/${lang}/stickers/${k}/`">
+      :to="`/${locale}/stickers/${k}/`">
       <div class="debug">{{ i }}</div>
-      <h3 class="name hide"> {{ i[lang]?.name }} </h3>
-      <p class="description hide"> {{ i[lang]?.description }}</p>
+      <h3 class="name hide"> {{ i[locale]?.name }} </h3>
+      <p class="description hide"> {{ i[locale]?.description }}</p>
       <div class="colors hide">
-        <Color v-for="color in i.colors"  :key="color" :color="color" />
+        <Color v-for="color in i.colors" :key="color" :color="color" />
       </div>
       <div class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
       </div>

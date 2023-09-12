@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import shopLayout from '@/layouts/ShopLayout.vue'
+import Card from '@/scaffolding/Card.vue'
 
 const language = 'en'
 
@@ -8,6 +9,18 @@ const language = 'en'
 useHead({
   title: 'Information regarding Vinyl Ducky'
 })
+
+const todoStructure = [
+  ["WhatsApp", "https://web.whatsapp.com/"],
+  ["Messinger", "https://www.messenger.com/marketplace/"],
+  ["Email V ducky", "https://outlook.office.com/mail/"],
+  ["Email R ducky", "https://outlook.office.com/mail/"],
+  ["Email G", "https://mail.google.com/mail/u/0/#inbox"],
+  ["Email F", "https://fotodex.ro/webmail"],
+  ["Linkedin", "https://fotodex.ro/webmail"],
+  ["Etsy", "https://fotodex.ro/webmail"],
+  ["Marktplaats", "https://www.marktplaats.nl/messages"]
+]
 
 </script>
 
@@ -63,11 +76,29 @@ useHead({
 
         </ul>
         <div class="col-4">
-          Technology stack
-          <hr/>
-          <p>Vue 3</p>
-          <p>Bootstrap</p>
-          <p>Bootstrap Icons</p>
+          <Card :sansPadding="true">
+            <div class="card-head bg-secondary text-light p-2 ps-3">
+              Technology stack
+            </div>
+            <div class="p-3 pb-0">
+              <p>Vue 3</p>
+              <p>Bootstrap</p>
+              <p>Bootstrap Icons</p>
+            </div>
+          </Card>
+          <Card :sansPadding="true" class="mt-3">
+            <ul class="list-group">
+
+              <div class="card-head bg-secondary text-light p-2 ps-3">
+                Daily todo
+              </div>
+              <a v-for="(i, k) in todoStructure" :key="k" :href="i[1]" target="_blank">
+                <li class="list-group-item">
+                  {{ k }} | {{ i[0] }}
+                </li>
+              </a>
+            </ul>
+          </Card>
         </div>
       </div>
     </shopLayout>

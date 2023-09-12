@@ -6,7 +6,6 @@ defineProps<{
   msg: string
 }>()
 
-// const { t, locale } = useI18n()
 const supportedLocales = Tr.supportedLocales
 
 const changeLocal = (e: any) => {
