@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import ShopLayout from '@/layouts/ShopLayout.vue'
 import { ref } from 'vue';
-import { useStore } from 'vuex'
+import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router';
+import { useStore } from 'vuex'
+import Color from '@/components/shop/helper/color.vue'
+import ShopLayout from '@/layouts/ShopLayout.vue'
 
 const store = useStore()
 const route = useRoute();
+
 const product = store.getters['shop/getProduct'](route.params.id)
 const { id, img, price, size, colors, printReverse, category } = product;
-const { name, description, subtitle } = product[route.params.locale];
+const { name, description, subtitle } = product[route.params.locale as string] || {};
 
 // let hero = ref(img.shift());
 let collapsed = ref(img);
@@ -23,15 +26,27 @@ const setImg = (newHero: string) => {
   }
 }
 
+// seo ---------------------------------------
+useHead({
+  title: `€ ${price} , ${name} , ${subtitle}`,
+  meta: [
+    {
+      name: 'description',
+      content: description,
+    },
+  ],
+})
+
 </script>
 
 <template>
   <main>
-    <ShopLayout :sidebar="true" >
+    <ShopLayout :sidebar="true">
       <div class="row">
         <div :class="[isFullScreen ? 'col-12' : 'col-4', 'product-grid']">
-          <div class="bg-secondary bg-opacity-25" v-for="(i, k) in collapsed" :key="k" @click="setImg(i)">
-            <img src="@/assets/placeholder.png" />{{ i }}
+          <div class="product-img bg-secondary bg-opacity-25 border shadow" v-for="(i, k) in collapsed" :key="k"
+            @click="setImg(i)" :style="`background-image: url(https://vinylducky.nl/product-img/${i})`">
+            <img :src="`https://vinylducky.nl/product-img/${i}`" />
           </div>
         </div>
         <div class="col-6">
@@ -46,7 +61,7 @@ const setImg = (newHero: string) => {
               <ul class="list-group list-group-flush bg-transparent">
                 <li class="list-group-item">Size: <b>{{ size }}</b></li>
                 <li class="list-group-item">Color:
-                  <span v-for="i in colors" :class="[i, 'badge text-bg-primary me-1']" :key="i">{{ i }}</span>
+                  <Color v-for="i in colors" :key="i" :color="i" />
                 </li>
                 <li class="list-group-item" v-if="printReverse">Print Revers: <b> optional</b></li>
                 <li class="list-group-item">{{ description }}</li>
@@ -66,16 +81,29 @@ const setImg = (newHero: string) => {
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+// grid ------------------------
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 10px;
   row-gap: 10px;
+
+  &>div:first-child {
+    grid-column: span 3;
+  }
 }
 
-.product-grid>div:first-child {
-  grid-column: span 3;
+// img ------------------------
+
+.product-img {
+  border: 1px solid gray;
+  background-size: cover;
+  background-position: center center;
+
+  img {
+    opacity: 0;
+  }
 }
 
 .price span {
@@ -104,16 +132,17 @@ const setImg = (newHero: string) => {
 }
 
 .badge.red {
-  background-color: red!important;
-}
-.badge.gold {
-  background-color: gold!important;
-  color: black!important;
-}
-.badge.transparent {
-  background-color: transparent!important;
-  border: 1px solid black;
-  color: black!important;
+  background-color: red !important;
 }
 
+.badge.gold {
+  background-color: gold !important;
+  color: black !important;
+}
+
+.badge.transparent {
+  background-color: transparent !important;
+  border: 1px solid black;
+  color: black !important;
+}
 </style>

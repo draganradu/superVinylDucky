@@ -1,10 +1,10 @@
 {
-  "name": "vue-test",
-  "version": "0.0.0",
+  "name": "vinyl-ducky-nl",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "run-p type-check build-only && ts-node runner.ts",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "nightwatch tests/e2e",
@@ -14,11 +14,12 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@intlify/unplugin-vue-i18n": "^0.12.2",
+    "@intlify/unplugin-vue-i18n": "^0.12.3",
+    "@unhead/vue": "^1.5.3",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.2.4",
-    "vuex": "^4.0.2"
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@nightwatch/vue": "0.4.5",
@@ -41,6 +42,8 @@
     "nightwatch": "^3.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0",
+    "sass": "^1.66.1",
+    "sass-loader": "^10.4.1",
     "ts-node": "^10.9.1",
     "typescript": "~5.1.6",
     "vite": "^4.4.6",

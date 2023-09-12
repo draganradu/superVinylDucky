@@ -4,7 +4,7 @@ import Tr from '@/i18n/translation'
 import router from '@/router'
 // import { watch } from 'vue'
 
-const { t, locale, availableLocales } = useI18n()
+const { locale, availableLocales } = useI18n()
 const supportedLocales = Tr.supportedLocales
 
 // watch(locale, (newLocale) => {
@@ -27,7 +27,7 @@ const switchLanguage = async (event: any) => {
       :value="sLocale"
       :selected="locale === sLocale"
     >
-      {{ t(`locale.${sLocale}`) }}
+      {{ $t(`locale.${sLocale}`) }}
     </option>
   </select>
 </template>

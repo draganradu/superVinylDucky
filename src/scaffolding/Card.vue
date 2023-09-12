@@ -4,6 +4,7 @@ defineProps<{
   title?: string
   text?: string
   transparent?: boolean
+  sansPadding?: boolean
 }>()
 </script>
 
@@ -12,7 +13,7 @@ defineProps<{
     <div v-if="img" class="bg-secondary bg-opacity-25">
       <img class="card-img-top" src="@/assets/placeholder.png" alt="Card image cap">
     </div>
-    <div class="card-body p-4">
+    <div :class="['card-body', !sansPadding ? 'p-5' : 'sans-padding']">
       <h5 v-if="title" class="card-title">{{ title }}</h5>
       <slot />
 
@@ -20,3 +21,9 @@ defineProps<{
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.sans-padding {
+  padding: 0;
+}
+</style>

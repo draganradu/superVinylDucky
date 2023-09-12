@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import shopLayout from '@/layouts/ShopLayout.vue'
-import Card from "@/scaffolding/Card.vue"
-
+import { useHead } from '@unhead/vue'
 import { useStore } from 'vuex';
+import Card from "@/scaffolding/Card.vue"
+import shopLayout from '@/layouts/ShopLayout.vue'
+
+// storeData ---------------------------------------
 const store = useStore();
 const { infoSections } = store.state.shop.extraInfo;
 
-
+// seo ---------------------------------------
+useHead({
+  title: 'Information regarding Vinyl Ducky'
+})
 </script>
 
 <template>
@@ -15,7 +20,7 @@ const { infoSections } = store.state.shop.extraInfo;
       <div class="row pb-5 a-clean">
         <div class="col-8">
           <Card v-for="(k, i) in infoSections" :key="i" class="mb-3">
-            <h6 :id="i">{{ $t(i) }}</h6>
+            <h6 :id="i.toString()">{{ $t(i.toString()) }}</h6>
             <p>{{ k }}</p>
           </Card>
         </div>

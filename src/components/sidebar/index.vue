@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useStore } from 'vuex'
 import { ref } from 'vue';
+import { useI18n } from "vue-i18n";
+import { useStore } from 'vuex'
 import Item from './helpsers/sidebarItem.vue'
+
+const { locale } = useI18n();
 const store = useStore()
 
 let collapsed = ref(true);
@@ -24,9 +27,9 @@ const logout = () => {
     </div>
     <hr />
     <div v-if="!sidebar">
-      <Item to="/en/radu-dragan/" text="CV" icon="bi-file-earmark-person" />
+      <Item :to="`/${locale}/radu-dragan/`" text="CV" icon="bi-file-earmark-person" />
       <Item to="/site-map/" text="Sitemap" />
-      <Item to="/en/Informatie" text="Informatie" icon="bi-info-circle" />
+      <Item :to="`/${locale}/info`" text="Informatie" icon="bi-info-circle" />
       <hr />
       <div v-if="!isLogin" class="sidebar-item">
         <Item to="/tools/login/" text="Login" icon="bi-person-badge-fill" />

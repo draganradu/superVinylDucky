@@ -36,13 +36,13 @@ export default {
   },
   extraInfo: {
     infoSections: {
-      ["delivery"]: "lorem ipsum A",
-      ["right_of_withdrawal"]: "lorem ipsum B",
-      ["privacy_policy"]: "lorem ipsum C",
-      ["ordering_and_payment"]: "lorem ipsum D",
-      ["terms_and_conditions"]: "lorem ipsum E",
-      ["frequently_asked_questions"]: "lorem ipsum F",
-      ["direct_contact"]: "lorem ipsum G",
+      ["delivery"]: "To be announced later",
+      ["right_of_withdrawal"]: "To be announced later",
+      ["privacy_policy"]: "To be announced later",
+      ["ordering_and_payment"]: "To be announced later",
+      ["terms_and_conditions"]: "To be announced later",
+      ["frequently_asked_questions"]: "To be announced later",
+      ["direct_contact"]: "To be announced later",
     }
   }
 }

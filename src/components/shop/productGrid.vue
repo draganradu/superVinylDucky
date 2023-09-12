@@ -1,24 +1,24 @@
-<script setup lang="ts">
+<script setup locale="ts">
+import Color from '@/components/shop/helper/color.vue'
 import { useStore } from 'vuex';
+import { useI18n } from "vue-i18n";
+const { locale } = useI18n();
 
-const lang = "en"; // to do get name
 const store = useStore();
 const getProducts = store.getters['shop/getProductsGrid'];
 </script>
 
 <template>
-  <div id="productGrid" class="mt-3 d-grid a-clean">
+  <div id="productGrid" class="mt-5 d-grid a-clean">
     <RouterLink v-for="(i, k) in getProducts" :key="k" class="grid-item rounded-4 card shadow overflow-hidden"
-      :to="`/${lang}/stickers/${k}/`">
+      :to="`/${locale}/stickers/${k}/`">
       <div class="debug">{{ i }}</div>
-      <h3 class="name"> {{ i[lang]?.name }} </h3>
-      <p class="description"> {{ i[lang]?.description }}</p>
-      <div class="colors">
-        <div v-for="color in i.colors" :class="[color, 'product-color']">
-          <span class="title">{{ color }}</span>
-        </div>
+      <h3 class="name hide"> {{ i[locale]?.name }} </h3>
+      <p class="description hide"> {{ i[locale]?.description }}</p>
+      <div class="colors hide">
+        <Color v-for="color in i.colors" :key="color" :color="color" />
       </div>
-      <div class="bg-img" style="background-image: url(https://vinylducky.nl/grid/death_trap_vinyl_duckey_nl.jpg)">
+      <div class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
       </div>
     </RouterLink>
   </div>
@@ -34,6 +34,14 @@ const getProducts = store.getters['shop/getProductsGrid'];
 /* .grid-item {
   min-height: 200px;
 } */
+
+.grid-item .hide {
+  opacity: 0;
+}
+
+.grid-item:hover .hide {
+  opacity: 1;
+}
 
 .grid-item:hover .bg-img {
   opacity: 0.2;

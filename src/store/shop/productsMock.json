@@ -8,18 +8,26 @@
         "description": "Sign for open and closed is made out of Oracal 651, you just need to tell us open hours"
       },
       "img": [
-        "1placeholder.jpg", "2placeholder.jpg", "3placeholder.jpg"
+        "window-sticker-open-closed-vinyl-ducky-1.jpg",
+        "window-sticker-open-closed-vinyl-ducky-2.jpg",
+        "window-sticker-open-closed-vinyl-ducky-3.jpg",
+        "window-sticker-open-closed-vinyl-ducky-4.jpg",
+        "window-sticker-open-closed-vinyl-ducky-5.jpg",
+        "window-sticker-open-closed-vinyl-ducky-6.jpg",
+        "window-sticker-open-closed-vinyl-ducky-7.jpg",
+        "window-sticker-open-closed-vinyl-ducky-8.jpg"
       ],
       "colors": [
-        "red"
+        "white", "black", "gold", "yellow"
       ],
       "printReverse": "true",
       "category": [
         "window stickers",
-        "commercial"
+        "commercial",
+        "stores"
       ],
       "price": "10",
-      "size": "10x30 cm"
+      "size": "21x30 cm"
     },
     "brompton-sticker": {
       "id": "00002",
@@ -28,7 +36,13 @@
         "description": "Bike Sticker Brompton"
       },
       "img": [
-        "1placeholder.jpg", "2placeholder.jpg", "3placeholder.jpg"
+        "brompton-frame-sticker-1.jpg",
+        "brompton-frame-sticker-2.jpg",
+        "brompton-frame-sticker-3.jpg",
+        "brompton-frame-sticker-4.jpg",
+        "brompton-frame-sticker-5.jpg",
+        "brompton-frame-sticker-6.jpg",
+        "brompton-frame-sticker-7.jpg"
       ],
       "colors": [
         "gold",
@@ -40,14 +54,16 @@
       ],
       "price": "10"
     },
-    "hello-beutifull": {
+    "hello-beautiful": {
       "id": "00003",
       "en": {
-        "name": "Hello Beutifull",
+        "name": "Hello Beautiful",
         "description": "sign for open and closed"
       },
       "img": [
-        "1placeholder.jpg", "2placeholder.jpg", "3placeholder.jpg"
+        "hello-1.jpg",
+        "hello-2.jpg",
+        "hello-3.jpg"
       ],
       "colors": [
         "black",
