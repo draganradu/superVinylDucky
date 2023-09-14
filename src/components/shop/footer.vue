@@ -1,16 +1,20 @@
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { useStore } from 'vuex';
 import Container from '@/scaffolding/Container.vue';
-import { useI18n } from "vue-i18n";
+
+// translations -----------------------
 const { locale } = useI18n();
 
 // store data -------------------------
 const store = useStore();
-const { postalCode, street, city, province } = store.state.shop.contact.address;
 const { email, phone, vat, kvk, iban } = store.state.shop.contact;
 const { infoSections } = store.state.shop.extraInfo;
+const { isDebug } = store.state.user;
+const { postalCode, street, city, province } = store.state.shop.contact.address;
 
+// Methods -------------------------
 const scrollintroview = (i: string) => {
   setTimeout(() => {
     const element = document.getElementById(i);
@@ -22,8 +26,11 @@ const scrollintroview = (i: string) => {
 </script>
 
 <template>
-  <footer class="footer pt-5">
-    <Container class="mt-5 py-5 bg-opacity-25" color="bg-secondary">
+  <footer class="footer pt-5 mt-5">
+    <Container v-if="isDebug" id="debug-footer">
+      DeBug 
+    </Container>
+    <Container class="py-5 bg-opacity-25" color="bg-secondary">
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12 text-color">
           <h3>CONTACT DETAILS</h3>
