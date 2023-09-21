@@ -3,7 +3,7 @@ import Card from '@/scaffolding/Card.vue'
 </script>
 
 <template>
-  <Card>
+  <Card id="hero">
     <div class="row">
       <div class="col-6 text">
         <h1>We moved</h1>
@@ -53,5 +53,9 @@ import Card from '@/scaffolding/Card.vue'
   background-origin: content-box;
   z-index: 1;
 
+}
+
+#hero {
+  z-index: 10;
 }
 </style>

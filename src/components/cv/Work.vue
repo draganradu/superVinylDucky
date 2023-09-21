@@ -5,7 +5,7 @@ import Feature from '@/components/shop/helper/features.vue'
 
 
 <template>
-  <Card class="mt-3">
+  <Card id="radu-work" class="mt-3">
     <h2>Skills</h2>
     <p>Over the years i have developed 3 core skills.</p>
     <div class="row features">
@@ -15,3 +15,9 @@ import Feature from '@/components/shop/helper/features.vue'
     </div>
   </Card>
 </template>
+
+<style lang="scss">
+#radu-work {
+  z-index: 10;
+}
+</style>

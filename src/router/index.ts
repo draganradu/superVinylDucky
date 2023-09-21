@@ -58,7 +58,15 @@ const router = createRouter({
         {
           path: 'radu-dragan/:skill?',
           name: 'CvPage',
-          component: () => import('../views/CVPage.vue')
+          component: () => import('../views/CVPage.vue'),
+          beforeEnter: (to: any, _from: any, next: any) => {
+            const listOfSkills = ["front", "scrum", "ui"];
+            if (listOfSkills.includes(to.params.skill)) {
+              return next();
+            } else {
+              return next(`/${to.params.locale}/radu-dragan/${listOfSkills[0]}`)
+            }
+          },
         },
         {
           path: 'info',
@@ -75,7 +83,7 @@ const router = createRouter({
           name: 'ProductsCategory',
           component: () => import('../views/vinylDucky/Category.vue')
         },
-        
+
       ]
     },
     {

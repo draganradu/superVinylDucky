@@ -24,16 +24,21 @@ const getProducts = store.getters['shop/getProductsGrid'];
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 #productGrid {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 10px;
   row-gap: 15px;
+  z-index: 10;
+  position: relative;
 }
 
-/* .grid-item {
-  min-height: 200px;
-} */
+.grid-item {
+  border: 1px solid white;
+  background-color: white;
+  z-index: 1;
+}
+
 
 .grid-item .hide {
   opacity: 0;

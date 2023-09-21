@@ -1,7 +1,25 @@
 <script setup lang="ts">
-import Card from '@/scaffolding/Card.vue'
 import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { useStore } from 'vuex'
+import Card from '@/scaffolding/Card.vue'
+import LI from "@/scaffolding/ListLi.vue";
+import UL from "@/scaffolding/ListUl.vue";
+
+// props ---------------------------------------
+const route = useRoute();
+
+const is = {
+  front: route.params.skill === "front",
+  scrum: route.params.skill === "scrum",
+  ui: route.params.skill === "ui",
+}
+
+// data ---------------------------------------
 let collapsed = ref(true);
+const store = useStore();
+const { contact } = store.state.cv;
+
 
 </script>
 
@@ -17,12 +35,18 @@ let collapsed = ref(true);
       </div>
     </div>
   </div>
-  <Card>
+  <Card id="radu-about">
     <div class="row">
       <div class="col-6">
         <h1>Hi, I'm Radu</h1>
-        <h2 class="subtitle">Web Designer & Developer</h2>
+        <h2 class="subtitle" v-if="is.front">Web Designer & Developer</h2>
+        <h2 class="subtitle" v-else-if="is.scrum">Scrum Master</h2>
+        <h2 class="subtitle" v-else-if="is.ui">UI Developer</h2>
         <p class="mt-5">
+          <span v-if="is.front">As a Frontend Developer,</span>
+          <span v-else-if="is.scrum">As a Scrum master,</span>
+          <span v-else-if="is.ui">As a Ui Developer,</span>
+
           I`m a builder of wonderful digital things, some would call me a maker. Making things is my main motivation for
           getting out of bed in the morning. Be it front end, back end, or motorbike end, as long as I'm
           coding/wrenching/cutting/building I'm a happy camper as they say. The simplest way to explain it is: Building
@@ -30,30 +54,51 @@ let collapsed = ref(true);
         </p>
       </div>
       <div class="col-6">
-        <div class="sidebar" v-if="!collapsed">
-          AAAAAAAAAAAA
+        <Transition name="fade">
+          <div class="sidebar-background " v-if="!collapsed"></div>
+        </Transition>
+
+        <UL v-if="!collapsed" class="shadow sidebar">
+          <LI text="CV" />
+
+          <LI icon="bi-phone" :text="contact.phone" />
+          <LI icon="bi-envelope" :text="contact.email" />
+
+
+        </UL>
+        <div class="me-img">
+          <img src="@/assets/radu-dragan-aurel-500.png" />
         </div>
-        <img class="me-img" src="@/assets/radu-dragan-aurel-500.png" />
       </div>
     </div>
   </Card>
 </template>
 
 <style scoped lang="scss">
+#radu-about {
+  position: relative;
+  z-index: 10;
+}
 .subtitle {
   font-size: 1em;
 }
 
 .me-img {
   position: relative;
-  bottom: -25px;
+  height: 100%;
+
+  img {
+    max-width: 100%;
+    position: absolute;
+    bottom: -50px;
+  }
 }
 
 .log-user {
   position: absolute;
   right: 0px;
   z-index: 100;
-  top: 200px;
+  top: 50px;
   transform: translateX(50%);
 
   .user {
@@ -69,12 +114,26 @@ let collapsed = ref(true);
 }
 
 .sidebar {
-  background-color: gray;
+  background-color: white;
   position: absolute;
   width: 200px;
   right: 0;
   top: 0;
+  margin: 10px;
   bottom: 0px;
-  padding: 10px;
+  z-index: 2;
+
+  &-background {
+    background-color: lightgreen;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 1;
+  }
 }
 </style>

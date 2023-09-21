@@ -9,10 +9,10 @@ const { locale } = useI18n();
 
 // store data -------------------------
 const store = useStore();
+const { postalCode, street, city, province } = store.state.shop.contact.address;
 const { email, phone, vat, kvk, iban } = store.state.shop.contact;
 const { infoSections } = store.state.shop.extraInfo;
 const { isDebug } = store.state.user;
-const { postalCode, street, city, province } = store.state.shop.contact.address;
 
 // Methods -------------------------
 const scrollintroview = (i: string) => {
