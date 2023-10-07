@@ -7,32 +7,36 @@ defineProps<{
 <template>
   <div class="video">
     <div class="video-inner">
-      <iframe :src="`https://www.youtube.com/embed/${id}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=${id}`">
+      <iframe
+        :src="`https://www.youtube.com/embed/${id}?controls=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=${id}`">
       </iframe>
     </div>
   </div>
 </template>
 
 <style lang="scss">
+@use 'sass:math';
+
 $height: 70vh;
 $margin: 3rem;
 
 .video {
   height: $height;
   margin-top: $margin * -1;
+
+  &-inner {
+    background-color: black;
+    height: calc(#{$height} + #{$margin * 2});
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    z-index: 5;
+  }
 }
 
-.video-inner {
-  // add background image
-  background-color: black;
-  height: calc(#{$height} + #{$margin * 2});
-  left: 0;
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  z-index: 5;
-}
+
 
 .video-inner iframe {
   position: absolute;
@@ -41,7 +45,7 @@ $margin: 3rem;
   height: 100vh;
   width: 100vw;
   z-index: 999;
-  transform: translateY(#{(100vh - $height)/2 * -1});
+  transform: translateY(#{math.div(100vh - $height, 2) * -1});
 }
 
 @media (min-aspect-ratio: 16/9) {
@@ -52,7 +56,10 @@ $margin: 3rem;
 
 @media (max-aspect-ratio: 16/9) {
   .video-inner iframe {
-    width: 177.78vh;
+    $frameHeight: 177.78vh;
+    
+    width: $frameHeight;
+    transform: translateX(calc(50vw - #{math.div($frameHeight, 2)}));
   }
 }
 </style>

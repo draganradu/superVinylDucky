@@ -26,7 +26,7 @@ useHead({
   <main>
     <ShopLayout>
       <Hero />
-      <Video id="biQzsrPJZnk" />
+      <Video id="py1zGPq_OPM" />
       <ProductGrid />
       <AboutUs />
       <SocialMedia />
