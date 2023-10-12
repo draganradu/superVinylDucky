@@ -43,19 +43,19 @@ useHead({
   <main>
     <ShopLayout :sidebar="true">
       <div class="row">
-        <div :class="[isFullScreen ? 'col-12' : 'col-4', 'product-grid']">
+        <div :class="[isFullScreen ? 'col-12' : 'col-md-4', 'product-grid']">
           <div class="product-img bg-secondary bg-opacity-25 border shadow" v-for="(i, k) in collapsed" :key="k"
             @click="setImg(i)" :style="`background-image: url(https://vinylducky.nl/product-img/${i})`">
             <img :src="`https://vinylducky.nl/product-img/${i}`" />
           </div>
         </div>
-        <div class="col-6">
+        <div :class="[isFullScreen ? 'col-12' : 'col-md-6']">
           <p class="sku">SKU: {{ id }}</p>
           <h1>{{ name }}</h1>
           <p>{{ subtitle }}</p>
           <hr />
           <div class="row">
-            <div class="col">
+            <div class="col-md mb-3">
               <p class="price mb-5"><span>€ {{ price }}<sup>00</sup> </span></p>
 
               <ul class="list-group list-group-flush bg-transparent">
@@ -93,6 +93,8 @@ useHead({
     grid-column: span 3;
   }
 }
+
+
 
 // img ------------------------
 

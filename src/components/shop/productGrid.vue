@@ -33,6 +33,18 @@ const getProducts = store.getters['shop/getProductsGrid'];
   position: relative;
 }
 
+@media (max-width: 992px) {
+  #productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  #productGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 .grid-item {
   border: 1px solid white;
   background-color: white;

@@ -27,8 +27,10 @@ const scrollintroview = (i: string) => {
 
 <template>
   <footer class="footer pt-5 mt-5">
-    <Container v-if="isDebug" id="debug-footer">
-      DeBug 
+    <Container v-if="isDebug" id="debug-footer" color="bg-primary">
+      <div class="text-white p-2">
+        DeBug footer
+      </div>
     </Container>
     <Container class="py-5 bg-opacity-25" color="bg-secondary">
       <div class="row">
