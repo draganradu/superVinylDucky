@@ -5,18 +5,19 @@ import { useRoute } from 'vue-router';
 import { useStore } from 'vuex'
 import Color from '@/components/shop/helper/color.vue'
 import ShopLayout from '@/layouts/ShopLayout.vue'
+import ListGroup from '@/components/shop/helper/productList.vue'
 
 const store = useStore()
 const route = useRoute();
 
 const product = store.getters['shop/getProduct'](route.params.id)
-const { id, img, price, size, colors, printReverse, category, buyLink, material } = product;
-const { name, description, subtitle } = product[route.params.locale as string] || {};
+const { id, img, price = 0, size, colors, printReverse, category, buyLink, material } = product;
+const { name = route.params.id, description, subtitle } = product[route.params.locale as string] || {};
 
 const { email } = store.state.shop.contact;
 
 // let hero = ref(img.shift());
-let collapsed = ref(img);
+let collapsed = ref(img || ["placeholder.png"]);
 let isFullScreen = ref(false);
 
 const setImg = (newHero: string) => {
@@ -61,24 +62,28 @@ useHead({
               <p class="price mb-5"><span>€ {{ price }}<sup>00</sup> </span></p>
 
               <ul class="list-group list-group-flush bg-transparent text-break-spaces">
-                <li class="list-group-item">Size: <b>{{ size }}</b></li>
-                <li class="list-group-item">Color:
+                <ListGroup label="Size" :value="size" />
+                <li v-if="colors" class="list-group-item">Color:
                   <Color v-for="i in colors" :key="i" :color="i" />
                 </li>
-                <li class="list-group-item" v-if="printReverse">Print Revers: <b> optional</b></li>
-                <li class="list-group-item">Material: {{ material }}</li>
-                <li class="list-group-item">{{ description }}</li>
-                <li class="list-group-item"><a :href="`mailto:${email}`" target="_blank" class="btn btn-outline-dark mt-3">Something custom</a></li>
+                <ListGroup v-else label="Color" value="Any" />
+
+                <ListGroup v-if="printReverse" label="Print Revers" value="optional" />
+                <ListGroup label="Material" :value="material" />
+                <ListGroup :value="description" light />
+                <li class="list-group-item">
+                  <a :href="`mailto:${email}`" target="_blank" class="btn btn-outline-dark mt-3">Something custom</a>
+                </li>
               </ul>
 
             </div>
-            <div class="col-auto">
+            <div class="col-auto" v-if="buyLink && price">
               <a type="button" :href="buyLink" target="_blank" class="btn btn-outline-success">Buy Now</a>
-
             </div>
+            <div class="col-auto" v-else> Out of Stock</div>
           </div>
         </div>
-        <div class="mt-5">Category:
+        <div v-if="category" class="mt-5">Category:
           <span class="badge text-bg-primary me-1" v-for="i in category" :key="i">{{ i }}</span>
         </div>
       </div>

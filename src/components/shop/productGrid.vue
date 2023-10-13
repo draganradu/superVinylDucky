@@ -15,9 +15,11 @@ const getProducts = store.getters['shop/getProductsGrid'];
       <div class="container-colors hide" v-if="i.colors">
         <Color v-for="color in i.colors" :key="color" :color="color" />
       </div>
-      <h3 class="name hide"> {{ i[locale]?.name }} </h3>
+      <h3 :class="['name hide', !i.colors ? 'mt-5' : '']"> {{ i[locale]?.name || k }} </h3>
       <p class="description hide text-truncate-3"> {{ i[locale]?.description }}</p>
-      <div class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
+      <div v-if="i.img" class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
+      </div>
+      <div v-else class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/placeholder.png)`">
       </div>
     </RouterLink>
   </div>
