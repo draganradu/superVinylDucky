@@ -31,32 +31,33 @@ const dataXML = () => {
     routes.forEach(x => {
         let i = 0
         let build = true
-        paramsKeys.forEach(param => {
+        paramsKeys.forEach((param: string) => {
             if (x.indexOf(param) > -1) {
                 lookUp.push(x)
                 build = false
                 console.log(x, param, x.indexOf(param))
             }
         })
-        do {
-            lookUp.forEach(items => {
-                if (items.indexOf(param)) {
-                    params[param].forEach {
-                        lookUp.push(x)
-                    }
-                    
-                }
-                i ++
-            })
-        } while (lookUp.length > 0 && i< 100);
-        
-        if(build) {
-            console.log("built",x)
+        // to do : has a error
+        // do {
+        //     lookUp.forEach((items: => {
+        //         if (items.indexOf(param)) {
+        //             params[param].forEach {
+        //                 lookUp.push(x)
+        //             }
+
+        //         }
+        //         i++
+        //     })
+        // } while (lookUp.length > 0 && i < 100);
+
+        if (build) {
+            console.log("built", x)
             output = output + buildOneLine(x)
         }
     })
 
-    console.log("look up",lookUp)
+    console.log("look up", lookUp)
     output = `<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n${output}\n</urlset>`
     output = `<?xml version='1.0' encoding='UTF-8'?>\n${output}`
     return output

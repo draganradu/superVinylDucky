@@ -76,3 +76,7 @@ img {
   width: 100%;
   max-width: 100%;
 }
+
+.text-break-spaces {
+  white-space: break-spaces;
+}

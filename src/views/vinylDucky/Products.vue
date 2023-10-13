@@ -10,8 +10,10 @@ const store = useStore()
 const route = useRoute();
 
 const product = store.getters['shop/getProduct'](route.params.id)
-const { id, img, price, size, colors, printReverse, category } = product;
+const { id, img, price, size, colors, printReverse, category, buyLink, material } = product;
 const { name, description, subtitle } = product[route.params.locale as string] || {};
+
+const { email } = store.state.shop.contact;
 
 // let hero = ref(img.shift());
 let collapsed = ref(img);
@@ -58,18 +60,21 @@ useHead({
             <div class="col-md mb-3">
               <p class="price mb-5"><span>€ {{ price }}<sup>00</sup> </span></p>
 
-              <ul class="list-group list-group-flush bg-transparent">
+              <ul class="list-group list-group-flush bg-transparent text-break-spaces">
                 <li class="list-group-item">Size: <b>{{ size }}</b></li>
                 <li class="list-group-item">Color:
                   <Color v-for="i in colors" :key="i" :color="i" />
                 </li>
                 <li class="list-group-item" v-if="printReverse">Print Revers: <b> optional</b></li>
+                <li class="list-group-item">Material: {{ material }}</li>
                 <li class="list-group-item">{{ description }}</li>
+                <li class="list-group-item"><a :href="`mailto:${email}`" target="_blank" class="btn btn-outline-dark mt-3">Something custom</a></li>
               </ul>
 
             </div>
             <div class="col-auto">
-              <button type="button" class="btn btn-outline-success">Buy Now</button>
+              <a type="button" :href="buyLink" target="_blank" class="btn btn-outline-success">Buy Now</a>
+
             </div>
           </div>
         </div>
@@ -141,6 +146,18 @@ useHead({
   background-color: gold !important;
   color: black !important;
 }
+
+
+.badge.pink {
+  background-color: pink !important;
+  color: black !important;
+}
+
+.badge.magenta {
+  background-color: magenta !important;
+  color: black !important;
+}
+
 
 .badge.transparent {
   background-color: transparent !important;

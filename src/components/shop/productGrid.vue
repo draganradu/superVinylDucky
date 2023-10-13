@@ -1,4 +1,4 @@
-<script setup locale="ts">
+<script setup lang="ts">
 import Color from '@/components/shop/helper/color.vue'
 import { useStore } from 'vuex';
 import { useI18n } from "vue-i18n";
@@ -131,8 +131,8 @@ const getProducts = store.getters['shop/getProductsGrid'];
   color: white;
 }
 
-.product-color.gold {
-  background-color: gold;
+.product-color.pink {
+  background-color: pink;
 }
 
 .product-color.transparent,
