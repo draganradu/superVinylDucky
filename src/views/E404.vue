@@ -25,13 +25,13 @@ useHead({
   </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #e404 {
   min-height: 100vh;
 
   h1 {
     font-weight: 100;
-    font-size: 8vw;
+    font-size: 5vw;
 
     b {
       font-weight: 800;

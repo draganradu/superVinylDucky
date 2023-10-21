@@ -5,16 +5,19 @@ import { useRoute } from 'vue-router';
 import { useStore } from 'vuex'
 import Color from '@/components/shop/helper/color.vue'
 import ShopLayout from '@/layouts/ShopLayout.vue'
+import ListGroup from '@/components/shop/helper/productList.vue'
 
 const store = useStore()
 const route = useRoute();
 
 const product = store.getters['shop/getProduct'](route.params.id)
-const { id, img, price, size, colors, printReverse, category } = product;
-const { name, description, subtitle } = product[route.params.locale as string] || {};
+const { id, img, price = 0, size, colors, printReverse, category, buyLink, material } = product;
+const { name = route.params.id, description, subtitle } = product[route.params.locale as string] || {};
+
+const { email } = store.state.shop.contact;
 
 // let hero = ref(img.shift());
-let collapsed = ref(img);
+let collapsed = ref(img || ["placeholder.png"]);
 let isFullScreen = ref(false);
 
 const setImg = (newHero: string) => {
@@ -43,37 +46,44 @@ useHead({
   <main>
     <ShopLayout :sidebar="true">
       <div class="row">
-        <div :class="[isFullScreen ? 'col-12' : 'col-4', 'product-grid']">
+        <div :class="[isFullScreen ? 'col-12' : 'col-md-4', 'product-grid']">
           <div class="product-img bg-secondary bg-opacity-25 border shadow" v-for="(i, k) in collapsed" :key="k"
             @click="setImg(i)" :style="`background-image: url(https://vinylducky.nl/product-img/${i})`">
             <img :src="`https://vinylducky.nl/product-img/${i}`" />
           </div>
         </div>
-        <div class="col-6">
+        <div :class="[isFullScreen ? 'col-12' : 'col-md-6']">
           <p class="sku">SKU: {{ id }}</p>
           <h1>{{ name }}</h1>
           <p>{{ subtitle }}</p>
           <hr />
           <div class="row">
-            <div class="col">
+            <div class="col-md mb-3">
               <p class="price mb-5"><span>€ {{ price }}<sup>00</sup> </span></p>
 
-              <ul class="list-group list-group-flush bg-transparent">
-                <li class="list-group-item">Size: <b>{{ size }}</b></li>
-                <li class="list-group-item">Color:
+              <ul class="list-group list-group-flush bg-transparent text-break-spaces">
+                <ListGroup label="Size" :value="size" />
+                <li v-if="colors" class="list-group-item">Color:
                   <Color v-for="i in colors" :key="i" :color="i" />
                 </li>
-                <li class="list-group-item" v-if="printReverse">Print Revers: <b> optional</b></li>
-                <li class="list-group-item">{{ description }}</li>
+                <ListGroup v-else label="Color" value="Any" />
+
+                <ListGroup v-if="printReverse" label="Print Revers" value="optional" />
+                <ListGroup label="Material" :value="material" />
+                <ListGroup :value="description" light />
+                <li class="list-group-item">
+                  <a :href="`mailto:${email}`" target="_blank" class="btn btn-outline-dark mt-3">Something custom</a>
+                </li>
               </ul>
 
             </div>
-            <div class="col-auto">
-              <button type="button" class="btn btn-outline-success">Buy Now</button>
+            <div class="col-auto" v-if="buyLink && price">
+              <a type="button" :href="buyLink" target="_blank" class="btn btn-outline-success">Buy Now</a>
             </div>
+            <div class="col-auto" v-else> Out of Stock</div>
           </div>
         </div>
-        <div class="mt-5">Category:
+        <div v-if="category" class="mt-5">Category:
           <span class="badge text-bg-primary me-1" v-for="i in category" :key="i">{{ i }}</span>
         </div>
       </div>
@@ -93,6 +103,8 @@ useHead({
     grid-column: span 3;
   }
 }
+
+
 
 // img ------------------------
 
@@ -139,6 +151,18 @@ useHead({
   background-color: gold !important;
   color: black !important;
 }
+
+
+.badge.pink {
+  background-color: pink !important;
+  color: black !important;
+}
+
+.badge.magenta {
+  background-color: magenta !important;
+  color: black !important;
+}
+
 
 .badge.transparent {
   background-color: transparent !important;

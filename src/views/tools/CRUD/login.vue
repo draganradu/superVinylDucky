@@ -15,7 +15,7 @@ const login = (event: any) => {
 </script>
 
 <template>
-  <Container color="bg-body-secondary">
+  <Container color="bg-body-secondary main-page">
     <div class="row pt-5">
       <Sidebar />
       <div class="col-6 bg-body-secondary">

@@ -1,4 +1,4 @@
-<script setup locale="ts">
+<script setup lang="ts">
 import Color from '@/components/shop/helper/color.vue'
 import { useStore } from 'vuex';
 import { useI18n } from "vue-i18n";
@@ -12,28 +12,60 @@ const getProducts = store.getters['shop/getProductsGrid'];
   <div id="productGrid" class="mt-5 d-grid a-clean">
     <RouterLink v-for="(i, k) in getProducts" :key="k" class="grid-item rounded-4 card shadow overflow-hidden"
       :to="`/${locale}/stickers/${k}/`">
-      <div class="debug">{{ i }}</div>
-      <h3 class="name hide"> {{ i[locale]?.name }} </h3>
-      <p class="description hide"> {{ i[locale]?.description }}</p>
-      <div class="colors hide">
+      <div class="container-colors hide" v-if="i.colors">
         <Color v-for="color in i.colors" :key="color" :color="color" />
       </div>
-      <div class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
+      <h3 :class="['name hide', !i.colors ? 'mt-5' : '']"> {{ i[locale]?.name || k }} </h3>
+      <p class="description hide text-truncate-3"> {{ i[locale]?.description }}</p>
+      <div v-if="i.img" class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
+      </div>
+      <div v-else class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/placeholder.png)`">
       </div>
     </RouterLink>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 #productGrid {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 10px;
   row-gap: 15px;
+  z-index: 10;
+  position: relative;
 }
 
-/* .grid-item {
-  min-height: 200px;
-} */
+@media (max-width: 992px) {
+  #productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  #productGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.grid-item {
+  border: 1px solid white;
+  background-color: white;
+  min-height: 400px;
+  z-index: 1;
+  padding: 20px;
+}
+
+.grid-item {
+
+  .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+}
+
+
 
 .grid-item .hide {
   opacity: 0;
@@ -47,24 +79,6 @@ const getProducts = store.getters['shop/getProductsGrid'];
   opacity: 0.2;
 }
 
-
-.product-color {
-  z-index: 10;
-  position: relative;
-}
-
-.product-color .title {
-  opacity: 0;
-  font-size: 8px;
-  position: absolute;
-  bottom: 0px;
-  left: 3px;
-}
-
-.product-color:hover .title {
-  opacity: 1 !important;
-}
-
 .bg-img {
   position: absolute;
   top: 0;
@@ -76,50 +90,16 @@ const getProducts = store.getters['shop/getProductsGrid'];
   z-index: 1;
 }
 
-.debug {
-  z-index: 2;
-  display: none;
-}
-
 .name {
   z-index: 3;
-  padding-left: 20px;
-  margin-top: 150px;
   margin-bottom: 0px;
 }
 
 .description {
-  padding-left: 20px;
   margin-bottom: 20px;
 }
 
-.colors {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-}
-
-.product-color {
-  background-color: red;
-  margin-left: 10px;
-  border: 1px solid black;
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
-}
-
-.product-color.black {
-  background-color: black;
-  color: white;
-}
-
-.product-color.gold {
-  background-color: gold;
-}
-
-.product-color.transparent,
-.product-color.white {
-  background-color: white;
+.container-colors {
+  padding-bottom: 40px;
 }
 </style>

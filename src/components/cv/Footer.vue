@@ -3,6 +3,7 @@
 import { useI18n } from "vue-i18n";
 import { useStore } from 'vuex';
 import Container from '@/scaffolding/Container.vue';
+import Debug from './footerHelper/debug.vue';
 
 // translations -----------------------
 const { locale } = useI18n();
@@ -27,9 +28,10 @@ const scrollintroview = (i: string) => {
 
 <template>
   <footer class="footer pt-5 mt-5">
-    <Container v-if="isDebug" id="debug-footer" color="bg-primary">
+    <Container v-if="isDebug" id="debug-footer" color="bg-danger">
       <div class="text-white p-2">
-        DeBug footer
+
+        <Debug />
       </div>
     </Container>
     <Container class="py-5 bg-opacity-25" color="bg-secondary">

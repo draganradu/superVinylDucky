@@ -3,9 +3,9 @@
     "open-and-closed": {
       "id": "00001",
       "en": {
-        "name": "Open and closed",
+        "name": "Open and closed Sign",
         "subtitle": "The perfect open and closed sign",
-        "description": "Sign for open and closed is made out of Oracal 651, you just need to tell us open hours"
+        "description": "Very durable vinyl sign to advertise to your customers the store`s opening hours, This custom window vinyl decal is made with very durable vinyl, similar to the one used for outdoor car branding. You can personalize it with your logo or a graphic of your choice.\n\nWe recommend printing in reverse so it will last longer and not be exposed to the elements, our recommended size is 21x30cm, roughly A4, our customers usually get the color white or gold, but we can match any RAL color you ask for. The sign can come in a variety of colors.\n\nFor more options please email us, we can add your logo if you choose the option with your logo. We are very flexible when it comes to customization."
       },
       "img": [
         "window-sticker-open-closed-vinyl-ducky-1.jpg",
@@ -17,8 +17,9 @@
         "window-sticker-open-closed-vinyl-ducky-7.jpg",
         "window-sticker-open-closed-vinyl-ducky-8.jpg"
       ],
+      "material": "ORACAL 651",
       "colors": [
-        "white", "black", "gold", "yellow"
+        "white", "black", "gold", "yellow", "pink", "magenta", "red", "blue", "silver", "gray"
       ],
       "printReverse": "true",
       "category": [
@@ -27,13 +28,14 @@
         "stores"
       ],
       "price": "10",
-      "size": "21x30 cm"
+      "size": "21x30 cm",
+      "buyLink": "https://www.facebook.com/marketplace/item/125645293674555"
     },
     "brompton-sticker": {
       "id": "00002",
       "en": {
-        "name": "Brompton stiker",
-        "description": "Bike Sticker Brompton"
+        "name": "Brompton Frame Vinyl Stickers",
+        "description": "This is a replacement for the original frame sticker, we make it more high quality by using outdoor colored in the mass vinyl instead of the printed one, we also give the option of a paint protection film on top. We are not affiliated with Brompton in any way, we started making this because i wanted a better sticker when i restored my Brompton, and after restoring my bike most of my friends wanted something similar. We also give you the option to get any color you want as long as you can provide us a RAL color code.  If you want something custom logo or text that is also a option."
       },
       "img": [
         "brompton-frame-sticker-1.jpg",
@@ -44,6 +46,7 @@
         "brompton-frame-sticker-6.jpg",
         "brompton-frame-sticker-7.jpg"
       ],
+      "material": "ORACAL 651",
       "colors": [
         "gold",
         "transparent"
@@ -52,25 +55,34 @@
         "window stickers",
         "commercial"
       ],
-      "price": "10"
+      "price": "7",
+      "size": "13.5 X 7 CM",
+      "buyLink": "https://www.facebook.com/marketplace/item/1392412321542018/"
     },
     "hello-beautiful": {
       "id": "00003",
       "en": {
         "name": "Hello Beautiful",
-        "description": "sign for open and closed"
+        "description": "A cool motorcycle stickers made to fit on the chin bar of a full face helmet. We have all colors you can think of from pink to copper gold.\nWe have all colors you can think of from pink to copper gold and if you can provide a RAL color code we can match it."
       },
       "img": [
         "hello-1.jpg",
         "hello-2.jpg",
         "hello-3.jpg"
       ],
+      "material": "ORACAL 651",
       "colors": [
         "black",
         "white"
       ],
-      "printReverse": "true",
+      "buyLink": "https://www.facebook.com/marketplace/item/760965232079922",
       "price": "10"
+    },
+    "toilet": {
+      "id": "00004"
+    },
+    "tools-id": {
+      "id": "00005"
     }
   }
 }

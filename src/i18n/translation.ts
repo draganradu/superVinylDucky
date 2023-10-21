@@ -10,6 +10,7 @@ const Trans = {
   },
 
   set currentLocale(newLocale: any) { // <--- 2
+    //@ts-ignore
     i18n.global.locale.value = newLocale
   },
 
@@ -19,7 +20,9 @@ const Trans = {
 
 
   async loadLocaleMessages(locale: any) {
+    //@ts-ignore
     if (!i18n.global.availableLocales.includes(locale)) {  // <--- 3
+      //@ts-ignore
       i18n.global.setLocaleMessage(locale, messages.en)  // <--- 5
     }
 

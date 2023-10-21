@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
-import shopLayout from '@/layouts/ShopLayout.vue'
-import Card from '@/scaffolding/Card.vue'
+import { useHead } from '@unhead/vue';
+import { useI18n } from "vue-i18n";
+import { useStore } from 'vuex';
+import Card from '@/scaffolding/Card.vue';
+import shopLayout from '@/layouts/ShopLayout.vue';
 
-const language = 'en'
+// translations -----------------------
+const { locale } = useI18n();
+
+// store data -------------------------
+const store = useStore();
+const { isDebug } = store.state.user;
 
 // seo ---------------------------------------
 useHead({
@@ -13,12 +20,11 @@ useHead({
 const todoStructure = [
   ["WhatsApp", "https://web.whatsapp.com/"],
   ["Messinger", "https://www.messenger.com/marketplace/"],
-  ["Email V ducky", "https://outlook.office.com/mail/"],
-  ["Email R ducky", "https://outlook.office.com/mail/"],
+  ["Email Vinyl ducky", "https://outlook.office.com/mail/"],
   ["Email G", "https://mail.google.com/mail/u/0/#inbox"],
   ["Email F", "https://fotodex.ro/webmail"],
   ["Linkedin", "https://fotodex.ro/webmail"],
-  ["Etsy", "https://fotodex.ro/webmail"],
+  ["Etsy", "https://www.etsy.com/messages"],
   ["Marktplaats", "https://www.marktplaats.nl/messages"]
 ]
 
@@ -35,18 +41,18 @@ const todoStructure = [
             <RouterLink to="/">Landing Page</RouterLink>
           </li>
           <li class="list-group-item">
-            <RouterLink :to="'/' + language + '/radu-dragan'">CV</RouterLink>
+            <RouterLink :to="'/' + locale + '/radu-dragan'">CV</RouterLink>
           </li>
           <li class="list-group-item">
-            <RouterLink :to="'/' + language + '/Informatie'">Informatie</RouterLink>
+            <RouterLink :to="'/' + locale + '/Informatie'">Informatie</RouterLink>
           </li>
 
           <li class="list-group-item bg-secondary text-white bg-opacity-50">Shop</li>
           <li class="list-group-item">
-            <RouterLink :to="'/' + language + '/stickers/001'">Product</RouterLink>
+            <RouterLink :to="'/' + locale + '/stickers/001'">Product</RouterLink>
           </li>
           <li class="list-group-item">
-            <RouterLink :to="'/' + language + '/stickers-category/001'">Product Category</RouterLink>
+            <RouterLink :to="'/' + locale + '/stickers-category/001'">Product Category</RouterLink>
           </li>
 
           <li class="list-group-item bg-secondary text-white bg-opacity-50">Tools</li>
@@ -86,11 +92,11 @@ const todoStructure = [
               <p>Bootstrap Icons</p>
             </div>
           </Card>
-          <Card :sansPadding="true" class="mt-3">
+          <Card :sansPadding="true" v-if="isDebug" class="mt-3">
             <ul class="list-group">
 
               <div class="card-head bg-secondary text-light p-2 ps-3">
-                Daily todo
+                Daily toDo
               </div>
               <a v-for="(i, k) in todoStructure" :key="k" :href="i[1]" target="_blank">
                 <li class="list-group-item">

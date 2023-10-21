@@ -1,4 +1,4 @@
-/* color palette from <https://github.com/vuejs/theme> */
+/* 0 | rootVariables */
 :root {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
@@ -58,6 +58,7 @@
   font-weight: normal;
 }
 
+/* 1 | body */
 body {
   min-height: 100vh;
   color: var(--color-text);
@@ -72,7 +73,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.main-page {
+  min-height: 100vh;
+}
+
+/* 2 | Img */
 img {
   width: 100%;
   max-width: 100%;
+}
+
+/* 3 | Typography */
+.text-break-spaces {
+  white-space: break-spaces;
 }

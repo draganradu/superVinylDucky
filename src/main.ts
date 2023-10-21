@@ -13,6 +13,7 @@ const head = createHead()
 app.use(store)
 app.use(head)
 app.use(router)
+//@ts-ignore
 app.use(i18n)
 
 app.mount('#app')
