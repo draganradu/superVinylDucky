@@ -1,21 +1,32 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 import AboutMe from "@/components/cv/AboutMe.vue"
 import Container from '@/scaffolding/Container.vue'
 import Experience from "@/components/cv/Experience.vue"
 import Sidebar from "@/components/sidebar/sidebarTools.vue"
 import Social from "@/components/cv/Social.vue"
-import Work from "@/components/cv/Work.vue"
+import Video from '@/components/Video.vue';
+import Skills from "@/components/cv/Work.vue"
 import WorkDesign from "@/components/cv/WorkDesign.vue"
 import WorkDevelop from "@/components/cv/WorkDevelop.vue"
-import WorkOrganize from "@/components/cv/WorkOrganize.vue"
-import Video from '@/components/Video.vue';
+import WorkOrganizeFront from "@/components/cv/WorkOrganizeFront.vue"
+import WorkOrganizeScrum from "@/components/cv/WorkOrganizeScrum.vue"
+import WorkOrganizeUi from "@/components/cv/WorkOrganizeUi.vue"
+import Footer from "@/components/cv/Footer.vue"
+import { computed } from 'vue'
+
+// hooks ---------------------------------------
+const route = useRoute();
+const store = useStore();
 
 // props ---------------------------------------
-const route = useRoute();
-console.log(route.params.skill)
+const skill = route.params.skill as string;
 
+// data ---------------------------------------
+const data = computed(() => store.state["cv"].jobs[skill])
+const is = store.getters['cv/is'](skill)
 
 // seo ---------------------------------------
 useHead({
@@ -32,16 +43,20 @@ useHead({
         <Sidebar />
         <div class="col">
           <AboutMe />
-          <Video id="biQzsrPJZnk" />
-          <Work />
-          <WorkOrganize />
-          <WorkDesign />
-          <WorkDevelop />
-          <Social />
+          <Video :id="data.video" />
+          <Skills />
+          <WorkOrganizeFront v-if="is.front" />
+          <WorkOrganizeScrum v-if="is.scrum" />
+          <WorkOrganizeUi v-if="is.ui" />
+          <!-- <WorkDesign /> -->
+          <!-- <WorkDevelop /> -->
+          <!-- <Social /> -->
 
-          <Experience />
+          <!-- <Experience /> -->
         </div>
       </Container>
+      <Footer />
+
     </div>
   </main>
 </template>

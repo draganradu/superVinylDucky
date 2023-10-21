@@ -6,6 +6,8 @@ const props = defineProps<{
   icon?: string
 }>()
 
+const isLink = (typeof props.action === "string")
+
 const OnClick = () => {
   if (!props.action) {
     console.log("nope")
@@ -19,9 +21,17 @@ const OnClick = () => {
 </script>
 
 <template>
-  <li @click="OnClick" class="list-group-item">
-    <i :class="['bi me-2', icon || 'bi-balloon-heart']" />
-    <span>{{ text || "lorem ipsum" }}</span>
+  <li class="list-group-item">
+    <!-- is link -->
+    <a class="a-clean" target="_blank" v-if="isLink" :href="props.action">
+      <i :class="['bi me-2', icon || 'bi-balloon-heart']" />
+      <span>{{ text || "lorem ipsum" }}</span>
+    </a>
+    <!-- is nothing -->
+    <span v-else>
+      <i :class="['bi me-2', icon || 'bi-balloon-heart']" />
+      <span>{{ text || "lorem ipsum" }}</span>
+    </span>
   </li>
 </template>
 
@@ -30,6 +40,7 @@ li {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
   &:hover {
     background-color: lightgray;
     cursor: pointer;

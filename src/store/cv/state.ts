@@ -12,5 +12,20 @@ export default {
     },
     phone: "0648459980",
     email: "radu.dragan@vinylducky.nl",
+  },
+  jobs: {
+    front: { 
+      "cv": "front.pdf",
+      "video": "v57AUcd2eO0" 
+    },
+    scrum: { 
+      "cv": "scrum.pdf",
+      "video": "v57AUcd2eO0"  
+    },
+    ui: { 
+      "cv": "ui.pdf" ,
+      "video": "v57AUcd2eO0"  
+    },
   }
+
 }

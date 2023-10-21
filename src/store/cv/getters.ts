@@ -1,3 +1,5 @@
-export const doneTodos = (state: any) => {
-    return state.count + 5;
-}
+export const is = (state: any) => (jobName: string) => {
+    return Object.keys(state.jobs).reduce((accumulator, currentValue) => {
+        return { ...accumulator, [currentValue]: (jobName === currentValue) }
+    }, {})
+} 

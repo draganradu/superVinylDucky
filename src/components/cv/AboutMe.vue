@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex'
 import Card from '@/scaffolding/Card.vue'
 import LI from "@/scaffolding/ListLi.vue";
 import UL from "@/scaffolding/ListUl.vue";
 
-// props ---------------------------------------
+// hooks ---------------------------------------
 const route = useRoute();
+const store = useStore();
 
-const is = {
-  front: route.params.skill === "front",
-  scrum: route.params.skill === "scrum",
-  ui: route.params.skill === "ui",
-}
+// props ---------------------------------------
+const skill = route.params.skill as string;
 
 // data ---------------------------------------
+const { contact, jobs } = store.state.cv;
+const cvLink = jobs[skill].cv;
+const is = store.getters['cv/is'](skill)
+
 let collapsed = ref(true);
-const store = useStore();
-const { contact } = store.state.cv;
 
 
 </script>
@@ -40,12 +40,12 @@ const { contact } = store.state.cv;
       <div class="col-6">
         <h1>Hi, I'm Radu</h1>
         <h2 class="subtitle" v-if="is.front">Web Designer & Developer</h2>
-        <h2 class="subtitle" v-else-if="is.scrum">Scrum Master</h2>
-        <h2 class="subtitle" v-else-if="is.ui">UI Developer</h2>
+        <h2 class="subtitle" v-if="is.scrum">Scrum Master</h2>
+        <h2 class="subtitle" v-if="is.ui">UI Developer</h2>
         <p class="mt-5">
           <span v-if="is.front">As a Frontend Developer,</span>
-          <span v-else-if="is.scrum">As a Scrum master,</span>
-          <span v-else-if="is.ui">As a Ui Developer,</span>
+          <span v-if="is.scrum">As a Scrum master,</span>
+          <span v-if="is.ui">As a Ui Developer,</span>
 
           I`m a builder of wonderful digital things, some would call me a maker. Making things is my main motivation for
           getting out of bed in the morning. Be it front end, back end, or motorbike end, as long as I'm
@@ -59,10 +59,10 @@ const { contact } = store.state.cv;
         </Transition>
 
         <UL v-if="!collapsed" class="shadow sidebar">
-          <LI text="CV" />
+          <LI text="CV" :action="`https://vinylducky.nl/cv/${cvLink}`" />
 
-          <LI icon="bi-phone" :text="contact.phone" />
-          <LI icon="bi-envelope" :text="contact.email" />
+          <LI icon="bi-phone" :text="contact.phone" :action="`tel: ${contact.phone}`" />
+          <LI icon="bi-envelope" :text="contact.email" :action="`mailto: ${contact.email}`" />
 
 
         </UL>
@@ -79,6 +79,7 @@ const { contact } = store.state.cv;
   position: relative;
   z-index: 10;
 }
+
 .subtitle {
   font-size: 1em;
 }
