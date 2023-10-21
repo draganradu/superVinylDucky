@@ -1,4 +1,6 @@
-export default {
+import { type CvState } from "./types"
+
+const state: CvState = {
   products: [],
   product: null,
   social: [],
@@ -14,18 +16,20 @@ export default {
     email: "radu.dragan@vinylducky.nl",
   },
   jobs: {
-    front: { 
+    front: {
       "cv": "front.pdf",
-      "video": "v57AUcd2eO0" 
+      "video": "v57AUcd2eO0"
     },
-    scrum: { 
+    scrum: {
       "cv": "scrum.pdf",
-      "video": "v57AUcd2eO0"  
+      "video": "v57AUcd2eO0"
     },
-    ui: { 
-      "cv": "ui.pdf" ,
-      "video": "v57AUcd2eO0"  
+    ui: {
+      "cv": "ui.pdf",
+      "video": "v57AUcd2eO0"
     },
   }
 
 }
+
+export default state
