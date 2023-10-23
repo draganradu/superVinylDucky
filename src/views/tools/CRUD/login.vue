@@ -9,7 +9,7 @@ const store = useStore()
 
 const isLogin = computed(() => store.getters['user/isLoggedIn'])
 const login = (event: any) => {
-  event.preventDefault();
+  event.preventDefault()
   store.commit('user/SET_login', true)
 }
 </script>

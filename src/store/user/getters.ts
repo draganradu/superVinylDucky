@@ -1,3 +1,3 @@
 export const isLoggedIn = (state: any) => {
-    return state.isLoggedIn;
+    return state.isLoggedIn
 }

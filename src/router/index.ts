@@ -57,13 +57,18 @@ const router = createRouter({
           component: LandingPageView
         },
         {
+          path: 'all-products/',
+          name: 'allProducts',
+          component: () => import('../views/vinylDucky/AllProducts.vue')
+        },
+        {
           path: 'radu-dragan/:skill?',
           name: 'CvPage',
           component: () => import('../views/CVPage.vue'),
           beforeEnter: (to: any, _from: any, next: any) => {
-            const listOfSkills = ["front", "scrum", "ui"];
+            const listOfSkills = ["front", "scrum", "ui"]
             if (listOfSkills.includes(to.params.skill)) {
-              return next();
+              return next()
             } else {
               return next(`/${to.params.locale}/radu-dragan/${listOfSkills[0]}`)
             }
@@ -77,20 +82,20 @@ const router = createRouter({
         {
           path: 'stickers/:id',
           name: 'Products',
-          component: () => import('../views/vinylDucky/Products.vue'),
+          component: () => import('../views/vinylDucky/ProductsView.vue'),
           beforeEnter: (to: any, _from: any, next: any) => {
-            const productIds = Object.keys(store.state.shop.products);
+            const productIds = Object.keys(store.state.shop.products)
             if (productIds.indexOf(to.params.id) > -1) {
-              return next();
+              return next()
             } else {
-              return next('/404/');
+              return next('/404/')
             }
           },
         },
         {
           path: 'stickers-category/:name/',
           name: 'ProductsCategory',
-          component: () => import('../views/vinylDucky/Category.vue')
+          component: () => import('../views/vinylDucky/CategoryView.vue')
         },
 
       ]

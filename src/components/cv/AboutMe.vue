@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import Card from '@/scaffolding/Card.vue'
-import LI from "@/scaffolding/ListLi.vue";
-import UL from "@/scaffolding/ListUl.vue";
+import LI from "@/scaffolding/ListLi.vue"
+import UL from "@/scaffolding/ListUl.vue"
 
 // hooks ---------------------------------------
-const route = useRoute();
-const store = useStore();
+const route = useRoute()
+const store = useStore()
 
 // props ---------------------------------------
-const skill = route.params.skill as string;
+const skill = route.params.skill as string
 
 // data ---------------------------------------
-const { contact, jobs } = store.state.cv;
-const cvLink = jobs[skill].cv;
+const { contact, jobs } = store.state.cv
+const cvLink = jobs[skill].cv
 const is = store.getters['cv/is'](skill)
 
-let collapsed = ref(true);
+let collapsed = ref(true)
 
 
 </script>

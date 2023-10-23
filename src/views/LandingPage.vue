@@ -1,13 +1,13 @@
 
 <script setup lang="ts">
-import { useHead } from '@unhead/vue';
-import AboutUs from '@/components/shop/about.vue';
-import Contact from '@/components/shop/contact.vue';
-import Hero from '@/components/shop/hero.vue';
-import ProductGrid from '@/components/shop/productGrid.vue';
-import ShopLayout from '@/layouts/ShopLayout.vue';
-import SocialMedia from '@/components/shop/socialMedia.vue';
-import Video from '@/components/Video.vue';
+import { useHead } from '@unhead/vue'
+import AboutUs from '@/components/shop/about.vue'
+import Contact from '@/components/shop/contact.vue'
+import Hero from '@/components/shop/hero.vue'
+import ProductGrid from '@/components/shop/productGrid.vue'
+import ShopLayout from '@/layouts/ShopLayout.vue'
+import SocialMedia from '@/components/shop/socialMedia.vue'
+import Video from '@/components/Video.vue'
 
 // seo ---------------------------------------
 useHead({

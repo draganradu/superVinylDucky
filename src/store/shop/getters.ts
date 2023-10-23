@@ -6,17 +6,17 @@ const iconMapping = (name: string) => {
     "instagram": "bi-instagram",
   }
 
-  return iconList[name] || iconList["none"];
+  return iconList[name] || iconList["none"]
 }
 
 export const getSocialLinks = (state: any) => {
-  return state.socialMedia.map((x: any) => { return { ...x, icon: iconMapping(x.name) } });
+  return state.socialMedia.map((x: any) => { return { ...x, icon: iconMapping(x.name) } })
 }
 
 export const getProductsGrid = (state: any) => {
-  return state.products;
+  return state.products
 }
 
 export const getProduct = (state: any) => (product: string) => {
-  return state.products[product];
+  return state.products[product]
 }

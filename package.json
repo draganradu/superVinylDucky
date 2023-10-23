@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only && ts-node runner.ts",
+    "build": "run-p type-check build-only && ts-node runner.ts && node Cihelp/arhive.js",
+    "archive": "node Cihelp/archive.js",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "nightwatch tests/e2e",
@@ -16,6 +17,7 @@
   "dependencies": {
     "@intlify/unplugin-vue-i18n": "^0.12.3",
     "@unhead/vue": "^1.5.3",
+    "archiver": "^6.0.1",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.2.4",

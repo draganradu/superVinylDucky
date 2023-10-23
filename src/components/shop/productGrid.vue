@@ -1,31 +1,71 @@
 <script setup lang="ts">
 import Color from '@/components/shop/helper/color.vue'
-import { useStore } from 'vuex';
-import { useI18n } from "vue-i18n";
-const { locale } = useI18n();
+import { useStore } from 'vuex'
+import { useI18n } from "vue-i18n"
+import { ref } from 'vue'
 
-const store = useStore();
-const getProducts = store.getters['shop/getProductsGrid'];
+// hooks ---------------------------------------
+const { locale } = useI18n()
+const store = useStore()
+
+// data ---------------------------------------
+const getProducts = store.getters['shop/getProductsGrid']
+const keys = Object.keys(getProducts)
+const keys3 = keys.splice(0, 3)
+
+// methods ------------------------------------
+
+const show3 = ref(true)
+
 </script>
 
 <template>
   <div id="productGrid" class="mt-5 d-grid a-clean">
-    <RouterLink v-for="(i, k) in getProducts" :key="k" class="grid-item rounded-4 card shadow overflow-hidden"
-      :to="`/${locale}/stickers/${k}/`">
-      <div class="container-colors hide" v-if="i.colors">
-        <Color v-for="color in i.colors" :key="color" :color="color" />
+    <RouterLink v-for="i in keys3" :key="i" class="grid-item rounded-4 card shadow overflow-hidden"
+      :to="`/${locale}/stickers/${i}/`">
+      <div class="container-colors hide" v-if="getProducts[i].colors">
+        <Color v-for="color in getProducts[i].colors" :key="color" :color="color" />
       </div>
-      <h3 :class="['name hide', !i.colors ? 'mt-5' : '']"> {{ i[locale]?.name || k }} </h3>
-      <p class="description hide text-truncate-3"> {{ i[locale]?.description }}</p>
-      <div v-if="i.img" class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/${i.img[0]})`">
+      <h3 :class="['name hide', !getProducts[i].colors ? 'mt-5' : '']"> {{ getProducts[i][locale]?.name || i }} </h3>
+      <p class="description hide text-truncate-3"> {{ getProducts[i][locale]?.description }}</p>
+      <div v-if="getProducts[i].img" class="bg-img"
+        :style="`background-image: url(https://vinylducky.nl/product-img/${getProducts[i].img[0]})`">
       </div>
       <div v-else class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/placeholder.png)`">
       </div>
+    </RouterLink>
+
+    <RouterLink v-if="!show3" v-for="i in keys" :key="i" class="grid-item rounded-4 card shadow overflow-hidden"
+      :to="`/${locale}/stickers/${i}/`">
+      <div class="container-colors hide" v-if="getProducts[i].colors">
+        <Color v-for="color in getProducts[i].colors" :key="color" :color="color" />
+      </div>
+      <h3 :class="['name hide', !getProducts[i].colors ? 'mt-5' : '']"> {{ getProducts[i][locale]?.name || i }} </h3>
+      <p class="description hide text-truncate-3"> {{ getProducts[i][locale]?.description }}</p>
+      <div v-if="getProducts[i].img" class="bg-img"
+        :style="`background-image: url(https://vinylducky.nl/product-img/${getProducts[i].img[0]})`">
+      </div>
+      <div v-else class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/placeholder.png)`">
+      </div>
+    </RouterLink>
+
+    <button v-else @click="() => { show3 = !show3 }" type="button" class="btn btn-outline-primary">Show All</button>
+
+    <RouterLink v-if="!show3" :to="`/${locale}/all-products/`" class="btn btn-outline-primary center-fix">
+      <span>All products Tabel</span>
     </RouterLink>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.center-fix {
+  display: flex;
+
+  span {
+    margin: auto;
+  }
+}
+
 #productGrid {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 10px;

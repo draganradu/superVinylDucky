@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue';
-import { useI18n } from "vue-i18n";
-import { useStore } from 'vuex';
-import Card from '@/scaffolding/Card.vue';
-import shopLayout from '@/layouts/ShopLayout.vue';
+import { useHead } from '@unhead/vue'
+import { useI18n } from "vue-i18n"
+import { useStore } from 'vuex'
+import Card from '@/scaffolding/Card.vue'
+import shopLayout from '@/layouts/ShopLayout.vue'
 
 // translations -----------------------
-const { locale } = useI18n();
+const { locale } = useI18n()
 
 // store data -------------------------
-const store = useStore();
-const { isDebug } = store.state.user;
+const store = useStore()
+const { isDebug } = store.state.user
 
 // seo ---------------------------------------
 useHead({

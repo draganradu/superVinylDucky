@@ -5,11 +5,11 @@ import Feature from '@/components/shop/helper/features.vue'
 import { useStore } from 'vuex'
 
 // props ---------------------------------------
-const route = useRoute();
-const store = useStore();
+const route = useRoute()
+const store = useStore()
 
 // props ---------------------------------------
-const skill = route.params.skill as string;
+const skill = route.params.skill as string
 
 // data ---------------------------------------
 const is = store.getters['cv/is'](skill)

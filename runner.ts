@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs')
 
 
 const routes = [
@@ -10,7 +10,7 @@ const routes = [
     '/:locale/stickers/:id',
     '/:locale/stickers-category/:name/',
     '/:notFound/',
-];
+]
 
 const params = {
     ":locale": ['en', 'nl'],
@@ -29,7 +29,7 @@ const dataXML = () => {
     const lookUp: any = []
 
     routes.forEach(x => {
-        let i = 0
+        const i = 0
         let build = true
         paramsKeys.forEach((param: string) => {
             if (x.indexOf(param) > -1) {

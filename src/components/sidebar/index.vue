@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ref } from 'vue';
-import { useI18n } from "vue-i18n";
+import { ref } from 'vue'
+import { useI18n } from "vue-i18n"
 import { useStore } from 'vuex'
 import Item from './helpsers/sidebarItem.vue'
 
-const { locale } = useI18n();
+const { locale } = useI18n()
 const store = useStore()
 
-let collapsed = ref(true);
+let collapsed = ref(true)
 
 defineProps<{
   sidebar?: boolean
@@ -16,7 +16,7 @@ defineProps<{
 
 const isLogin = computed(() => store.getters['user/isLoggedIn'])
 const logout = () => {
-  store.commit('user/SET_login', false);
+  store.commit('user/SET_login', false)
 }
 </script>
 

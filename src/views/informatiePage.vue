@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { useStore } from 'vuex';
+import { useStore } from 'vuex'
 import Card from "@/scaffolding/Card.vue"
 import shopLayout from '@/layouts/ShopLayout.vue'
 
 // storeData ---------------------------------------
-const store = useStore();
-const { infoSections } = store.state.shop.extraInfo;
+const store = useStore()
+const { infoSections } = store.state.shop.extraInfo
 
 // seo ---------------------------------------
 useHead({

@@ -1,31 +1,31 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { useHead } from '@unhead/vue'
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import Color from '@/components/shop/helper/color.vue'
 import ShopLayout from '@/layouts/ShopLayout.vue'
 import ListGroup from '@/components/shop/helper/productList.vue'
 
 const store = useStore()
-const route = useRoute();
+const route = useRoute()
 
 const product = store.getters['shop/getProduct'](route.params.id)
-const { id, img, price = 0, size, colors, printReverse, category, buyLink, material } = product;
-const { name = route.params.id, description, subtitle } = product[route.params.locale as string] || {};
+const { id, img, price = 0, size, colors, printReverse, category, buyLink, material } = product
+const { name = route.params.id, description, subtitle } = product[route.params.locale as string] || {}
 
-const { email } = store.state.shop.contact;
+const { email } = store.state.shop.contact
 
 // let hero = ref(img.shift());
-let collapsed = ref(img || ["placeholder.png"]);
-let isFullScreen = ref(false);
+let collapsed = ref(img || ["placeholder.png"])
+let isFullScreen = ref(false)
 
 const setImg = (newHero: string) => {
   if (collapsed.value[0] === newHero) {
     isFullScreen.value = !isFullScreen.value
   } else {
     collapsed.value = collapsed.value.filter((x: string) => { return x !== newHero })
-    collapsed.value = [newHero, ...collapsed.value];
+    collapsed.value = [newHero, ...collapsed.value]
   }
 }
 

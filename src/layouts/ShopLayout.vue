@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="bg-body-secondary pt-5">
+  <div id="shopLayout" class="bg-body-secondary pt-5">
     <!-- <Header /> -->
     <Container>
       
@@ -24,7 +24,7 @@ defineProps<{
   </div>
 </template>
 
-<style>
+<style lang="scss">
 .main-logo {
   position: absolute;
   z-index: 1;
@@ -32,6 +32,16 @@ defineProps<{
   padding-bottom: 10px;
   font-weight: 800;
   opacity: 0.2;
-  pointer-events: n;
+  pointer-events: none;
+}
+
+#shopLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  & > div {
+    flex-grow: 1;
+  }
 }
 </style>

@@ -6,24 +6,24 @@ defineProps<{
 const mapping = (color: string): string => {
   switch (color) {
     case "blue":
-      return "text-bg-primary";
+      return "text-bg-primary"
     case "gray":
     case "silver":
-      return "text-bg-secondary";
+      return "text-bg-secondary"
     case "green":
-      return "text-bg-success";
+      return "text-bg-success"
     case "red":
-      return "text-bg-danger";
+      return "text-bg-danger"
     case "gold":
     case "yellow":
-      return "text-bg-warning";
+      return "text-bg-warning"
     case "black":
-      return "text-bg-dark";
+      return "text-bg-dark"
     case "white":
     case "transparent":
       return "bg-light outline"
     default:
-      return "text-bg-primary";
+      return "text-bg-primary"
   }
 }
 </script>

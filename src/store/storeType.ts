@@ -1,4 +1,4 @@
-import { type CvState } from "./cv/types";
+import { type CvState } from "./cv/types"
 
 export interface RootState {
   cv: CvState,
