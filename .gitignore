@@ -30,3 +30,5 @@ coverage
 
 logs/
 tests_output/
+
+src/store/shop/prod
