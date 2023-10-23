@@ -7,7 +7,7 @@ const fs = require('fs');
  * @returns {Promise}
  */
 function zipDirectory(sourceDir, outPath) {
-  const archive = archiver('zip', { zlib: { level: 9 }});
+  const archive = archiver('zip', { zlib: { level: 9 } });
   const stream = fs.createWriteStream(outPath);
 
   return new Promise((resolve, reject) => {
@@ -15,7 +15,7 @@ function zipDirectory(sourceDir, outPath) {
       .directory(sourceDir, false)
       .on('error', err => reject(err))
       .pipe(stream)
-    ;
+      ;
 
     stream.on('close', () => resolve());
     archive.finalize();
@@ -23,4 +23,4 @@ function zipDirectory(sourceDir, outPath) {
 }
 
 
-zipDirectory("./dist","upload.zip")
+zipDirectory("./dist", "upload.zip")

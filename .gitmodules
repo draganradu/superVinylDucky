@@ -1,0 +1,3 @@
+[submodule "src/store/shop/prod"]
+	path = src/store/shop/prod
+	url = https://github.com/draganradu/productsVinylDucky.git

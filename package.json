@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only && ts-node runner.ts && node Cihelp/arhive.js",
+    "build": "run-p type-check build-only && ts-node runner.ts && node Cihelp/archive.js",
     "archive": "node Cihelp/archive.js",
     "preview": "vite preview",
     "test:unit": "vitest",
