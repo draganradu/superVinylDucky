@@ -32,3 +32,4 @@ logs/
 tests_output/
 
 src/store/shop/prod
+product-img

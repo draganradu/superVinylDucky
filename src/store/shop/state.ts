@@ -1,4 +1,4 @@
-import { products } from "./prod/productsMock.json"
+import { products } from "./prod/combine"
 
 export default {
   products,
