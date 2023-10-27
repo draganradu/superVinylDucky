@@ -9,6 +9,7 @@ const store = useStore()
 
 // data ---------------------------------------
 const getProducts = store.getters['shop/getProductsGrid']
+const getCategory = store.getters['shop/getAllCategory']
 const keys = Object.keys(getProducts)
 
 </script>
@@ -46,6 +47,7 @@ const keys = Object.keys(getProducts)
 
             </tbody>
           </table>
+          <div><span class="badge text-bg-primary me-1">A</span></div>
         </div>
       </div>
     </ShopLayout>

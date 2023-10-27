@@ -1,3 +1,5 @@
+import type ShopState from "./types"
+
 const iconMapping = (name: string) => {
   const iconList: any = {
     "none": "bi-bezier2",
@@ -9,14 +11,26 @@ const iconMapping = (name: string) => {
   return iconList[name] || iconList["none"]
 }
 
-export const getSocialLinks = (state: any) => {
+export const getSocialLinks = (state: ShopState) => {
   return state.socialMedia.map((x: any) => { return { ...x, icon: iconMapping(x.name) } })
 }
 
-export const getProductsGrid = (state: any) => {
+export const getProductsGrid = (state: ShopState) => {
   return state.products
 }
 
-export const getProduct = (state: any) => (product: string) => {
+export const getAllCategory = (state: ShopState) => {
+  const grids = Object.keys(state.products).reduce((accumulator: any, current: any) => {
+    const category = state.products[current].category
+    if (category) {
+      return [...new Set([...accumulator, ...Object.values(category)])]
+    }
+    return accumulator
+  }, [])
+  console.log(grids)
+  return state.products
+}
+
+export const getProduct = (state: ShopState) => (product: string) => {
   return state.products[product]
 }
