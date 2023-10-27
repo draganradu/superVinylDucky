@@ -19,7 +19,7 @@ const keys = Object.keys(getProducts)
       <div class="row">
         <div class="col p-3 bg-white">
           <h1 class="mb-5">All Products</h1>
-          <table class="table table-striped">
+          <table class="table table-striped a-clean">
             <thead>
               <tr>
                 <th scope="col"></th>
@@ -29,16 +29,18 @@ const keys = Object.keys(getProducts)
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(k, i) in keys" :key="k" 
-              @click="() => {
-                // router.push(`/${locale}/stickers/${k}`)
-              }"
-              >
-                <th scope="row">{{ i }}</th>
-                <td>{{ getProducts[k][locale]?.name || k }}</td>
+              <tr v-for="(k, i) in keys" :key="k" >
+                <th scope="row">
+                  <RouterLink :to="`/${locale}/stickers/${k}/`">{{ i }}</RouterLink>
+                </th>
+                <td v-if="!getProducts[k].upcoming">
+                  <RouterLink :to="`/${locale}/stickers/${k}/`">{{ getProducts[k][locale]?.name || k }}</RouterLink>
+                </td>
+                <td v-else>Coming soon</td>
                 <td class="small">{{ getProducts[k][locale]?.description }}</td>
                 <td class="small">
-                  <a type="button" v-if="getProducts[k]?.buyLink" class="btn btn-outline-dark me-2" :href="getProducts[k]?.buyLink">Buy</a>
+                  <a type="button" v-if="getProducts[k]?.buyLink" class="btn btn-outline-dark me-2"
+                    :href="getProducts[k]?.buyLink">Buy</a>
                 </td>
               </tr>
 

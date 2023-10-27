@@ -23,9 +23,11 @@ const show3 = ref(true)
   <div id="productGrid" class="mt-5 d-grid a-clean">
     <RouterLink v-for="i in keys3" :key="i" class="grid-item rounded-4 card shadow overflow-hidden"
       :to="`/${locale}/stickers/${i}/`">
+      <div class="coming-soon" v-if="getProducts[i].upcoming">Coming soon</div>
       <div class="container-colors hide" v-if="getProducts[i].colors">
         <Color v-for="color in getProducts[i].colors" :key="color" :color="color" />
       </div>
+
       <h3 :class="['name hide', !getProducts[i].colors ? 'mt-5' : '']"> {{ getProducts[i][locale]?.name || i }} </h3>
       <p class="description hide text-truncate-3"> {{ getProducts[i][locale]?.description }}</p>
       <div v-if="getProducts[i].img" class="bg-img"
@@ -37,6 +39,7 @@ const show3 = ref(true)
 
     <RouterLink v-if="!show3" v-for="i in keys" :key="i" class="grid-item rounded-4 card shadow overflow-hidden"
       :to="`/${locale}/stickers/${i}/`">
+      <div class="coming-soon" v-if="getProducts[i].upcoming">Coming soon</div>
       <div class="container-colors hide" v-if="getProducts[i].colors">
         <Color v-for="color in getProducts[i].colors" :key="color" :color="color" />
       </div>
@@ -113,6 +116,19 @@ const show3 = ref(true)
 
 .grid-item:hover .hide {
   opacity: 1;
+}
+
+.coming-soon {
+  opacity: 1 !important;
+  z-index: 10;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  font-size: 2em;
 }
 
 .grid-item:hover .bg-img {
