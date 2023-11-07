@@ -26,7 +26,10 @@
 import { ref } from 'vue'
 const toDos = ref([
   {
-    id: 0, 
+    id: 0,
+    content: 'shave but',
+    done: false
+  },
   {
     id: 1,
     content: 'wash but',
