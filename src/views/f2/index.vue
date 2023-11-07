@@ -23,7 +23,29 @@
 </template>
 
 <script setup lang="ts">
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app"
 import { ref } from 'vue'
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBiXWmVryD5NFc97_w5P4cME-VxT98JpaI",
+  authDomain: "badasstodo-6b75a.firebaseapp.com",
+  projectId: "badasstodo-6b75a",
+  storageBucket: "badasstodo-6b75a.appspot.com",
+  messagingSenderId: "869769282233",
+  appId: "1:869769282233:web:38ef899d5956a2fdb45168"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+console.log(app)
 const toDos = ref([
   {
     id: 0,

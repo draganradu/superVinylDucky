@@ -25,7 +25,7 @@ const router = createRouter({
     },
     {
       path: '/f2/',
-      name: 'firebase',
+      name: 'firebase2',
       component: () => import('../views/f2/index.vue')
     },
     {
