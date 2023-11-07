@@ -24,6 +24,11 @@ const router = createRouter({
       component: () => import('../views/f1/index.vue')
     },
     {
+      path: '/f2/',
+      name: 'firebase',
+      component: () => import('../views/f2/index.vue')
+    },
+    {
       path: '/tools',
       name: 'toolsApp',
       component: RouterView,
