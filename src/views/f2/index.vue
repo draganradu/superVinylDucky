@@ -23,41 +23,41 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
 
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app"
-import { ref } from 'vue'
+
+import { collection, getDocs } from "firebase/firestore"
+import { db } from "@/firebase/db"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBiXWmVryD5NFc97_w5P4cME-VxT98JpaI",
-  authDomain: "badasstodo-6b75a.firebaseapp.com",
-  projectId: "badasstodo-6b75a",
-  storageBucket: "badasstodo-6b75a.appspot.com",
-  messagingSenderId: "869769282233",
-  appId: "1:869769282233:web:38ef899d5956a2fdb45168"
-};
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
-console.log(app)
-const toDos = ref([
-  {
-    id: 0,
-    content: 'shave but',
-    done: false
-  },
-  {
-    id: 1,
-    content: 'wash but',
-    done: true
-  }
-])
+const toDos: any = ref([])
+
+onMounted(async () => {
+  const querySnapshot = await getDocs(collection(db, "todos"))
+  const localToDos: any = []
+  querySnapshot.forEach((doc) => {
+    const todo = {
+      id: doc.id,
+      content: doc.data().content,
+      done: doc.data().done,
+    }
+
+    localToDos.push(todo)
+  })
+
+  toDos.value = localToDos
+
+
+
+})
 
 const newTodoContent = ref('')
 
