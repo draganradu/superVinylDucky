@@ -1,3 +1,14 @@
-export const SET_login = (state: any, payload: boolean) => {
-    return state.isLoggedIn = payload
+import type { userStoreType } from "./type"
+
+const SET_login = (state: userStoreType, payload: boolean) => {
+    state.isLoggedIn = payload
 }
+
+
+const SetUser = (state: userStoreType, payload: any) => {
+    state.user = payload
+    localStorage.setItem("userAPI", JSON.stringify(payload))
+}
+
+
+export { SET_login, SetUser }

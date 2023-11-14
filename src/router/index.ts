@@ -49,9 +49,18 @@ const router = createRouter({
           component: () => import('../views/tools/tag.vue')
         },
         {
+          path: 'all/',
+          name: 'all',
+          component: () => import('../views/tools/all.vue')
+        },
+        {
           path: 'login/',
           name: 'login',
           component: () => import('../views/tools/CRUD/login.vue')
+        },
+        {
+          path: 'signUp/',
+          component: () => import('../views/tools/CRUD/signUp.vue')
         },
       ]
     },
