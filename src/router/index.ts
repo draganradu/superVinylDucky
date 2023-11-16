@@ -103,8 +103,7 @@ const router = createRouter({
           name: 'Products',
           component: () => import('../views/vinylDucky/ProductsView.vue'),
           beforeEnter: (to: any, _from: any, next: any) => {
-            const productIds = Object.keys(store.state.shop.products)
-            if (productIds.indexOf(to.params.id) > -1) {
+            if (to.params.id) {
               return next()
             } else {
               return next('/404/')

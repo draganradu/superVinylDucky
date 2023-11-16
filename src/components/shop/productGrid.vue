@@ -2,26 +2,29 @@
 import Color from '@/components/shop/helper/color.vue'
 import { useStore } from 'vuex'
 import { useI18n } from "vue-i18n"
-import { ref } from 'vue'
+import { computed, onMounted } from 'vue'
 
 // hooks ---------------------------------------
 const { locale } = useI18n()
 const store = useStore()
 
+// events ---------------------------------------
+onMounted(async () => {
+  await store.dispatch('shop/callProducts', 3)
+})
+
 // data ---------------------------------------
-const getProducts = store.getters['shop/getProductsGrid']
-const keys = Object.keys(getProducts)
-const keys3 = keys.splice(0, 3)
+const getProducts = computed(() => store.getters['shop/getProductsGrid'])
+const keys = computed(() => Object.keys(getProducts.value || {}))
 
 // methods ------------------------------------
 
-const show3 = ref(true)
 
 </script>
 
 <template>
   <div id="productGrid" class="mt-5 d-grid a-clean">
-    <RouterLink v-for="i in keys3" :key="i" class="grid-item rounded-4 card shadow overflow-hidden"
+    <RouterLink v-for="i in keys" :key="i" class="grid-item rounded-4 card shadow overflow-hidden"
       :to="`/${locale}/stickers/${i}/`">
       <div class="coming-soon" v-if="getProducts[i].upcoming">Coming soon</div>
       <div class="container-colors hide" v-if="getProducts[i].colors">
@@ -37,24 +40,11 @@ const show3 = ref(true)
       </div>
     </RouterLink>
 
-    <RouterLink v-if="!show3" v-for="i in keys" :key="i" class="grid-item rounded-4 card shadow overflow-hidden"
-      :to="`/${locale}/stickers/${i}/`">
-      <div class="coming-soon" v-if="getProducts[i].upcoming">Coming soon</div>
-      <div class="container-colors hide" v-if="getProducts[i].colors">
-        <Color v-for="color in getProducts[i].colors" :key="color" :color="color" />
-      </div>
-      <h3 :class="['name hide', !getProducts[i].colors ? 'mt-5' : '']"> {{ getProducts[i][locale]?.name || i }} </h3>
-      <p class="description hide text-truncate-3"> {{ getProducts[i][locale]?.description }}</p>
-      <div v-if="getProducts[i].img" class="bg-img"
-        :style="`background-image: url(https://vinylducky.nl/product-img/${getProducts[i].img[0]})`">
-      </div>
-      <div v-else class="bg-img" :style="`background-image: url(https://vinylducky.nl/product-img/placeholder.png)`">
-      </div>
-    </RouterLink>
 
-    <button v-else @click="() => { show3 = !show3 }" type="button" class="btn btn-outline-primary">Show All</button>
+    <button v-if="keys.length < 4" @click="() => { store.dispatch('shop/callProducts', 10) }" type="button"
+      class="btn btn-outline-primary">Show All</button>
 
-    <RouterLink v-if="!show3" :to="`/${locale}/all-products/`" class="btn btn-outline-primary center-fix">
+    <RouterLink v-else :to="`/${locale}/all-products/`" class="btn btn-outline-primary center-fix">
       <span>All products Tabel</span>
     </RouterLink>
   </div>

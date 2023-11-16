@@ -1,3 +1,6 @@
-export const doneTodos = (state: any) => {
-    return state.count + 5
+const setProducts = (state: any, payload: any) => {
+    state.products =  payload
 }
+
+
+export { setProducts }

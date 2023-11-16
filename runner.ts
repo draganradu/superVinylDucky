@@ -35,7 +35,6 @@ const dataXML = () => {
             if (x.indexOf(param) > -1) {
                 lookUp.push(x)
                 build = false
-                console.log(x, param, x.indexOf(param))
             }
         })
         // to do : has a error
@@ -52,12 +51,10 @@ const dataXML = () => {
         // } while (lookUp.length > 0 && i < 100);
 
         if (build) {
-            console.log("built", x)
             output = output + buildOneLine(x)
         }
     })
 
-    console.log("look up", lookUp)
     output = `<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>\n${output}\n</urlset>`
     output = `<?xml version='1.0' encoding='UTF-8'?>\n${output}`
     return output

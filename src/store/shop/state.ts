@@ -1,7 +1,7 @@
-import { products } from "./prod/combine"
+// import { products } from "./prod/combine"
 
 export default {
-  products,
+  products: {},
   socialMedia: [
     {
       name: "instagram",

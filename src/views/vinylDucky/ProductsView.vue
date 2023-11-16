@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
@@ -7,12 +7,26 @@ import Color from '@/components/shop/helper/color.vue'
 import ShopLayout from '@/layouts/ShopLayout.vue'
 import ListGroup from '@/components/shop/helper/productList.vue'
 
+// hooks ---------------------------------------
 const store = useStore()
 const route = useRoute()
 
-const product = store.getters['shop/getProduct'](route.params.id)
-const { id, img, price = 0, size, colors, printReverse, category, buyLink, material } = product
-const { name = route.params.id, description, subtitle } = product[route.params.locale as string] || {}
+// events ---------------------------------------
+
+onMounted(async () => {
+  if (!store.getters['shop/getProduct'](route.params.id)) {
+    await store.dispatch('shop/callProducts')
+  }
+  console.log("x", store.getters['shop/getProduct'](route.params.id))
+})
+
+
+// data ---------------------------------------
+const product = computed(() => store.getters['shop/getProduct'](route.params.id) || {})
+
+
+const { id, img, price = 0, size, colors, printReverse, category, buyLink, material } = product.value
+const { name = route.params.id, description, subtitle } = product.value[route.params.locale as string] || {}
 
 const { email } = store.state.shop.contact
 
