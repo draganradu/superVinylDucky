@@ -44,5 +44,8 @@ export default {
       ["frequently_asked_questions"]: "To be announced later",
       ["direct_contact"]: "To be announced later",
     }
+  },
+  logic: {
+    isFullscreen: false,
   }
 }

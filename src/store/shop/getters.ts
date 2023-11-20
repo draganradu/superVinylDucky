@@ -19,6 +19,10 @@ export const getProductsGrid = (state: ShopState) => {
   return state.products
 }
 
+export const getLogic = (state: ShopState) => {
+  return state.logic
+}
+
 export const getAllCategory = (state: ShopState) => {
   const grids = Object.keys(state.products).reduce((accumulator: any, current: any) => {
     const category = state.products[current].category

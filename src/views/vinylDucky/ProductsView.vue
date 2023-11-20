@@ -3,9 +3,9 @@ import { computed, onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import Color from '@/components/shop/helper/color.vue'
 import ShopLayout from '@/layouts/ShopLayout.vue'
-import ListGroup from '@/components/shop/helper/productList.vue'
+
+import ProductMainView from './ProductMain.vue'
 
 // hooks ---------------------------------------
 const store = useStore()
@@ -17,7 +17,6 @@ onMounted(async () => {
   if (!store.getters['shop/getProduct'](route.params.id)) {
     await store.dispatch('shop/callProducts')
   }
-  console.log("x", store.getters['shop/getProduct'](route.params.id))
 })
 
 
@@ -26,26 +25,22 @@ const product = computed(() => store.getters['shop/getProduct'](route.params.id)
 
 
 const { id, img, price = 0, size, colors, printReverse, category, buyLink, material } = product.value
-const { name = route.params.id, description, subtitle } = product.value[route.params.locale as string] || {}
+const { name = route.params.id } = product.value[route.params.locale as string] || {}
+
+const description = computed(() => product.value[route.params.locale as string]?.description)
+const subtitle = computed(() => product.value[route.params.locale as string]?.subtitle)
 
 const { email } = store.state.shop.contact
 
 // let hero = ref(img.shift());
-let collapsed = ref(img || ["placeholder.png"])
-let isFullScreen = ref(false)
+// let collapsed = ref(img || ["placeholder.png"])
+// let isFullScreen = ref(false)
 
-const setImg = (newHero: string) => {
-  if (collapsed.value[0] === newHero) {
-    isFullScreen.value = !isFullScreen.value
-  } else {
-    collapsed.value = collapsed.value.filter((x: string) => { return x !== newHero })
-    collapsed.value = [newHero, ...collapsed.value]
-  }
-}
+
 
 // seo ---------------------------------------
 useHead({
-  title: `€ ${price} , ${name} , ${subtitle}`,
+  title: `€ ${price} , ${name} , ${subtitle.value}`,
   meta: [
     {
       name: 'description',
@@ -58,8 +53,14 @@ useHead({
 
 <template>
   <main>
-    <ShopLayout :sidebar="true">
-      <div class="row">
+    <ShopLayout :sidebar="true" id="product-main">
+      <div v-if="!product">Is not loaded</div>
+      <div v-else>
+        ProdLoaded
+        <ProductMainView :product="product" />
+      </div>
+
+      <!-- <div class="row">
         <div :class="[isFullScreen ? 'col-12' : 'col-md-4', 'product-grid']">
           <div class="product-img bg-secondary bg-opacity-25 border shadow" v-for="(i, k) in collapsed" :key="k"
             @click="setImg(i)" :style="`background-image: url(https://vinylducky.nl/product-img/${i})`">
@@ -91,7 +92,7 @@ useHead({
               </ul>
 
             </div>
-            <div class="col-auto" v-if="buyLink && price">
+            <div class="col-auto" v-if="product?.buyLink && price">
               <a type="button" :href="buyLink" target="_blank" class="btn btn-outline-success">Buy Now</a>
             </div>
             <div class="col-auto" v-else> Out of Stock</div>
@@ -100,87 +101,65 @@ useHead({
         <div v-if="category" class="mt-5">Category:
           <span class="badge text-bg-primary me-1" v-for="i in category" :key="i">{{ i }}</span>
         </div>
-      </div>
+      </div>-->
     </ShopLayout>
   </main>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 // grid ------------------------
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 10px;
-  row-gap: 10px;
 
-  &>div:first-child {
-    grid-column: span 3;
+#product-main {
+  .price span {
+    background-color: gray;
+    padding: 10px;
+    color: white;
+    font-size: 1.6em;
   }
-}
 
-
-
-// img ------------------------
-
-.product-img {
-  border: 1px solid gray;
-  background-size: cover;
-  background-position: center center;
-
-  img {
-    opacity: 0;
+  .list-group,
+  .list-group li {
+    background-color: transparent !important;
   }
-}
 
-.price span {
-  background-color: gray;
-  padding: 10px;
-  color: white;
-  font-size: 1.6em;
-}
+  .list-group li {
+    border-color: gray;
+  }
 
-.list-group,
-.list-group li {
-  background-color: transparent !important;
-}
+  .list-group li b {
+    font-weight: 600;
+  }
 
-.list-group li {
-  border-color: gray;
-}
+  .sku {
+    font-size: 0.8em;
+    margin-bottom: 0;
+  }
 
-.list-group li b {
-  font-weight: 600;
-}
+  .badge.red {
+    background-color: red !important;
+  }
 
-.sku {
-  font-size: 0.8em;
-  margin-bottom: 0;
-}
-
-.badge.red {
-  background-color: red !important;
-}
-
-.badge.gold {
-  background-color: gold !important;
-  color: black !important;
-}
+  .badge.gold {
+    background-color: gold !important;
+    color: black !important;
+  }
 
 
-.badge.pink {
-  background-color: pink !important;
-  color: black !important;
-}
+  .badge.pink {
+    background-color: pink !important;
+    color: black !important;
+  }
 
-.badge.magenta {
-  background-color: magenta !important;
-  color: black !important;
-}
+  .badge.magenta {
+    background-color: magenta !important;
+    color: black !important;
+  }
 
 
-.badge.transparent {
-  background-color: transparent !important;
-  border: 1px solid black;
-  color: black !important;
+  .badge.transparent {
+    background-color: transparent !important;
+    border: 1px solid black;
+    color: black !important;
+  }
 }
 </style>
