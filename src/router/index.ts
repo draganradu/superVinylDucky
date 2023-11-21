@@ -3,7 +3,7 @@ import Tr from "@/i18n/translation"
 import LandingPageView from "@/views/LandingPage.vue"
 import InformationPageView from "@/views/informatiePage.vue"
 import NotFound from "@/views/E404.vue"
-import store from "@/store/"
+// import store from "@/store/"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +18,7 @@ const router = createRouter({
       name: 'site-map',
       component: () => import('../views/sitemap.vue')
     },
+    // need to be removed
     {
       path: '/f1/',
       name: 'firebase',

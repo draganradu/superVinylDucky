@@ -1,4 +1,7 @@
-export default {
-    products: [],
-    product: null,
+import type { ToolsState } from "./type"
+
+const state: ToolsState = {
+    tools: []
 }
+
+export default state

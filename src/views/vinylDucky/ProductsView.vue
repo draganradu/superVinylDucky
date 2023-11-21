@@ -32,9 +32,7 @@ const subtitle = computed(() => product.value[route.params.locale as string]?.su
 
 const { email } = store.state.shop.contact
 
-// let hero = ref(img.shift());
-// let collapsed = ref(img || ["placeholder.png"])
-// let isFullScreen = ref(false)
+
 
 
 

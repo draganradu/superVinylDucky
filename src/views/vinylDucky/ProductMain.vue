@@ -9,10 +9,12 @@ import Color from '@/components/shop/helper/color.vue'
 const store = useStore()
 const route = useRoute()
 
-// props ---------------------------------------
+// props | params ------------------------------
 const props = defineProps<{
   product: any
 }>()
+
+const lang = route.params.locale as string
 
 // data ---------------------------------------
 let isFullScreen = computed(() => store.getters['shop/getLogic'].isFullscreen)
@@ -25,7 +27,6 @@ const setImg = (newHero: string) => {
   }
 }
 const { email } = store.state.shop.contact
-const lang = route.params.locale as string
 
 </script>
 <template>

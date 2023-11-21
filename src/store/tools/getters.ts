@@ -1,3 +1,9 @@
-export const doneTodos = (state: any) => {
-    return state.count + 5
+import type { ToolsState } from "./type"
+
+export const getTools = (state: ToolsState) => {
+    return state.tools
+}
+
+export const getTool = (state: ToolsState) => (id: string) => {
+    return state.tools[id]
 }
