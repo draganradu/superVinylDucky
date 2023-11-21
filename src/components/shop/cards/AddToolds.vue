@@ -1,30 +1,42 @@
 <script setup lang="ts">
+import { reactive, ref } from 'vue'
+import { useStore } from "vuex"
 import CardTool from "@/components/tools/helpers/card.vue"
-import type { toolType } from "@/store/tools/type";
-import { reactive } from 'vue'
+import type { toolType } from "@/store/tools/type"
+
+// hooks ---------------------------------------
+const store = useStore()
 
 // methods ---------------------------------------
 const sendForm = () => {
-  // store.dispatch("tools/EditTool", form.value)
-  console.log(form)
+  store.dispatch("tools/AddTool", form.value)
+  form.value = { ...formInitial }
 }
 
 // data ---------------------------------------
-const form = reactive<toolType>({
-  model: "ana",
-  maker: "Parkside",
-  description: "cool looking tool",
-  color: "red",
+const description = {
+  "ID": "The id is [Location + ID]",
+  "location": "code | RA	Office tools | DU	Garadge tools | DR	Boxez mobil| AG	Boxex fixed | AN	Other Assets | A	Legacy | D 	Legacy",
+  "maker": "who made it | 'Parkside'",
+  "model": "what is it | 'Tabel saw 300'",
+  "description": ""
+}
+
+const formInitial: toolType = {
+  model: "",
+  maker: "",
+  description: "",
+  color: "",
   price: 50,
   currentMarketPrice: 98,
   retailPrice: 99,
   owner: "wjnCEzeiA4f6M75FeLMf6efZ8433",
-  EAN: "4058546289867",
-  extends: "4058546289867",
-  ID: "AN10",
-  mods: ["painted"],
+  EAN: "",
+  extends: "",
+  ID: "",
+  mods: [""],
   consumables: [""],
-  images: ["1", "2"],
+  images: ["1"],
   otherID: "",
   usedIn: [""],
   size: [0],
@@ -34,19 +46,30 @@ const form = reactive<toolType>({
   repairs: [""],
   borrowed: [{ id: "", start: new Date(), end: new Date(), note: "" }],
   location: "",
+}
+
+let form = ref<toolType>({
+  ...formInitial
 })
 
+// methods ---------------------------------------
 
+const getPosition = (needle: string) => {
+  const keys = Object.keys(description)
+  const position = keys.indexOf(needle)
+  return position + 1
+}
 </script>
 
 <template>
   <CardTool title="Add Tools">
-    <div class="editor mt-2">
-      <div v-for="(v, k) in    form   " :key="k">
+    <div class="editor mt-2 ">
+      <div v-for="(v, k) in form" :key="k" :class="`position-${getPosition(k)}`">
         <!-- String -->
         <div class="form-floating mb-3" v-if="typeof form[k] === 'string'">
           <input type="text" class="form-control rounded-3" :id="k" v-model="form[k]">
           <label :for="k">{{ k }}</label>
+          <small id="emailHelp" class="form-text text-muted">{{ description[k] }}</small>
         </div>
 
         <!-- Number -->
@@ -57,7 +80,7 @@ const form = reactive<toolType>({
 
         <!-- Array | String -->
         <div class=" mb-3" v-else-if="Array.isArray(form[k]) && typeof form[k][0] === 'string'">
-          <label for="exampleInputEmail1">Email address</label>
+          <text>{{ k }}</text>
           <input type="text" class="form-control rounded-3 mt-1" v-for="(v2, k2) in form[k]" :key="k2"
             v-model="form[k][k2]">
           <i class="bi bi-plus-circle" @click="() => { form[k].push('') }" />
@@ -65,8 +88,10 @@ const form = reactive<toolType>({
 
         <!-- Array | Number -->
         <div class="form-floating mb-3" v-else-if="Array.isArray(form[k]) && typeof form[k][0] === 'number'">
-          <input type="text" class="form-control rounded-3 mt-1" v-for="(v2, k2) in form[k]" :key="k2"
+          <text>{{ k }}</text>
+          <input type="number" class="form-control rounded-3 mt-1" v-for="(v2, k2) in form[k]" :key="k2"
             v-model="form[k][k2]">
+
           <i class="bi bi-plus-circle" @click="() => { form[k].push(0) }" />
         </div>
 
@@ -75,10 +100,26 @@ const form = reactive<toolType>({
           {{ form[k] }}
         </div>
       </div>
-
-      <span class="w-100 py-2 mb-2 mt-4 btn btn-outline-secondary rounded-3" @click=" sendForm ">
-        Send
-      </span>
     </div>
+    <span class="w-100 py-2 mb-2 mt-4 btn btn-outline-secondary rounded-3" @click="sendForm">
+      Send
+    </span>
   </CardTool>
 </template>
+
+<style lang="scss" scoped>
+.editor {
+  display: flex;
+  flex-direction: column;
+
+  @for $i from 1 through 50 {
+    .position-#{$i} {
+      order: #{$i};
+    }
+  }
+
+  .position-0 {
+    order: 99;
+  }
+}
+</style>

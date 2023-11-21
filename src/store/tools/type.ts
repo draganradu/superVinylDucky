@@ -1,5 +1,5 @@
 interface abstractTools {
-    color: string,
+    color?: string,
     currentMarketPrice: number,
     consumables?: string[],
     description?: string,
@@ -21,18 +21,18 @@ interface personalTools extends abstractTools {
     owner: string,
     extends?: string,
     price: number,
-    mods: string [],
+    mods: string[],
     purchaseDate: Date,
     usage: number, // usage per year (365 every day/ 1 once per year )
-    repairs?: string [],
-    borrowed?: {id: string, start: Date, end: Date, note: string}[]
-    location: string 
+    repairs?: string[],
+    borrowed?: { id: string, start: Date, end: Date, note: string }[]
+    location: string
 }
 
 interface publicTool extends abstractTools {
     EAN: string,
     retailPrice: number,
-        
+
 }
 
 type toolType = personalTools & publicTool;
@@ -45,4 +45,9 @@ interface ToolsState {
     tools: groupToolType[]
 }
 
-export type { ToolsState, toolType, publicTool, personalTools } 
+export enum dbCollections {
+    PersonalTools = "PersonalTools",
+    PublicTools = "PublicTools",
+}
+
+export type { ToolsState, toolType, publicTool, personalTools, groupToolType } 

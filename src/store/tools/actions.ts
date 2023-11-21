@@ -1,11 +1,11 @@
-import { collection, getDocs, query, limit, where, addDoc, setDoc, doc } from "firebase/firestore"
+import { collection, getDocs, query, limit, where, addDoc, setDoc, doc, deleteDoc } from "firebase/firestore"
 import { db } from "@/firebase/db"
-import type { publicTool, toolType, ToolsState } from "./type"
+import { type publicTool, type toolType, type ToolsState, type personalTools, dbCollections } from "./type"
 
 export const callTools = async (context: any, payload: number) => {
     // methods ------------------------------
     const getPublicTools = async (payload: toolType[], limitQuery?: number) => {
-        const collecttionDB = collection(db, "AllTools")
+        const collecttionDB = collection(db, dbCollections.PublicTools)
         const IN = extractExtends(payload)
 
         const queryDB = query(collecttionDB, where("EAN", "in", IN), limit(limitQuery || 100))
@@ -22,7 +22,7 @@ export const callTools = async (context: any, payload: number) => {
     }
 
     const getPersonalTools = async (payload: number) => {
-        const collecttionDB = collection(db, "Tools")
+        const collecttionDB = collection(db, dbCollections.PersonalTools)
 
         const queryDB = query(collecttionDB, where("owner", "==", "wjnCEzeiA4f6M75FeLMf6efZ8433"), limit(payload || 100))
         const querySnapshot = await getDocs(queryDB)
@@ -38,7 +38,7 @@ export const callTools = async (context: any, payload: number) => {
 
     const extractExtends = (payload: toolType[]) => {
         return Object.values(payload).reduce((acc: any, cur: toolType) => {
-            return [...acc, cur.Extends]
+            return [...acc, cur.extends]
         }, [])
     }
 
@@ -65,10 +65,60 @@ export const callTools = async (context: any, payload: number) => {
 }
 
 export const AddTool = async (context: any, payload: toolType) => {
-    // const docRef = await addDoc(collection(db, "Tools"), payload)
-    // console.log("Document written with ID: ", docRef.id)
-    // console.log("set", docRef)
-    // return docRef
+    const newData: toolType = JSON.parse(JSON.stringify(payload))
+    const splitForPublic = (payload: toolType): publicTool => {
+        return {
+            color: payload.color,
+            currentMarketPrice: payload.currentMarketPrice,
+            consumables: payload.consumables,
+            description: payload.description,
+            images: payload.images,
+            maker: payload.maker,
+            model: payload.model,
+            otherID: payload.otherID,
+            usedIn: payload.usedIn,
+            size: payload.size,
+            weight: payload.weight,
+            EAN: payload.EAN,
+            retailPrice: payload.retailPrice,
+        }
+    }
+
+    const splitForPersonal = (payload: toolType): personalTools => {
+        return {
+            color: payload.color,
+            currentMarketPrice: payload.currentMarketPrice,
+            consumables: payload.consumables,
+            description: payload.description,
+            images: payload.images,
+            maker: payload.maker,
+            model: payload.model,
+            otherID: payload.otherID,
+            usedIn: payload.usedIn,
+            size: payload.size,
+            weight: payload.weight,
+            ID: payload.ID,
+            owner: payload.owner,
+            extends: payload.extends,
+            price: payload.price,
+            mods: payload.mods,
+            purchaseDate: payload.purchaseDate,
+            usage: payload.usage,
+            repairs: payload.repairs,
+            borrowed: payload.borrowed,
+            location: payload.location
+        }
+    }
+
+    if (newData.extends) {
+        // add new public tool
+        const toolPublic = JSON.parse(JSON.stringify(splitForPublic(newData)))
+        await addDoc(collection(db, dbCollections.PublicTools), toolPublic)
+    }
+
+    // add a new personal
+    const toolPersonal = JSON.parse(JSON.stringify(splitForPersonal(newData)))
+    await addDoc(collection(db, dbCollections.PersonalTools), toolPersonal)
     return
 }
 
@@ -83,7 +133,7 @@ const setPublicTool = async (id: string, data: toolType) => {
     }
 
     // send to firebase
-    const docRef = await setDoc(doc(db, "PublicTools", id), JSON.parse(JSON.stringify(newData)))
+    const docRef = await setDoc(doc(db, dbCollections.PublicTools, id), JSON.parse(JSON.stringify(newData)))
 
     console.log(id, newData, docRef)
     return true
@@ -100,13 +150,13 @@ const setPersonalTool = async (id: string, data: toolType) => {
     }
 
     // send to firebase
-    const docRef = await setDoc(doc(db, "PersonalTools", id), JSON.parse(JSON.stringify(newData)))
+    const docRef = await setDoc(doc(db, dbCollections.PersonalTools, id), JSON.parse(JSON.stringify(newData)))
 
     console.log(id, newData, docRef)
     return true
 }
 
-export const EditTool = async (context: ToolsState, payload: toolType) => {
+export const EditTool = async (context: { state: ToolsState }, payload: toolType) => {
     const { personalToolID, publicToolID } = context.state.tools[payload.ID].private
 
     if (personalToolID) {
@@ -120,3 +170,10 @@ export const EditTool = async (context: ToolsState, payload: toolType) => {
     return true
 }
 
+export const RemoveTools = async (context: { state: ToolsState }, payload: toolType) => {
+    //local remove
+    delete context.state.tools[payload.ID]
+    //server remove
+    console.log(payload.private.personalToolID)
+    await deleteDoc(doc(db, dbCollections.PersonalTools, payload.private.personalToolID))
+}

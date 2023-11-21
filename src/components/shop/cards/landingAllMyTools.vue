@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import CardTool from "@/components/tools/helpers/card.vue"
-import { useStore } from 'vuex'
 import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
+import CardTool from "@/components/tools/helpers/card.vue"
+import type { groupToolType, toolType } from "@/store/tools/type"
 
 // hooks ---------------------------------------
 const store = useStore()
@@ -12,17 +13,34 @@ onMounted(async () => {
 })
 
 // data ---------------------------------------
-const tools = computed(() => store.getters['tools/getTools'])
+const tools = computed<groupToolType>(() => store.getters['tools/getTools'])
+
+const removeTool = async (id: toolType) => {
+  if (id) {
+    await store.dispatch('tools/RemoveTools', id)
+  }
+
+}
+
+// methods ---------------------------------------
+
 
 </script>
 
 <template>
-  <CardTool title="My tools" :isLoading="!tools">
+  <CardTool title="My tools" :isLoading="!Object.keys(tools).length">
     <ul class="list-group list-group-flush a-clean">
-      <li class="list-group-item" v-for="i in tools" :key="i.ID">
-        <RouterLink :to="`id/${i.ID}`">{{ i.ID }} | {{ i.Name }}</RouterLink> XX
+      <li class="list-group-item d-flex" v-for="i in tools" :key="i.ID">
+        <RouterLink class="grow-1" :to="`id/${i.ID}`">{{ [i.ID, i.maker, i.model].join(" | ") }}
+        </RouterLink>
+        <i class="bi bi-x-circle" @click="removeTool(i)"></i>
       </li>
     </ul>
   </CardTool>
-
 </template>
+
+<style>
+.grow-1 {
+  flex-grow: 1;
+}
+</style>
