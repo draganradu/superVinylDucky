@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import { useStore } from "vuex"
 import CardTool from "@/components/tools/helpers/card.vue"
 import type { toolType } from "@/store/tools/type"
@@ -9,7 +9,11 @@ const store = useStore()
 
 // methods ---------------------------------------
 const sendForm = () => {
+  // set alert
+  store.commit('user/SetAlert', { text: `We added ${form.value.ID}`, type: "success ", autoRemove: true, hiden: false  })
+  // add to firestore
   store.dispatch("tools/AddTool", form.value)
+  // reset form
   form.value = { ...formInitial }
 }
 

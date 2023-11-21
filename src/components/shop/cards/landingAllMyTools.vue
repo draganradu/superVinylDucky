@@ -17,9 +17,9 @@ const tools = computed<groupToolType>(() => store.getters['tools/getTools'])
 
 const removeTool = async (id: toolType) => {
   if (id) {
+    store.commit('user/SetAlert', { text: `Removed ${id.ID}`, type: "danger", autoRemove: true, hiden: false })
     await store.dispatch('tools/RemoveTools', id)
   }
-
 }
 
 // methods ---------------------------------------
