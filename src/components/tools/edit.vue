@@ -5,6 +5,10 @@ import { ref } from 'vue'
 // hooks ---------------------------------------
 const store = useStore()
 
+// methods ---------------------------------------
+const sendForm = () => {
+  store.dispatch("tools/EditTool", form.value)
+}
 
 // data ---------------------------------------
 const form = ref({
@@ -17,14 +21,7 @@ const form = ref({
   ID: "AN10",
   Mods: "painted",
   Name: "FASTBACK",
-
-
 })
-
-// Methods ---------------------------------------
-const sendForm = () => {
-  store.dispatch("tools/EditTool", form.value)
-}
 
 </script>
 

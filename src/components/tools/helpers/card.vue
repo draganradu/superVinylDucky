@@ -2,7 +2,7 @@
 
 defineProps<{
   title: string,
-  isLoading: boolean,
+  isLoading?: boolean,
 }>()
 </script>
 

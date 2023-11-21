@@ -1,8 +1,9 @@
 interface abstractTools {
     color: string,
-    consumables: string[],
+    currentMarketPrice: number,
+    consumables?: string[],
     description?: string,
-    images: string[]
+    images?: string[]
     maker?: string,
     model?: string,
     otherID?: string,
@@ -17,14 +18,15 @@ interface abstractTools {
 
 interface personalTools extends abstractTools {
     ID: string
+    owner: string,
     extends?: string,
     price: number,
     mods: string [],
     purchaseDate: Date,
     usage: number, // usage per year (365 every day/ 1 once per year )
-    repairs: string [],
-    borrowed?: {id: string, start: Date, end: Date note: string}[]
-    Location: string 
+    repairs?: string [],
+    borrowed?: {id: string, start: Date, end: Date, note: string}[]
+    location: string 
 }
 
 interface publicTool extends abstractTools {
