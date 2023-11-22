@@ -10,7 +10,7 @@ const store = useStore()
 // methods ---------------------------------------
 const sendForm = () => {
   // set alert
-  store.commit('user/SetAlert', { text: `We added ${form.value.ID}`, type: "success ", autoRemove: true, hiden: false  })
+  store.commit('user/SetAlert', { text: `We added ${form.value.ID}`, type: "success ", autoRemove: true, hiden: false })
   // add to firestore
   store.dispatch("tools/AddTool", form.value)
   // reset form
@@ -27,17 +27,20 @@ const description = {
 }
 
 const formInitial: toolType = {
-  model: "",
+  ID: "",
+  location: "",
   maker: "",
+  model: "",
   description: "",
+  EAN: "",
+  extends: "",
+  owner: "wjnCEzeiA4f6M75FeLMf6efZ8433",
+
   color: "",
   price: 50,
   currentMarketPrice: 98,
   retailPrice: 99,
-  owner: "wjnCEzeiA4f6M75FeLMf6efZ8433",
-  EAN: "",
-  extends: "",
-  ID: "",
+
   mods: [""],
   consumables: [""],
   images: ["1"],
@@ -49,7 +52,6 @@ const formInitial: toolType = {
   usage: 1,
   repairs: [""],
   borrowed: [{ id: "", start: new Date(), end: new Date(), note: "" }],
-  location: "",
 }
 
 let form = ref<toolType>({
@@ -58,17 +60,12 @@ let form = ref<toolType>({
 
 // methods ---------------------------------------
 
-const getPosition = (needle: string) => {
-  const keys = Object.keys(description)
-  const position = keys.indexOf(needle)
-  return position + 1
-}
 </script>
 
 <template>
   <CardTool title="Add Tools">
     <div class="editor mt-2 ">
-      <div v-for="(v, k) in form" :key="k" :class="`position-${getPosition(k)}`">
+      <div v-for="(v, k) in form" :key="k">
         <!-- String -->
         <div class="form-floating mb-3" v-if="typeof form[k] === 'string'">
           <input type="text" class="form-control rounded-3" :id="k" v-model="form[k]">
@@ -79,6 +76,13 @@ const getPosition = (needle: string) => {
         <!-- Number -->
         <div class="form-floating mb-3" v-else-if="typeof form[k] === 'number'">
           <input type="number" class="form-control rounded-3" :id="k" v-model="form[k]">
+          <label :for="k">{{ k }}</label>
+        </div>
+
+        <!-- Date -->
+        <!-- BUG instance of date is wrong -->
+        <div class="form-floating mb-3" v-else-if="(form[k] instanceof Date)">
+          <input type="Date" class="form-control rounded-3" :id="k" v-model="form[k]">
           <label :for="k">{{ k }}</label>
         </div>
 

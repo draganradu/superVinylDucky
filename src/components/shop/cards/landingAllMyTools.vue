@@ -36,6 +36,12 @@ const removeTool = async (id: toolType) => {
         <i class="bi bi-x-circle" @click="removeTool(i)"></i>
       </li>
     </ul>
+    <hr />
+    <div class="text-end">
+      <small class="a-clean">
+        <RouterLink to="/tools/table">See as table</RouterLink>
+      </small>
+    </div>
   </CardTool>
 </template>
 
