@@ -39,7 +39,7 @@ const { email } = store.state.shop.contact
     </div>
     <div :class="[isFullScreen ? 'col-12' : 'col-md-6']">
       <!-- <p class="sku">SKU: {{ id }}</p> -->
-      <h1>{{ product[lang]?.name }}</h1>
+      <h1>{{ product[lang]?.name || product.title }}</h1>
       <p>{{ product[lang]?.subtitle }}</p>
       <hr />
       <div class="row">

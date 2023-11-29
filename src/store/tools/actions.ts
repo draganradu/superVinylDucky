@@ -135,8 +135,7 @@ const setPublicTool = async (id: string, data: toolType) => {
     // send to firebase
     const docRef = await setDoc(doc(db, dbCollections.PublicTools, id), JSON.parse(JSON.stringify(newData)))
 
-    console.log(id, newData, docRef)
-    return true
+    return docRef
 }
 
 const setPersonalTool = async (id: string, data: toolType) => {

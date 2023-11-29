@@ -48,6 +48,7 @@ interface ToolsState {
 export enum dbCollections {
     PersonalTools = "PersonalTools",
     PublicTools = "PublicTools",
+    storeProducts = "storeProducts",
 }
 
 export type { ToolsState, toolType, publicTool, personalTools, groupToolType } 
