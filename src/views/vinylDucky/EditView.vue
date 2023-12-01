@@ -27,11 +27,14 @@ const props = defineProps<{
 
 const size = props.product?.size || [0, 0]
 const en = props.product?.en || { description: "", name: "" }
+const nl = props.product?.nl || { description: "", name: "" }
 const id = route.params.id as string
 
 // data ---------------------------------------
 const form = ref({
   title: props.product.title,
+  en,
+  nl,
   buyLink: props.product.buyLink,
   // to add description
   category: (props.product.category || ["sticker"]).join(", "),
@@ -41,7 +44,6 @@ const form = ref({
   price: props.product.price || 0,
   sizeL: size[0],
   sizeH: size[1],
-  en
 })
 
 
@@ -49,20 +51,21 @@ const form = ref({
 <template>
   <div v-for="(v, k) in form" :key="k">
     <!-- Normal input -->
-    <div v-if="!['en'].includes(k)" class="form-floating mb-3">
+    <div v-if="!['en', 'nl'].includes(k)" class="form-floating mb-3">
       <input type="text" class="form-control rounded-3" :id="k" v-model="form[k]">
       <label :for="k">{{ k }}</label>
     </div>
 
     <!-- EN description name -->
-    <div v-else-if="k === 'en'">
+    <div v-else-if="['en', 'nl'].includes(k)">
       <div class="form-floating mb-3">
-        <textarea class="form-control" placeholder="Leave a comment here" id="en-description" v-model="form[k].description" style="height: 100px"></textarea>
-        <label for="en-description">{{k}} >> Description</label>
+        <textarea class="form-control" placeholder="Leave a comment here" id="en-description"
+          v-model="form[k].description" style="height: 100px"></textarea>
+        <label for="en-description">{{ k }} >> Description</label>
       </div>
       <div class="form-floating mb-3">
         <input type="text" class="form-control rounded-3" id="en-name" v-model="form[k].name">
-        <label for="en-name">{{k}} >> Name</label>
+        <label for="en-name">{{ k }} >> Name</label>
       </div>
     </div>
   </div>
