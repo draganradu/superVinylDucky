@@ -2,7 +2,7 @@
 import { useHead } from '@unhead/vue'
 import { useStore } from 'vuex'
 import Card from "@/scaffolding/Card.vue"
-import shopLayout from '@/layouts/ShopLayout.vue'
+import shopLayout from '@/layouts/shop/main.vue'
 
 // storeData ---------------------------------------
 const store = useStore()

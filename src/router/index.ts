@@ -72,7 +72,12 @@ const router = createRouter({
         {
           path: 'all-products/',
           name: 'allProducts',
-          component: () => import('../views/vinylDucky/AllProducts.vue')
+          component: () => import('../views/shop/AllProducts.vue')
+        },
+        {
+          path: 'add-new/',
+          name: 'addNewProduct',
+          component: () => import('../views/shop/addView.vue')
         },
         {
           path: 'radu-dragan/:skill?',
@@ -95,7 +100,7 @@ const router = createRouter({
         {
           path: 'stickers/:id',
           name: 'Products',
-          component: () => import('../views/vinylDucky/ProductsView.vue'),
+          component: () => import('../views/shop/ProductsView.vue'),
           beforeEnter: (to: any, _from: any, next: any) => {
             if (to.params.id) {
               return next()
@@ -107,7 +112,7 @@ const router = createRouter({
         {
           path: 'stickers-category/:name/',
           name: 'ProductsCategory',
-          component: () => import('../views/vinylDucky/CategoryView.vue')
+          component: () => import('../views/shop/CategoryView.vue')
         },
 
       ]

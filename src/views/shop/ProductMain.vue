@@ -2,8 +2,8 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex'
-import ListGroup from '@/components/shop/helper/productList.vue'
 import Color from '@/components/shop/helper/color.vue'
+import ListGroup from '@/components/shop/helper/productList.vue'
 
 // hooks ---------------------------------------
 const store = useStore()
@@ -18,7 +18,7 @@ const lang = route.params.locale as string
 
 // data ---------------------------------------
 let isFullScreen = computed(() => store.getters['shop/getLogic'].isFullscreen)
-const dbID = computed(() => props.product.dbID)
+// const dbID = computed(() => props.product.dbID)
 let collapsed = computed(() => props.product?.img || ["placeholder.png"])
 const setImg = (newHero: string) => {
   if (collapsed.value[0] === newHero) {

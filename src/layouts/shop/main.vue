@@ -1,20 +1,37 @@
 <script setup lang="ts">
+// 0.0.8 ----------------------------------------
 import Container from '@/scaffolding/Container.vue'
 import Footer from "@/components/shop/footer.vue"
 import Sidebar from "@/components/sidebar/index.vue"
+import { useHead } from '@unhead/vue';
 
-defineProps<{
+const props = defineProps<{
   sidebar?: boolean
+  title?: string
+  description?: string
 }>()
+
+const { title, description } = props
+if (title && description) {
+  useHead({
+    title,
+    meta: [
+      {
+        name: 'description',
+        content: description
+      },
+    ],
+  })
+}
+
 
 </script>
 
 <template>
   <div id="shopLayout" class="bg-body-secondary pt-5">
-    <!-- <Header /> -->
     <Container>
-      
-      <Sidebar :sidebar="sidebar"/>
+
+      <Sidebar :sidebar="props.sidebar" />
       <div class="col">
         <div class="main-logo">Vinyl Ducky</div>
         <slot />
@@ -40,7 +57,7 @@ defineProps<{
   display: flex;
   flex-direction: column;
 
-  & > div {
+  &>div {
     flex-grow: 1;
   }
 }

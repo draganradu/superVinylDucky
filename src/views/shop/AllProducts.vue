@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ShopLayout from '@/layouts/ShopLayout.vue'
+import ShopLayout from '@/layouts/shop/main.vue'
 import { useI18n } from "vue-i18n"
 import { useStore } from 'vuex'
 
@@ -9,7 +9,7 @@ const store = useStore()
 
 // data ---------------------------------------
 const getProducts = store.getters['shop/getProductsGrid']
-const getCategory = store.getters['shop/getAllCategory']
+// const getCategory = store.getters['shop/getAllCategory']
 const keys = Object.keys(getProducts)
 
 </script>
@@ -19,7 +19,7 @@ const keys = Object.keys(getProducts)
     <ShopLayout :sidebar="true">
       <div class="row">
         <div class="col p-3 bg-white">
-          <h1 class="mb-5">All Products</h1>
+          <h1 class="mb-5 d-flex justify-content-between"><span>All Products</span> <span class="badge text-bg-success me-1">+</span> </h1>
           <table class="table table-striped a-clean">
             <thead>
               <tr>

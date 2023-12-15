@@ -5,7 +5,7 @@ import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import EditMainView from './EditView.vue'
 import ProductMainView from './ProductMain.vue'
-import ShopLayout from '@/layouts/ShopLayout.vue'
+import ShopLayout from '@/layouts/shop/main.vue'
 
 // hooks ---------------------------------------
 const store = useStore()

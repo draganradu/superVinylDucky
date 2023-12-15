@@ -6,11 +6,12 @@ import AboutUs from '@/components/shop/about.vue'
 import Contact from '@/components/shop/contact.vue'
 import Hero from '@/components/shop/hero.vue'
 import ProductGrid from '@/components/shop/productGrid.vue'
-import ShopLayout from '@/layouts/ShopLayout.vue'
+import ShopLayout from '@/layouts/shop/main.vue'
 import SocialMedia from '@/components/shop/socialMedia.vue'
 import Video from '@/components/Video.vue'
 
 // seo ------------------------------------------
+// TODO ECBGI-76
 useHead({
   title: 'Viny Ducky is a vinyl sticker shop and a bit more',
   meta: [
