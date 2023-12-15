@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // props | params ------------------------------
 const props = defineProps<{
-  label?: string,
-  value?: any,
   fallback?: string
+  label?: string,
   light?: boolean
+  value?: any,
 }>()
 
 // data ---------------------------------------

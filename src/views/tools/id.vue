@@ -1,26 +1,39 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import Container from '@/scaffolding/Container.vue'
-import Sidebar from "@/components/sidebar/sidebarTools.vue"
-import { useStore } from 'vuex'
+// 0.0.8 ----------------------------------------
 import { computed, onMounted, ref } from 'vue'
+import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+import Container from '@/scaffolding/Container.vue'
 import EditMode from "@/components/tools/edit.vue"
+import Sidebar from "@/components/sidebar/sidebarTools.vue"
 
-// hooks ---------------------------------------
+// hooks ----------------------------------------
 const store = useStore()
 const route = useRoute()
-
-// props | params ------------------------------
-const prodID = route.params.id as string
 
 // events ---------------------------------------
 onMounted(async () => {
   await store.dispatch('tools/callTools')
 })
 
-// data ---------------------------------------
+// store / props / params -----------------------
+const prodID = route.params.id as string
 const tools = computed(() => store.getters['tools/getTool'](prodID))
+
+// logic ----------------------------------------
 const edit = ref(false)
+
+// seo ------------------------------------------
+useHead({
+  title: 'Get tools by ID',
+  meta: [
+    {
+      name: 'description',
+      content: "This are the tools by ID"
+    },
+  ],
+})
 
 </script>
 

@@ -1,10 +1,10 @@
 <script setup lang="ts">
+// 0.0.8 ----------------------------------------
 import AddTools from "@/components/shop/cards/AddToolds.vue"
 import AllTools from "@/components/shop/cards/landingAllMyTools.vue"
 import Container from '@/scaffolding/Container.vue'
-import Sidebar from "@/components/sidebar/sidebarTools.vue"
 import NotificationService from "@/components/tools/notificationService.vue"
-
+import Sidebar from "@/components/sidebar/sidebarTools.vue"
 </script>
 
 <template>

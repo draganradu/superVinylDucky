@@ -1,5 +1,6 @@
 
 <script setup lang="ts">
+// 0.0.8 ----------------------------------------
 import { useHead } from '@unhead/vue'
 import AboutUs from '@/components/shop/about.vue'
 import Contact from '@/components/shop/contact.vue'
@@ -9,7 +10,7 @@ import ShopLayout from '@/layouts/ShopLayout.vue'
 import SocialMedia from '@/components/shop/socialMedia.vue'
 import Video from '@/components/Video.vue'
 
-// seo ---------------------------------------
+// seo ------------------------------------------
 useHead({
   title: 'Viny Ducky is a vinyl sticker shop and a bit more',
   meta: [
@@ -19,7 +20,6 @@ useHead({
     },
   ],
 })
-
 </script>
 
 <template>

@@ -1,22 +1,19 @@
 <script setup lang="ts">
+// 0.0.8 ----------------------------------------
 import { useHead } from '@unhead/vue'
 import { useI18n } from "vue-i18n"
 import { useStore } from 'vuex'
 import Card from '@/scaffolding/Card.vue'
 import shopLayout from '@/layouts/ShopLayout.vue'
 
-// translations -----------------------
+// hooks ----------------------------------------
 const { locale } = useI18n()
-
-// store data -------------------------
 const store = useStore()
+
+// store / props / params -----------------------
 const { isDebug } = store.state.user
 
-// seo ---------------------------------------
-useHead({
-  title: 'Information regarding Vinyl Ducky'
-})
-
+// logic ----------------------------------------
 const todoStructure = [
   ["WhatsApp", "https://web.whatsapp.com/"],
   ["Messinger", "https://www.messenger.com/marketplace/"],
@@ -28,6 +25,10 @@ const todoStructure = [
   ["Marktplaats", "https://www.marktplaats.nl/messages"]
 ]
 
+// seo ---------------------------------------
+useHead({
+  title: 'Information regarding Vinyl Ducky'
+})
 </script>
 
 <template>

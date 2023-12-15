@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import Container from '@/scaffolding/Container.vue'
-import Sidebar from "@/components/sidebar/sidebarTools.vue"
-import NotificationService from "@/components/tools/notificationService.vue"
-import { useStore } from 'vuex'
+// 0.0.8 ----------------------------------------
 import { computed, onMounted } from 'vue'
+import { useHead } from '@unhead/vue'
+import { useStore } from 'vuex'
+import Container from '@/scaffolding/Container.vue'
+import NotificationService from "@/components/tools/notificationService.vue"
+import Sidebar from "@/components/sidebar/sidebarTools.vue"
 import type { groupToolType } from '@/store/tools/type'
 
-// hooks ---------------------------------------
+// hooks ----------------------------------------
 const store = useStore()
 
 // events ---------------------------------------
@@ -14,10 +16,29 @@ onMounted(async () => {
   await store.dispatch('tools/callTools')
 })
 
-// data ---------------------------------------
+// methods --------------------------------------
+const buildHear = () => {
+  // TODO ECBGI-75
+  return ["ID", "usage", "size", "maker", "model"]
+}
+
+// store / props / params -----------------------
 const tools = computed<groupToolType>(() => store.getters['tools/getTools'])
 
-const keysList = ["ID", "usage", "size", "maker", "model"]
+// logic ----------------------------------------
+const keysList = buildHear()
+
+// seo ------------------------------------------
+useHead({
+  title: 'Table view of tools',
+  meta: [
+    {
+      name: 'description',
+      content: "All tools in a table vue"
+    },
+  ],
+})
+
 </script>
 
 <template>

@@ -1,9 +1,8 @@
 import { createRouter, createWebHistory, RouterView } from 'vue-router'
-import Tr from "@/i18n/translation"
-import LandingPageView from "@/views/LandingPage.vue"
 import InformationPageView from "@/views/informatiePage.vue"
+import LandingPageView from "@/views/LandingPage.vue"
 import NotFound from "@/views/E404.vue"
-// import store from "@/store/"
+import Tr from "@/i18n/translation"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,17 +16,6 @@ const router = createRouter({
       path: '/site-map/',
       name: 'site-map',
       component: () => import('../views/sitemap.vue')
-    },
-    // need to be removed
-    {
-      path: '/f1/',
-      name: 'firebase',
-      component: () => import('../views/f1/index.vue')
-    },
-    {
-      path: '/f2/',
-      name: 'firebase2',
-      component: () => import('../views/f2/index.vue')
     },
     {
       path: '/tools',

@@ -3,10 +3,9 @@ import { computed, onMounted, ref } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
-import ShopLayout from '@/layouts/ShopLayout.vue'
-
-import ProductMainView from './ProductMain.vue'
 import EditMainView from './EditView.vue'
+import ProductMainView from './ProductMain.vue'
+import ShopLayout from '@/layouts/ShopLayout.vue'
 
 // hooks ---------------------------------------
 const store = useStore()
@@ -19,7 +18,6 @@ onMounted(async () => {
     await store.dispatch('shop/callProducts')
   }
 })
-
 
 // data ---------------------------------------
 const product = computed(() => store.getters['shop/getProduct'](route.params.id) || {})
