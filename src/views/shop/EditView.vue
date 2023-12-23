@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
-import { editItem } from '@/components/shop/crud/formStructure'
 
 // hooks ---------------------------------------
 const store = useStore()
@@ -27,28 +26,38 @@ const props = defineProps<{
 }>()
 
 const size = props.product?.size || [0, 0]
+const en = props.product?.en || { description: "", name: "" }
+const nl = props.product?.nl || { description: "", name: "" }
+const id = route.params.id as string
 
 // data ---------------------------------------
-
-
 const form = ref({
-  ...editItem,
-  ...props.product,
-  sizeL: size[0] || editItem.sizeL,
-  sizeH: size[1] || editItem.sizeH
+  title: props.product.title,
+  en,
+  nl,
+  buyLink: props.product.buyLink,
+  // to add description
+  category: (props.product.category || ["sticker"]).join(", "),
+  colors: (props.product.colors || ["black"]).join(", "),
+  img: (props.product.img || []).join(", "),
+  material: props.product.material || "Oracal 651",
+  price: props.product.price || 0,
+  sizeL: size[0],
+  sizeH: size[1],
 })
+
 
 </script>
 <template>
   <div v-for="(v, k) in form" :key="k">
     <!-- Normal input -->
-    <div v-if="!['en', 'nl'].includes(String(k))" class="form-floating mb-3">
-      <input type="text" class="form-control rounded-3" :id="String(k)" v-model="form[k]">
-      <label :for="String(k)">{{ k }}</label>
+    <div v-if="!['en', 'nl'].includes(k)" class="form-floating mb-3">
+      <input type="text" class="form-control rounded-3" :id="k" v-model="form[k]">
+      <label :for="k">{{ k }}</label>
     </div>
 
     <!-- EN description name -->
-    <div v-else-if="['en', 'nl'].includes(String(k))">
+    <div v-else-if="['en', 'nl'].includes(k)">
       <div class="form-floating mb-3">
         <textarea class="form-control" placeholder="Leave a comment here" id="en-description"
           v-model="form[k].description" style="height: 100px"></textarea>

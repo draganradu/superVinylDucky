@@ -1,7 +1,7 @@
 import type { ToolsState } from "./type"
 
 const state: ToolsState = {
-    tools: []
+    tools: {}
 }
 
 export default state

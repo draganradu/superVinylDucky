@@ -1,4 +1,4 @@
-# superVinylDucky 0.0.7
+# superVinylDucky 0.0.8
 landing website
 
 ## Branch structure

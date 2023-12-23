@@ -16,7 +16,7 @@ interface abstractTools {
     weight?: number,
 }
 
-interface personalTools extends abstractTools {
+export interface personalTools extends abstractTools {
     ID: string
     owner: string,
     extends?: string,
@@ -29,20 +29,20 @@ interface personalTools extends abstractTools {
     location: string
 }
 
-interface publicTool extends abstractTools {
+export interface publicTool extends abstractTools {
     EAN: string,
     retailPrice: number,
 
 }
 
-type toolType = personalTools & publicTool;
+export type toolType = personalTools & publicTool;
 
-interface groupToolType {
+export interface groupToolType {
     [key: string]: toolType;
 }
 
-interface ToolsState {
-    tools: groupToolType[]
+export interface ToolsState {
+    tools: groupToolType
 }
 
 export enum dbCollections {
@@ -50,5 +50,3 @@ export enum dbCollections {
     PublicTools = "PublicTools",
     storeProducts = "storeProducts",
 }
-
-export type { ToolsState, toolType, publicTool, personalTools, groupToolType } 

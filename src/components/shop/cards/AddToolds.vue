@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { formInitial } from '@/store/tools/form'
 import { ref } from 'vue'
 import { useStore } from "vuex"
 import CardTool from "@/components/tools/helpers/card.vue"
@@ -18,7 +19,7 @@ const sendForm = () => {
 }
 
 // data ---------------------------------------
-const description = {
+const description: { [key: string]: string } = {
   "ID": "The id is [Location + ID]",
   "location": "code | RA	Office tools | DU	Garadge tools | DR	Boxez mobil| AG	Boxex fixed | AN	Other Assets | A	Legacy | D 	Legacy",
   "maker": "who made it | 'Parkside'",
@@ -26,39 +27,15 @@ const description = {
   "description": ""
 }
 
-const formInitial: toolType = {
-  ID: "",
-  location: "",
-  maker: "",
-  model: "",
-  description: "",
-  EAN: "",
-  extends: "",
-  owner: "wjnCEzeiA4f6M75FeLMf6efZ8433",
-
-  color: "",
-  price: 50,
-  currentMarketPrice: 98,
-  retailPrice: 99,
-
-  mods: [""],
-  consumables: [""],
-  images: ["1"],
-  otherID: "",
-  usedIn: [""],
-  size: [0],
-  weight: 0,
-  purchaseDate: new Date(),
-  usage: 1,
-  repairs: [""],
-  borrowed: [{ id: "", start: new Date(), end: new Date(), note: "" }],
-}
-
 let form = ref<toolType>({
   ...formInitial
 })
 
 // methods ---------------------------------------
+const isStringArray = (arr: any): boolean => {
+  if (arr.length === 0) return false
+  return typeof arr[0] === 'string'
+}
 
 </script>
 
@@ -87,21 +64,27 @@ let form = ref<toolType>({
         </div>
 
         <!-- Array | String -->
-        <div class=" mb-3" v-else-if="Array.isArray(form[k]) && typeof form[k][0] === 'string'">
+        <div class=" mb-3" v-else-if="isStringArray(form[k])">
           <text>{{ k }}</text>
-          <input type="text" class="form-control rounded-3 mt-1" v-for="(v2, k2) in form[k]" :key="k2"
+          
+          <!-- ECBGI-78 fix form -->
+          <!-- <input type="text" class="form-control rounded-3 mt-1" v-for="(v2, k2) in form[k]" :key="k2"
             v-model="form[k][k2]">
-          <i class="bi bi-plus-circle" @click="() => { form[k].push('') }" />
+          <i class="bi bi-plus-circle" @click="() => {
+            form[k].push('')
+          }" /> -->
         </div>
 
         <!-- Array | Number -->
-        <div class="form-floating mb-3" v-else-if="Array.isArray(form[k]) && typeof form[k][0] === 'number'">
+        <!-- ECBGI-78 fix form -->
+
+        <!-- <div class="form-floating mb-3" v-else-if="Array.isArray(form[k]) && typeof form[k][0] === 'number'">
           <text>{{ k }}</text>
           <input type="number" class="form-control rounded-3 mt-1" v-for="(v2, k2) in form[k]" :key="k2"
             v-model="form[k][k2]">
 
           <i class="bi bi-plus-circle" @click="() => { form[k].push(0) }" />
-        </div>
+        </div> -->
 
         <div v-else>
           NOPE

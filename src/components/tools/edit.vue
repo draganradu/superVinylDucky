@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { useStore } from 'vuex'
+import { formInitial } from '@/store/tools/form'
 import { ref } from 'vue'
+import { useStore } from 'vuex'
+import type { toolType } from '@/store/tools/type'
 
 // hooks ---------------------------------------
 const store = useStore()
@@ -11,16 +13,8 @@ const sendForm = () => {
 }
 
 // data ---------------------------------------
-const form = ref({
-  Descriptiption: "Z",
-  make: "y",
-  Price: 50,
-  owner: "wjnCEzeiA4f6M75FeLMf6efZ8433",
-  EAN: "4058546289867",
-  Extends: "4058546289867",
-  ID: "AN10",
-  Mods: "painted",
-  Name: "FASTBACK",
+const form = ref<toolType>({
+  ...formInitial
 })
 
 </script>
@@ -31,7 +25,7 @@ const form = ref({
 
     <div class="form-floating mb-3" v-for="(v, k) in form" :key="k">
       <input type="text" class="form-control rounded-3" :id="k" v-model="form[k]">
-      <label :for="k">{{k}}</label>
+      <label :for="k">{{ k }}</label>
     </div>
 
     <span class="w-100 py-2 mb-2 mt-4 btn btn-outline-secondary rounded-3" @click="sendForm">

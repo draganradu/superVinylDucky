@@ -56,7 +56,7 @@ useHead({
             </thead>
             <tbody>
               <tr v-for="i in tools" :key="i.ID">
-                <td v-for="k in keysList" :key="k">{{ i[k] }}</td>
+                <td v-for="k in keysList" :key="k">{{ (i as any)[k] }}</td>
               </tr>
               
             </tbody>

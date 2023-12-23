@@ -6,6 +6,7 @@ import ShopLayout from '@/layouts/shop/main.vue'
 <template>
   <main>
     <ShopLayout :sidebar="true" id="product-main">
+      Add new
       <!-- <div v-if="!product">Is not loaded</div>
       <div v-else-if="!edit">
         <ProductMainView :product="product" />

@@ -31,8 +31,7 @@ export const getAllCategory = (state: ShopState) => {
     }
     return accumulator
   }, [])
-  console.log(grids)
-  return state.products
+  return grids || []
 }
 
 export const getProduct = (state: ShopState) => (product: string) => {

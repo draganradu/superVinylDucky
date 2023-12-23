@@ -1,4 +1,4 @@
-export const editItem = {
+const editItem = {
     title: "",
     en: { description: "", name: "" },
     nl: { description: "", name: "" },
@@ -11,3 +11,6 @@ export const editItem = {
     sizeL: 0,
     sizeH: 0,
   }
+
+
+  export default { editItem }
