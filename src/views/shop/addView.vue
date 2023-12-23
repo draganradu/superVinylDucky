@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ShopLayout from '@/layouts/shop/main.vue'
+import ShopLayout from '@/layouts/shop/mainLayout.vue'
 
 </script>
 

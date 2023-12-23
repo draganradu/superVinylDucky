@@ -1,22 +1,23 @@
 <script setup lang="ts">
-import ShopLayout from '@/layouts/shop/main.vue'
-import { useI18n } from "vue-i18n"
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useStore } from 'vuex'
+import ShopLayout from '@/layouts/shop/mainLayout.vue'
 
 // hooks ---------------------------------------
 const { locale } = useI18n()
 const store = useStore()
 
-// data ---------------------------------------
-const getProducts = store.getters['shop/getProductsGrid']
-const getCategory = store.getters['shop/getAllCategory']
-const keys = Object.keys(getProducts)
+// store / props / params -----------------------
+const getProducts = computed(()=> store.getters['shop/getProductsGrid'])
+const getCategory = computed(()=> store.getters['shop/getAllCategory'])
+const keys = computed(()=> Object.keys(getProducts.value || {}))
 
 </script>
 
 <template>
   <main>
-    <ShopLayout :sidebar="true">
+    <ShopLayout :sidebar="true" :forceCallProducts="true">
       <div class="row">
         <div class="col p-3 bg-white">
           <h1 class="mb-5 d-flex justify-content-between">
@@ -54,7 +55,9 @@ const keys = Object.keys(getProducts)
             </tbody>
           </table>
           <div>
-            <span v-for="i in getCategory" :key="i" class="badge text-bg-primary me-1 a-clean"><RouterLink :to="`/en/stickers-category/${i}`">{{ i }}</RouterLink></span>
+            <span v-for="i in getCategory" :key="i" class="badge text-bg-primary me-1 a-clean">
+              <RouterLink :to="`/en/stickers-category/${i}`">{{ i }}</RouterLink>
+            </span>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { useHead } from '@unhead/vue'
 import { useI18n } from "vue-i18n"
 import { useStore } from 'vuex'
 import Card from '@/scaffolding/Card.vue'
-import shopLayout from '@/layouts/shop/main.vue'
+import shopLayout from '@/layouts/shop/mainLayout.vue'
 
 // hooks ----------------------------------------
 const { locale } = useI18n()

@@ -1,27 +1,24 @@
 <script setup lang="ts">
+// 0.0.8 ----------------------------------------
+import { computed } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import AboutMe from "@/components/cv/AboutMe.vue"
 import Container from '@/scaffolding/Container.vue'
-// import Experience from "@/components/cv/Experience.vue"
+import Footer from "@/components/cv/Footer.vue"
 import Sidebar from "@/components/sidebar/sidebarTools.vue"
-// import Social from "@/components/cv/Social.vue"
-import Video from '@/components/Video.vue'
 import Skills from "@/components/cv/Work.vue"
-// import WorkDesign from "@/components/cv/WorkDesign.vue"
-// import WorkDevelop from "@/components/cv/WorkDevelop.vue"
+import Video from '@/components/Video.vue'
 import WorkOrganizeFront from "@/components/cv/WorkOrganizeFront.vue"
 import WorkOrganizeScrum from "@/components/cv/WorkOrganizeScrum.vue"
 import WorkOrganizeUi from "@/components/cv/WorkOrganizeUi.vue"
-import Footer from "@/components/cv/Footer.vue"
-import { computed } from 'vue'
 
 // hooks ---------------------------------------
 const route = useRoute()
 const store = useStore()
 
-// props ---------------------------------------
+// store / props / params -----------------------
 const skill = route.params.skill as string
 
 // data ---------------------------------------
@@ -29,6 +26,8 @@ const data = computed(() => store.state["cv"].jobs[skill])
 const is = store.getters['cv/is'](skill)
 
 // seo ---------------------------------------
+
+//TODO: Add description
 useHead({
   title: 'Radu Dragan CV, I`m a builder of wonderful digital things '
 })

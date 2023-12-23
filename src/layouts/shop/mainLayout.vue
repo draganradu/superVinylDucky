@@ -1,30 +1,43 @@
 <script setup lang="ts">
 // 0.0.8 ----------------------------------------
+import { onMounted } from 'vue'
+import { useHead } from '@unhead/vue'
+import { useStore } from 'vuex'
 import Container from '@/scaffolding/Container.vue'
 import Footer from "@/components/shop/footer.vue"
 import Sidebar from "@/components/sidebar/index.vue"
-import { useHead } from '@unhead/vue';
 
+// hooks ----------------------------------------
+const store = useStore()
+
+
+// store / props / params -----------------------
 const props = defineProps<{
   sidebar?: boolean
   title?: string
   description?: string
+  forceCallProducts?: boolean
 }>()
 
-const { title, description } = props
-if (title && description) {
+// events ---------------------------------------
+onMounted(async () => {
+  if (props.forceCallProducts) {
+    await store.dispatch('shop/callProducts')
+  }
+})
+
+// SEO ----------------------------------------
+if (props.title || props.description) {
   useHead({
-    title,
+    title: props.title || 'Vinyl Ducky',
     meta: [
       {
         name: 'description',
-        content: description
+        content: props.description || 'We run a sticker shop called Vinyl Ducky, and we are proud of it!',
       },
     ],
   })
 }
-
-
 </script>
 
 <template>
