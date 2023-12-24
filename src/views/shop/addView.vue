@@ -1,24 +1,63 @@
 <script setup lang="ts">
+import { editItem, formHelper } from '@/components/shop/crud/formStructure'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import ShopLayout from '@/layouts/shop/mainLayout.vue'
-import { editItem } from '@/components/shop/crud/formStructure'
+
+// hooks ---------------------------------------
+const store = useStore()
+const router = useRouter()
+
+// methods ---------------------------------------
+const sendForm = async () => {
+  // set form
+  await store.dispatch("shop/addProduct", {
+    product: form.value,
+  })
+  // change url
+  router.push(`/en/stickers/${form.value.title}`)
+  // location.reload()
+}
+
+// data ---------------------------------------
+const form = ref<{ [n: string]: any }>(formHelper.toString({
+  ...editItem
+}))
+
 </script>
 
 <template>
   <main>
     <ShopLayout :sidebar="true" id="product-main">
-      Add new
+      <div v-for="(v, k) in form" :key="k">
+        <!-- form exclude -->
+        <div v-if="['dbID'].includes(k as string)" class="form-floating mb-3">
 
-      {{  editItem }}
-      <!-- <div v-if="!product">Is not loaded</div>
-      <div v-else-if="!edit">
-        <ProductMainView :product="product" />
-        <i v-if="isDebug" class="bi bi-pencil-square" @click="() => { edit = true }" />
+        </div>
+        <!-- Normal input -->
+        <div v-else-if="!['en', 'nl'].includes(k as string)" class="form-floating mb-3">
+          <input type="text" class="form-control rounded-3" :id="(k as string)" v-model="form[k]">
+          <label :for="(k as string)">{{ k }}</label>
+        </div>
+
+        <!-- EN description name -->
+        <div v-else-if="['en', 'nl'].includes(k as string)">
+          <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Leave a comment here" id="en-description"
+              v-model="form[k].description" style="height: 100px"></textarea>
+            <label for="en-description">{{ k }} >> Description</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control rounded-3" id="en-name" v-model="form[k].name">
+            <label for="en-name">{{ k }} >> Name</label>
+          </div>
+        </div>
       </div>
-      <div v-else-if="edit && isDebug" class="col-12">
-        <EditMainView :product="product" />
-        <i v-if="isDebug" class="bi bi-pencil-square" @click="() => { edit = false }" />
-      </div> -->
-xx
+
+      <span class="w-100 py-2 mb-2 mt-4 btn btn-outline-secondary rounded-3" @click="sendForm">
+        Add Product
+      </span>
     </ShopLayout>
   </main>
 </template>

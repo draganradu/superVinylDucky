@@ -23,7 +23,6 @@ const sendForm = async () => {
   location.reload()
 }
 
-
 // props | params ------------------------------
 const props = defineProps<{
   product: any
@@ -51,7 +50,7 @@ const form = ref<{ [n: string]: any }>(formHelper.toString({
     </div>
 
     <!-- EN description name -->
-    <div v-else-if="['en', 'nl'].includes(k)">
+    <div v-else-if="['en', 'nl'].includes(k as string)">
       <div class="form-floating mb-3">
         <textarea class="form-control" placeholder="Leave a comment here" id="en-description"
           v-model="form[k].description" style="height: 100px"></textarea>
@@ -65,6 +64,6 @@ const form = ref<{ [n: string]: any }>(formHelper.toString({
   </div>
 
   <span class="w-100 py-2 mb-2 mt-4 btn btn-outline-secondary rounded-3" @click="sendForm">
-    Send
+    Update
   </span>
 </template>

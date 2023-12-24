@@ -6,13 +6,19 @@ import { useStore } from 'vuex'
 import EditMainView from './EditView.vue'
 import ProductMainView from './ProductMain.vue'
 import ShopLayout from '@/layouts/shop/mainLayout.vue'
+import router from '@/router'
 
 // hooks ---------------------------------------
 const store = useStore()
 const route = useRoute()
 
-// events ---------------------------------------
+// methods --------------------------------------
+const removeProduct = async () => {
+  await store.dispatch('shop/removeProduct', route.params.id)
+  router.push('/')
+}
 
+// events ---------------------------------------
 onMounted(async () => {
   if (!store.getters['shop/getProduct'](route.params.id)) {
     await store.dispatch('shop/callProducts')
@@ -50,7 +56,8 @@ useHead({
       <div v-if="!product">Is not loaded</div>
       <div v-else-if="!edit">
         <ProductMainView :product="product" />
-        <i v-if="isDebug" class="bi bi-pencil-square" @click="() => { edit = true }" />
+        <i v-if="isDebug" class="bi bi-pencil-square me-2" @click="() => { edit = true }" />
+        <i v-if="isDebug" class="bi bi-backspace-reverse-fill" @click="removeProduct" />
       </div>
       <div v-else-if="edit && isDebug" class="col-12">
         <EditMainView :product="product" />

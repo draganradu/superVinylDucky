@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "commonjs",
+    "moduleResolution": "Node16",
     "composite": true,
     "rootDir": "../",
     "lib": ["ESNext", "dom"],
