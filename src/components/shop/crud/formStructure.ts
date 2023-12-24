@@ -25,7 +25,41 @@ export const formHelper = {
     }, {})
   },
   toObject: (formStructure: any) => {
-    return formStructure
+
+    const normalObject = Object.keys(formStructure).reduce((acc: any, key: string) => {
+      // Is Array
+      if (Array.isArray((editItem as any)[key])) {
+        const newArray = formStructure[key].replaceAll(/(\s){0,10},(\s){0,10}/g, ',').split(',')
+        // is numberArray
+        if (typeof (editItem as any)[key][0] === 'number') {
+          return {
+            ...acc,
+            [key]: newArray.map((i: string) => Number(i))
+          }
+        } else {
+          // is stringArray
+          return {
+            ...acc,
+            [key]: newArray
+          }
+        }
+      } else {
+        // Is number
+        if (typeof (editItem as any)[key] === 'number') {
+          return {
+            ...acc,
+            [key]: Number(formStructure[key])
+          }
+        } else {
+          // Is string
+          return {
+            ...acc,
+            [key]: formStructure[key]
+          }
+        }
+      }
+    }, {})
+    return normalObject
   },
 }
 
