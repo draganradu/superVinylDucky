@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
+import { editItem, formHelper } from '@/components/shop/crud/formStructure'
 
 // hooks ---------------------------------------
 const store = useStore()
@@ -11,7 +12,10 @@ const router = useRouter()
 // methods ---------------------------------------
 const sendForm = async () => {
   // set form
-  await store.dispatch("shop/updateProduct", { product: form.value, id: props.product.dbID })
+  await store.dispatch("shop/updateProduct", {
+    product: form.value,
+    id: props.product.dbID
+  })
   // remove old product
   store.commit("shop/removeProduct", id)
   // change url
@@ -24,36 +28,26 @@ const sendForm = async () => {
 const props = defineProps<{
   product: any
 }>()
-
-const size = props.product?.size || [0, 0]
-const en = props.product?.en || { description: "", name: "" }
-const nl = props.product?.nl || { description: "", name: "" }
 const id = route.params.id as string
 
 // data ---------------------------------------
-const form = ref({
-  title: props.product.title,
-  en,
-  nl,
-  buyLink: props.product.buyLink,
-  // to add description
-  category: (props.product.category || ["sticker"]).join(", "),
-  colors: (props.product.colors || ["black"]).join(", "),
-  img: (props.product.img || []).join(", "),
-  material: props.product.material || "Oracal 651",
-  price: props.product.price || 0,
-  sizeL: size[0],
-  sizeH: size[1],
-})
+const form = ref<{ [n: string]: any }>(formHelper.toString({
+  ...editItem,
+  ...props.product,
+}))
 
 
 </script>
 <template>
   <div v-for="(v, k) in form" :key="k">
+    <!-- form exclude -->
+    <div v-if="['dbID'].includes(k as string)" class="form-floating mb-3">
+
+    </div>
     <!-- Normal input -->
-    <div v-if="!['en', 'nl'].includes(k)" class="form-floating mb-3">
-      <input type="text" class="form-control rounded-3" :id="k" v-model="form[k]">
-      <label :for="k">{{ k }}</label>
+    <div v-else-if="!['en', 'nl'].includes(k as string)" class="form-floating mb-3">
+      <input type="text" class="form-control rounded-3" :id="(k as string)" v-model="form[k]">
+      <label :for="(k as string)">{{ k }}</label>
     </div>
 
     <!-- EN description name -->
