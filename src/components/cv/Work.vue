@@ -4,6 +4,9 @@ import { useRoute } from 'vue-router'
 import Card from '@/scaffolding/Card.vue'
 import Feature from '@/components/shop/helper/features.vue'
 import { useStore } from 'vuex'
+import SkillFrontend from './skillsFrontend.vue'
+import SkillScrum from './skillsScram.vue'
+import SkillUi from './skillsUI.vue'
 
 // props ---------------------------------------
 const route = useRoute()
@@ -19,8 +22,11 @@ const is = store.getters['cv/is'](skill)
 
 
 <template>
-  <Card id="radu-work" class="mt-3">
+  <Card id="radu-work" :class="['mt-3',`bg-${skill}-primary`]">
     Skills [ECBGI-81]
+    <SkillFrontend v-if="is.front" />
+    <SkillScrum v-if="is.scrum" />
+    <SkillUi v-if="is.ui" />
     <!-- <h2>Skills</h2>
     <p>Over the years i have gained some core skills the team i am a part of. 
       <span v-if="is.front"> I think every frontend developer should have them, but i think it is a case of if you have a hammer you see everithing as a nail.</span>

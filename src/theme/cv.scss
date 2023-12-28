@@ -17,7 +17,7 @@ $sizes: "scrum", "front", "ui";
 
   .bg-#{$size}-primary {
     background-color: var($bgPstring);
-    color: var($bgSstring);
+    color: white;
   }
   .bg-#{$size}-secondary {
     background-color: var($bgSstring);

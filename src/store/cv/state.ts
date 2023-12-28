@@ -47,6 +47,93 @@ const state: CvState = {
       "show": [jobs.front, jobs.ui, jobs.scrum]
     },
   ],
+  skills : [
+    {
+      "name": "HTML5",
+      "icon": "html5",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "Scss",
+      "icon": "css3",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "Javascript",
+      "icon": "javascript",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "Typescript",
+      "icon": "typescript",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "Vue",
+      "icon": "vuejs",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "React",
+      "icon": "react",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+
+    {
+      "name": "Node",
+      "icon": "nodejs",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "PHP",
+      "icon": "php",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "Laravel",
+      "icon": "laravel",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "MySQL",
+      "icon": "mysql",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "MongoDB",
+      "icon": "mongodb",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "Git",
+      "icon": "git",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "Scrum",
+      "icon": "scrum",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+    {
+      "name": "Abobe XD",
+      "icon": "scrum",
+      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "value": [80, 100],
+    },
+  ],
   contact: {
     firstName: "Radu",
     lastName: "Dragan",
