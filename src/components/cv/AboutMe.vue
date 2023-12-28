@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// ECBGI-80 ----------------------------------------
 import {  ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
@@ -24,7 +25,7 @@ let collapsed = ref(true)
 </script>
 
 <template>
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="col-12 position-relative">
         <div class="log-user">
@@ -34,10 +35,11 @@ let collapsed = ref(true)
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <Card id="radu-about">
     <div class="row">
-      <div class="col-6">
+      About Me [ECBGI-80]
+      <!-- <div class="col-6">
         <h1>Hi, I'm Radu</h1>
         <h2 class="subtitle" v-if="is.front">Web Designer & Developer</h2>
         <h2 class="subtitle" v-if="is.scrum">Scrum Master</h2>
@@ -69,7 +71,7 @@ let collapsed = ref(true)
         <div class="me-img">
           <img src="@/assets/radu-dragan-aurel-500.png" />
         </div>
-      </div>
+      </div> -->
     </div>
   </Card>
 </template>

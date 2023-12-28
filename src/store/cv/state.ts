@@ -1,4 +1,4 @@
-import { type CvState } from "./types"
+import { jobs, type CvState } from "./types"
 
 const state: CvState = {
   products: [],
@@ -8,23 +8,23 @@ const state: CvState = {
     firstName: "Radu",
     lastName: "Dragan",
     cv: {
-      "front": "front.pdf",
-      "scrum": "scrum.pdf",
-      "ui": "ui.pdf",
+      [jobs.front]: "front.pdf",
+      [jobs.scrum]: "scrum.pdf",
+      [jobs.ui]: "ui.pdf",
     },
     phone: "0648459980",
     email: "radu.dragan@vinylducky.nl",
   },
   jobs: {
-    front: {
+    [jobs.front]: {
       "cv": "front.pdf",
       "video": "v57AUcd2eO0"
     },
-    scrum: {
+    [jobs.scrum]: {
       "cv": "scrum.pdf",
       "video": "v57AUcd2eO0"
     },
-    ui: {
+    [jobs.ui]: {
       "cv": "ui.pdf",
       "video": "v57AUcd2eO0"
     },

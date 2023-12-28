@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// ECBGI-85 ----------------------------------------
+// ECBGI-82 ----------------------------------------
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import Card from '@/scaffolding/Card.vue'
@@ -19,7 +19,7 @@ const is = store.getters['cv/is'](skill)
 
 <template>
   <Card id="radu-work" class="mt-3">
-    Contact [ECBGI-85]
+    Resume [ECBGI-82]
   </Card>
 </template>
 

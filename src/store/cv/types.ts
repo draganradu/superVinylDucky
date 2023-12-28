@@ -5,6 +5,11 @@ export enum jobs {
   ui = "ui",
 }
 
+export interface jobsData {
+  "cv": string,
+  "video": string
+}
+
 export interface CvState {
   products: [],
   product: null,
@@ -19,9 +24,6 @@ export interface CvState {
     email: string,
   },
   jobs: {
-    [key in jobs]: {
-      "cv": string,
-      "video": string
-    }
+    [key in jobs]: jobsData
   }
 }

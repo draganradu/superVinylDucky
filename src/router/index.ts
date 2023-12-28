@@ -3,6 +3,7 @@ import InformationPageView from "@/views/informatiePage.vue"
 import LandingPageView from "@/views/LandingPage.vue"
 import NotFound from "@/views/E404.vue"
 import Tr from "@/i18n/translation"
+import { jobs } from '@/store/cv/types'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -84,7 +85,7 @@ const router = createRouter({
           name: 'CvPage',
           component: () => import('../views/CVPage.vue'),
           beforeEnter: (to: any, _from: any, next: any) => {
-            const listOfSkills = ["front", "scrum", "ui"]
+            const listOfSkills = [jobs.front, jobs.scrum, jobs.ui]
             if (listOfSkills.includes(to.params.skill)) {
               return next()
             } else {
