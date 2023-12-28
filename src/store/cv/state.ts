@@ -47,91 +47,103 @@ const state: CvState = {
       "show": [jobs.front, jobs.ui, jobs.scrum]
     },
   ],
-  skills : [
+  skills: [
     {
       "name": "HTML5",
-      "icon": "html5",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
-      "value": [80, 100],
+      "show": [jobs.front, jobs.ui],
+      "value": [70, 100],
+      "description": "I have started my carrer as a web developer with HTML4.1, in 2006. Since then I have been working with HTML5 and I have a good understanding of the semantic tags and the best practices. I have also worked with HTML5 canvas and SVGs. I have a good understanding of the accessibility standards and I have worked with screen readers and other assistive technologies. I have also worked with HTML5 video and audio tags and I have a good understanding of the best practices for embedding media content on the web."
     },
     {
-      "name": "Scss",
-      "icon": "css3",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
-      "value": [80, 100],
+      "name": "Scss (CSS3)",
+      "show": [jobs.front, jobs.ui,],
+      "value": [50, 100],
+      "description": "I have been working with CSS3 since 2010. I have a good understanding of the best practices and I have worked with CSS3 animations and transitions. I have a good understanding of the responsive design and I have worked with media queries. I have also worked with CSS3 preprocessors like SASS and LESS."
     },
     {
       "name": "Javascript",
-      "icon": "javascript",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
-      "value": [80, 100],
+      "show": [jobs.front],
+      "value": [90, 100],
+      "description": "I have been working with Javascript since 2006. I have a good understanding of the best practices and I have worked with ES6 and Typescript. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Javascript frameworks like Vue and React. I have a good understanding of the Javascript design patterns and I have worked with the MVC and MVVM patterns. I have also worked with Javascript libraries like jQuery and I have a good understanding of the DOM manipulation. I have also worked with Javascript testing frameworks like Jest and Mocha."
     },
     {
       "name": "Typescript",
-      "icon": "typescript",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "show": [jobs.front,],
       "value": [80, 100],
+      "description": "I have been working with Typescript since 2018. I have a good understanding of the best practices and I have worked with Typescript in Vue and React projects. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Typescript testing frameworks like Jest and Mocha."
     },
     {
-      "name": "Vue",
-      "icon": "vuejs",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "name": "Vue3",
+      "show": [jobs.front],
       "value": [80, 100],
+      "description": "I have been working with Vue since 2018. I have a good understanding of the best practices and I have worked with Vue3 and VueX. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Vue testing frameworks like Jest and Mocha."
+    },
+    {
+      "name": "Jest",
+      "show": [jobs.front],
+      "value": [80, 100],
+      "description": "I have been working with Vue since 2018. I have a good understanding of the best practices and I have worked with Vue3 and VueX. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Vue testing frameworks like Jest and Mocha."
     },
     {
       "name": "React",
-      "icon": "react",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "show": [jobs.front],
       "value": [80, 100],
+      "description": "I have been working with React since 2018. I have a good understanding of the best practices and I have worked with React and Redux. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with React testing frameworks like Jest and Mocha."
     },
 
     {
-      "name": "Node",
-      "icon": "nodejs",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "name": "NodeJS",
+      "show": [jobs.front],
       "value": [80, 100],
+      "description": "I have been working with NodeJS since 2018. I have a good understanding of the best practices and I have worked with NodeJS and Express. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with NodeJS testing frameworks like Jest and Mocha."
     },
     {
-      "name": "PHP",
-      "icon": "php",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "name": "PHP6",
+      "show": [jobs.front],
       "value": [80, 100],
-    },
-    {
-      "name": "Laravel",
-      "icon": "laravel",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
-      "value": [80, 100],
+      "description": "I have been working with PHP since 2008. I have a good understanding of the best practices and I have worked with PHP and Laravel. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with PHP testing frameworks like Jest and Mocha."
     },
     {
       "name": "MySQL",
-      "icon": "mysql",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "show": [jobs.front, jobs.scrum],
       "value": [80, 100],
+      "description": "I have been working with Git since 2006. I have a good understanding of the best practices and I have worked with Git and Github. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Git testing frameworks like Jest and Mocha."
     },
     {
-      "name": "MongoDB",
-      "icon": "mongodb",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "name": "Firebase",
+      "show": [jobs.front,],
       "value": [80, 100],
+      "description": "I have been working with Git since 2006. I have a good understanding of the best practices and I have worked with Git and Github. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Git testing frameworks like Jest and Mocha."
     },
     {
       "name": "Git",
-      "icon": "git",
       "show": [jobs.front, jobs.ui, jobs.scrum],
       "value": [80, 100],
+      "description": "I have been working with Git since 2006. I have a good understanding of the best practices and I have worked with Git and Github. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Git testing frameworks like Jest and Mocha."
     },
     {
-      "name": "Scrum",
-      "icon": "scrum",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
+      "name": "Agile Scrum (PSM I)",
+      "show": [jobs.scrum],
       "value": [80, 100],
+      "description": "I have been working with Safe 6.0 since 2018. I have a good understanding of the best practices and I have worked with Safe 6.0 and Jira. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Safe 6.0 testing frameworks like Jest and Mocha."
+    },
+    {
+      "name": "Jira",
+      "show": [jobs.scrum],
+      "value": [80, 100],
+      "description": "I have been working with Safe 6.0 since 2018. I have a good understanding of the best practices and I have worked with Safe 6.0 and Jira. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Safe 6.0 testing frameworks like Jest and Mocha."
+    },
+    {
+      "name": "Safe 6.0",
+      "show": [jobs.scrum],
+      "value": [80, 100],
+      "description": "I have been working with Safe 6.0 since 2018. I have a good understanding of the best practices and I have worked with Safe 6.0 and Jira. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Safe 6.0 testing frameworks like Jest and Mocha."
     },
     {
       "name": "Abobe XD",
-      "icon": "scrum",
-      "show": [jobs.front, jobs.ui, jobs.scrum],
-      "value": [80, 100],
+      "show": [jobs.ui, jobs.scrum],
+      "value": [50, 70],
+      "description": "I have been working with Safe 6.0 since 2018. I have a good understanding of the best practices and I have worked with Safe 6.0 and Jira. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Safe 6.0 testing frameworks like Jest and Mocha."
     },
   ],
   contact: {

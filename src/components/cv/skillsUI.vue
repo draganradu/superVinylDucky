@@ -36,7 +36,10 @@ skills.map((i: any) => {
     <div class="col-6" v-for="(i, k) in skills" :key="k">
       <div v-if="i.show.includes(skill)" class="mb-3">
         <div class="row mb-2">
-          <div class="col"><b>{{ i.name }}</b></div>
+          <div class="col">
+            <i :class="['bi',`bi-${i.icon}`,'me-2']"></i>
+            <b>{{ i.name }}</b>
+          </div>
           <div class="col-md-auto">{{ i.value[2] }}%</div>
         </div>
         <div>
