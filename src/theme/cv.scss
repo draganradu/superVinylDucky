@@ -1,0 +1,26 @@
+:root {
+  --cv-front-primary: red;
+  --cv-front-secondary: black;
+
+  --cv-scrum-primary: green;
+  --cv-scrum-secondary: black;
+
+  --cv-ui-primary: blue;
+  --cv-ui-secondary: black;
+}
+
+$sizes: "scrum", "front", "ui";
+
+@each $size in $sizes {
+  $bgPstring: --cv-#{$size}-primary;
+  $bgSstring: --cv-#{$size}-secondary;
+
+  .bg-#{$size}-primary {
+    background-color: var($bgPstring);
+    color: var($bgSstring);
+  }
+  .bg-#{$size}-secondary {
+    background-color: var($bgSstring);
+    color: var($bgPstring);
+  }
+}

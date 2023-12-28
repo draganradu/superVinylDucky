@@ -10,10 +10,17 @@ export interface jobsData {
   "video": string
 }
 
+export interface social {
+  "name": string,
+  "url": string
+  "icon": string,
+  "show": jobs[]
+}
+
 export interface CvState {
   products: [],
   product: null,
-  social: [],
+  social: social[],
   contact: {
     firstName: string,
     lastName: string,

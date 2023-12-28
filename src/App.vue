@@ -4,4 +4,5 @@
 
 <style lang="scss">
   @import "./theme/animation.scss";
+  @import "./theme/cv.scss";
 </style>
