@@ -146,6 +146,32 @@ const state: CvState = {
       "description": "I have been working with Safe 6.0 since 2018. I have a good understanding of the best practices and I have worked with Safe 6.0 and Jira. I have a good understanding of the asynchronous programming and I have worked with promises and async/await. I have also worked with Safe 6.0 testing frameworks like Jest and Mocha."
     },
   ],
+  resume: {
+    education: [
+      {
+        name: "Politehnica University of Bucharest",
+        degree: "MBA",
+        time: [2015, 2017],
+        location: "Bucharest",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum."
+      },
+      {
+        name: "University of Arts, Bucharest",
+        degree: "MA",
+        time: [2012, 2015],
+        location: "Bucharest",
+        text: "I have studied Computer Science at the University of Amsterdam. I have followed the Software Engineering track and I have graduated with a thesis on the topic of \"The Impact of Software Engineering Practices on Software Quality\"."
+      },
+    ],
+    professional: [
+      { 
+        name: "Frontend Developer", 
+        time: [2018, 2020], 
+        degree: "A",
+        location: "Vinylducky", 
+        text: "I have worked as a Frontend Developer at Vinylducky. I have worked on the frontend of the Vinylducky website and I have worked on the frontend of the Vinylducky webshop. I have worked with Vue3, Typescript, Scss, HTML5, Git, Firebase, and Jira." },
+    ],
+  },
   contact: {
     firstName: "Radu",
     lastName: "Dragan",
