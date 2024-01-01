@@ -2,6 +2,7 @@
 // 0.0.8 ----------------------------------------
 import { onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import Container from '@/scaffolding/Container.vue'
 import Footer from "@/components/shop/footer.vue"
@@ -9,7 +10,7 @@ import Sidebar from "@/components/sidebar/index.vue"
 
 // hooks ----------------------------------------
 const store = useStore()
-
+const router = useRouter()
 
 // store / props / params -----------------------
 const props = defineProps<{
@@ -17,10 +18,15 @@ const props = defineProps<{
   title?: string
   description?: string
   forceCallProducts?: boolean
+  onlyOnDevelop?: boolean
 }>()
 
 // events ---------------------------------------
 onMounted(async () => {
+  if(props.onlyOnDevelop && !store.state.user.isDebug) {
+    router.push('/404')
+  }
+
   if (props.forceCallProducts) {
     await store.dispatch('shop/callProducts')
   }

@@ -29,7 +29,7 @@ const form = ref<{ [n: string]: any }>(formHelper.toString({
 
 <template>
   <main>
-    <ShopLayout :sidebar="true" id="product-main">
+    <ShopLayout :sidebar="true" id="product-main" :only-on-develop="true">
       <div v-for="(v, k) in form" :key="k">
         <!-- form exclude -->
         <div v-if="['dbID'].includes(k as string)" class="form-floating mb-3">
