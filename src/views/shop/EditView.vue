@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
-import { editItem, formHelper } from '@/components/shop/crud/formStructure'
+import { editItem, formHelper, type EditItem } from '@/components/shop/crud/formStructure'
 
 // hooks ---------------------------------------
 const store = useStore()
@@ -30,7 +30,7 @@ const props = defineProps<{
 const id = route.params.id as string
 
 // data ---------------------------------------
-const form = ref<{ [n: string]: any }>(formHelper.toString({
+const form = ref<EditItem>(formHelper.toString({
   ...editItem,
   ...props.product,
 }))
@@ -40,7 +40,13 @@ const form = ref<{ [n: string]: any }>(formHelper.toString({
 <template>
   <div v-for="(v, k) in form" :key="k">
     <!-- form exclude -->
-    <div v-if="['dbID'].includes(k as string)" class="form-floating mb-3">
+    <div v-if="typeof (editItem as any)[k] === 'boolean'">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" v-model="form[k]" :id="(k as string)">
+        <label :for="(k as string)">{{ k }}</label>
+      </div>
+    </div>
+    <div v-else-if="['dbID'].includes(k as string)" class="form-floating mb-3">
 
     </div>
     <!-- Normal input -->
@@ -53,11 +59,11 @@ const form = ref<{ [n: string]: any }>(formHelper.toString({
     <div v-else-if="['en', 'nl'].includes(k as string)">
       <div class="form-floating mb-3">
         <textarea class="form-control" placeholder="Leave a comment here" id="en-description"
-          v-model="form[k].description" style="height: 100px"></textarea>
+          v-model="(form[k] as any).description" style="height: 100px"></textarea>
         <label for="en-description">{{ k }} >> Description</label>
       </div>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control rounded-3" id="en-name" v-model="form[k].name">
+        <input type="text" class="form-control rounded-3" id="en-name" v-model="(form[k] as any).name">
         <label for="en-name">{{ k }} >> Name</label>
       </div>
     </div>

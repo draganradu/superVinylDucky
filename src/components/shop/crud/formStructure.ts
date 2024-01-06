@@ -1,5 +1,5 @@
 // data -----------------------------------------
-export const editItem = {
+export const editItem:EditItem = {
   title: "",
   en: { description: "", name: "" },
   nl: { description: "", name: "" },
@@ -10,6 +10,28 @@ export const editItem = {
   material: "Oracal 651",
   price: 0,
   size: [0, 0],
+  devOnly: false,
+  printReverse: false,
+}
+
+// type  -----------------------------------------
+export interface languageData {
+  description: string,
+  name: string,
+}
+export interface EditItem {
+  title: string,
+  en: languageData,
+  nl: languageData,
+  buyLink: string,
+  category: string[],
+  colors: string[]
+  img: string[],
+  material: string,
+  price: number,
+  size: [number, number],
+  devOnly: boolean,
+  printReverse?: boolean,
 }
 
 // methods --------------------------------------

@@ -14,7 +14,7 @@ onMounted(async () => {
 })
 
 // data ---------------------------------------
-const getProducts = computed(() => store.getters['shop/getProductsGrid'])
+const getProducts = computed<any>(() => store.getters['shop/getProductsGrid'])
 const keys = computed(() => Object.keys(getProducts.value || {}))
 
 // methods ------------------------------------
@@ -25,7 +25,7 @@ const keys = computed(() => Object.keys(getProducts.value || {}))
 <template>
   <div id="productGrid" class="mt-5 d-grid a-clean">
     <RouterLink v-for="i in keys" :key="i" class="grid-item rounded-4 card shadow overflow-hidden"
-      :to="`/${locale}/stickers/${i}/`">
+      :to="`/${locale}/stickers/${i}/`" v-show="!getProducts[i].devOnly">
       <div class="coming-soon" v-if="getProducts[i].upcoming">Coming soon</div>
       <div class="container-colors hide" v-if="getProducts[i].colors">
         <Color v-for="color in getProducts[i].colors" :key="color" :color="color" />

@@ -36,7 +36,7 @@ export interface CvState {
   products: [],
   product: null,
   social: social[],
-  skills: skills[],
+  skills: skill[],
   resume: {
     education: resumeItem[],
     professional: resumeItem[],
